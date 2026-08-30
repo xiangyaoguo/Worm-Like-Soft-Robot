@@ -1,0 +1,24 @@
+{
+  "schema": "obs2_v2_1_k_smoke/v1",
+  "passed": true,
+  "condition_count": 59,
+  "condition_matrix_sha256": "417f121b51326e4b25b60a42aa74af16ead017ef412e1f61c0c23b479d9b3c17",
+  "frozen_evaluator_self_test": "passed",
+  "maximum_transform_error": 0.0,
+  "C00_endpoint_bit_exact": true,
+  "C11_endpoint_bit_exact": true,
+  "same_observation_error": 0.0,
+  "invalid_sign_vector_failed_closed": true,
+  "immutability": {
+    "checkpoints_before_after_equal": true,
+    "checkpoint_sha256": {
+      "R0": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6",
+      "Rroll": "b2ae292c1e55a317ea29911cfcf67cf28db1cc82d5f5e36611c5bf4ca031bf34"
+    },
+    "policies_before_after_equal": true,
+    "policy_state_sha256": {
+      "R0": "eda904cad6333791d3f2912d46b72960d4ab73ec1b9b34f1d18584fe046b10ec",
+      "Rroll": "1840c9d351c15d5f3e539aac249a078285815959a5388a6d9ff353e59d7fea64"
+    }
+  }
+}

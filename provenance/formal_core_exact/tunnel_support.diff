@@ -1,0 +1,647 @@
+--- a/training/rlmm_common.py
++++ b/training/rlmm_common.py
+@@ -48,21 +48,69 @@
+     }
+ 
+ 
+-def terrain_config(kind: str, *, start_stairs: float, step_width: float, step_height: float, steps: int):
++def tunnel_settings(
++    start: float = 10,
++    slope: float = 5,
++    slope_height: float = 1,
++    tunnel_length: float = 10,
++    tunnel_height: float = 5,
++) -> dict[str, Any]:
++    """Return MeshTerrain settings for the built-in tunnel preset.
++
++    MeshTerrain uses the key name ``tunnel`` for the flat tunnel section
++    length, so the saved metadata keeps that key for backward compatibility.
++    The default height is wide enough for the default 13-node ring; pass
++    ``--tunnel-height 2`` for a narrower crawler-focused task.
++    """
++    return {
++        "type": "tunnel",
++        "start": start,
++        "slope": slope,
++        "slope_height": slope_height,
++        "tunnel": tunnel_length,
++        "tunnel_height": tunnel_height,
++    }
++
++
++def terrain_config(
++    kind: str,
++    *,
++    start_stairs: float = 5,
++    step_width: float = 5,
++    step_height: float = 0.2,
++    steps: int = 10,
++    tunnel_start: float = 10,
++    tunnel_slope: float = 5,
++    tunnel_slope_height: float = 1,
++    tunnel_length: float = 10,
++    tunnel_height: float = 5,
++):
+     """Return `(terrain_type, terrain_settings)` for the environment constructor."""
+     kind = kind.lower()
+     if kind == "flat":
+         return "flat", None
+     if kind == "stairs":
+         return "mesh", stairs_settings(start_stairs, step_width, step_height, steps)
+-    raise ValueError(f"Unsupported terrain: {kind!r}. Use 'flat' or 'stairs'.")
++    if kind == "tunnel":
++        return "mesh", tunnel_settings(
++            start=tunnel_start,
++            slope=tunnel_slope,
++            slope_height=tunnel_slope_height,
++            tunnel_length=tunnel_length,
++            tunnel_height=tunnel_height,
++        )
++    raise ValueError(f"Unsupported terrain: {kind!r}. Use 'flat', 'stairs', or 'tunnel'.")
+ 
+ 
+ def terrain_label(terrain_type: str, terrain_settings: Any) -> str:
+     if terrain_type == "flat":
+         return "flat"
+-    if terrain_type == "mesh" and isinstance(terrain_settings, dict) and terrain_settings.get("type") == "stairs":
+-        return "stairs"
++    if terrain_type == "mesh" and isinstance(terrain_settings, dict):
++        preset_type = terrain_settings.get("type")
++        if preset_type in {"stairs", "tunnel"}:
++            return preset_type
++    if terrain_type == "mesh" and terrain_settings in {"stairs", "tunnel"}:
++        return str(terrain_settings)
+     return str(terrain_type)
+ 
+ 
+--- a/training/train_metamaterial.py
++++ b/training/train_metamaterial.py
+@@ -1,8 +1,10 @@
+-"""Train crawler/ring metamaterial robots on flat or stair terrain.
++"""Train crawler/ring metamaterial robots on flat, stair, or tunnel terrain.
+ 
+ Examples:
+-  python .\training\train_metamaterial.py --robot crawler --terrain flat --episodes 200
+-  python .\training\train_metamaterial.py --robot ring --terrain stairs --episodes 500 --episode-steps 400 --step-height 0.2
++  python ./training/train_metamaterial.py --robot crawler --terrain flat --episodes 200
++  python ./training/train_metamaterial.py --robot ring --terrain stairs --episodes 500 --episode-steps 400 --step-height 0.2
++  python ./training/train_metamaterial.py --robot crawler --terrain tunnel --episodes 500 --episode-steps 500 --tunnel-height 2
++  python ./training/train_metamaterial.py --robot ring --terrain tunnel --episodes 500 --episode-steps 500 --tunnel-height 5
+ """
+ 
+ from __future__ import annotations
+@@ -45,7 +47,7 @@
+     parser = argparse.ArgumentParser(description="Train metamaterial locomotion policy.")
+ 
+     parser.add_argument("--robot", choices=["crawler", "ring"], default="crawler", help="Robot morphology.")
+-    parser.add_argument("--terrain", choices=["flat", "stairs"], default="flat", help="Training terrain.")
++    parser.add_argument("--terrain", choices=["flat", "stairs", "tunnel"], default="flat", help="Training terrain.")
+     parser.add_argument("--num-particles", type=int, default=13, help="Number of particles/nodes.")
+     parser.add_argument("--observation-func", default="dth_tot", help="Observation function name.")
+ 
+@@ -81,6 +83,12 @@
+     parser.add_argument("--step-width", type=float, default=5)
+     parser.add_argument("--step-height", type=float, default=0.2)
+     parser.add_argument("--steps", type=int, default=10, help="Number of stair steps.")
++
++    parser.add_argument("--tunnel-start", type=float, default=10, help="Tunnel preset: x position where the tunnel obstacle starts.")
++    parser.add_argument("--tunnel-slope", type=float, default=5, help="Tunnel preset: horizontal length of the entry/exit ramps.")
++    parser.add_argument("--tunnel-slope-height", type=float, default=1, help="Tunnel preset: vertical height of the entry/exit ramps.")
++    parser.add_argument("--tunnel-length", type=float, default=10, help="Tunnel preset: horizontal length of the enclosed section.")
++    parser.add_argument("--tunnel-height", type=float, default=5, help="Tunnel preset: clearance between floor and ceiling inside the tunnel. Use 2 for a narrower crawler task.")
+ 
+     parser.add_argument("--buffer-storage", choices=["tensor", "memmap"], default="tensor")
+     parser.add_argument("--force-cpu", action="store_true")
+@@ -298,6 +306,11 @@
+         step_width=args.step_width,
+         step_height=args.step_height,
+         steps=args.steps,
++        tunnel_start=args.tunnel_start,
++        tunnel_slope=args.tunnel_slope,
++        tunnel_slope_height=args.tunnel_slope_height,
++        tunnel_length=args.tunnel_length,
++        tunnel_height=args.tunnel_height,
+     )
+ 
+     run_name = args.run_name or f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_{args.robot}_{args.terrain}"
+--- a/training/demo_metamaterial.py
++++ b/training/demo_metamaterial.py
+@@ -1,9 +1,10 @@
+-"""Render a trained crawler/ring policy on flat or stair terrain.
++"""Render a trained crawler/ring policy on flat, stair, or tunnel terrain.
+ 
+ Examples:
+-  python .\training\demo_metamaterial.py --checkpoint latest
+-  python .\training\demo_metamaterial.py --checkpoint latest --policy-mode sample
+-  python .\training\demo_metamaterial.py --checkpoint results\20260611_120000_ring_stairs\checkpoint_500.pt
++  python ./training/demo_metamaterial.py --checkpoint latest
++  python ./training/demo_metamaterial.py --checkpoint latest --policy-mode sample
++  python ./training/demo_metamaterial.py --checkpoint results/20260611_120000_ring_stairs/checkpoint_500.pt
++  python ./training/demo_metamaterial.py --checkpoint latest --terrain tunnel --follow-camera
+ """
+ 
+ from __future__ import annotations
+@@ -52,7 +53,7 @@
+     )
+     parser.add_argument(
+         "--terrain",
+-        choices=["checkpoint", "flat", "stairs"],
++        choices=["checkpoint", "flat", "stairs", "tunnel"],
+         default="checkpoint",
+         help="Use checkpoint terrain by default. You may override terrain for testing.",
+     )
+@@ -62,7 +63,12 @@
+     parser.add_argument("--start-stairs", type=float, default=5)
+     parser.add_argument("--step-width", type=float, default=5)
+     parser.add_argument("--step-height", type=float, default=0.2)
+-    parser.add_argument("--steps", type=int, default=10)
++    parser.add_argument("--steps", type=int, default=10, help="Number of stair steps.")
++    parser.add_argument("--tunnel-start", type=float, default=10, help="World x-position where the tunnel ramp begins.")
++    parser.add_argument("--tunnel-slope", type=float, default=5, help="Horizontal length of each tunnel entry/exit ramp.")
++    parser.add_argument("--tunnel-slope-height", type=float, default=1, help="Vertical rise/fall of each tunnel ramp.")
++    parser.add_argument("--tunnel-length", type=float, default=10, help="Horizontal length of the constant-height tunnel section.")
++    parser.add_argument("--tunnel-height", type=float, default=5, help="Vertical clearance inside the tunnel; use about 2 for a narrow crawler tunnel and 4-5 for the default ring.")
+ 
+     parser.add_argument("--policy-mode", choices=["sample", "deterministic"], default="sample")
+     parser.add_argument("--max-steps", type=int, default=2000)
+@@ -194,6 +200,11 @@
+             step_width=args.step_width,
+             step_height=args.step_height,
+             steps=args.steps,
++            tunnel_start=args.tunnel_start,
++            tunnel_slope=args.tunnel_slope,
++            tunnel_slope_height=args.tunnel_slope_height,
++            tunnel_length=args.tunnel_length,
++            tunnel_height=args.tunnel_height,
+         )
+ 
+     if args.robot != "checkpoint" and args.robot != metadata.get("scenario"):
+--- a/training/train_then_analyze.py
++++ b/training/train_then_analyze.py
+@@ -2,12 +2,13 @@
+ 
+ Put this file in the training/ directory and run it exactly like train_metamaterial.py:
+ 
+-    python .\training\train_then_analyze.py --robot crawler --terrain stairs --episodes 500 --episode-steps 400
++    python ./training/train_then_analyze.py --robot crawler --terrain stairs --episodes 500 --episode-steps 400
++    python ./training/train_then_analyze.py --robot ring --terrain tunnel --episodes 500 --episode-steps 500 --tunnel-height 5
+ 
+ All arguments before `--` are passed to train_metamaterial.py. Optional analysis arguments can
+ be placed after `--`, for example:
+ 
+-    python .\training\train_then_analyze.py --robot ring --terrain flat --episodes 200 -- --grid-size 151
++    python ./training/train_then_analyze.py --robot ring --terrain flat --episodes 200 -- --grid-size 151
+ """
+ 
+ from __future__ import annotations
+--- a/policy_analysis_tools/training/train_then_analyze.py
++++ b/policy_analysis_tools/training/train_then_analyze.py
+@@ -2,12 +2,13 @@
+ 
+ Put this file in the training/ directory and run it exactly like train_metamaterial.py:
+ 
+-    python .\training\train_then_analyze.py --robot crawler --terrain stairs --episodes 500 --episode-steps 400
++    python ./training/train_then_analyze.py --robot crawler --terrain stairs --episodes 500 --episode-steps 400
++    python ./training/train_then_analyze.py --robot ring --terrain tunnel --episodes 500 --episode-steps 500 --tunnel-height 5
+ 
+ All arguments before `--` are passed to train_metamaterial.py. Optional analysis arguments can
+ be placed after `--`, for example:
+ 
+-    python .\training\train_then_analyze.py --robot ring --terrain flat --episodes 200 -- --grid-size 151
++    python ./training/train_then_analyze.py --robot ring --terrain flat --episodes 200 -- --grid-size 151
+ """
+ 
+ from __future__ import annotations
+--- a/metamaterial_envs/env/metamaterial.py
++++ b/metamaterial_envs/env/metamaterial.py
+@@ -29,6 +29,11 @@
+                 preset_options = settings
+                 del preset_options['type']
+ 
++            # Accept both the original MeshTerrain key `tunnel` and the
++            # clearer CLI/config key `tunnel_length` for the tunnel preset.
++            if preset_type == 'tunnel' and 'tunnel_length' in preset_options:
++                preset_options['tunnel'] = preset_options.pop('tunnel_length')
++
+             if preset_type == 'flat':
+                 self.lines = np.array([[-1000, 1000]], dtype=np.complex64)
+             elif preset_type == 'stairs':
+@@ -51,7 +56,7 @@
+         lines.append([end_point, end_point + 1000])
+         return np.array(lines, dtype=np.complex64)
+ 
+-    def _preset_tunnel(self, start=10, slope=5, slope_height=1, tunnel=10, tunnel_height=2):
++    def _preset_tunnel(self, start=10, slope=5, slope_height=1, tunnel=10, tunnel_height=5.0):
+         lines = [
+             [-1000, start],  # _
+             [start, start + slope + slope_height * 1j],  # /
+@@ -263,6 +268,21 @@
+ 
+         self._obs_func = nb.njit(nb.float32[:, :, :](nb.complex64[:, :], nb.float32[:, :]))(
+             observation_funcs[observation_func]['func'])
++
++        # Allow user-facing aliases such as terrain_type="tunnel" or "stairs".
++        # Internally both are mesh terrains, matching the training metadata format.
++        if terrain_type in ["stairs", "tunnel"]:
++            preset_type = terrain_type
++            if terrain_settings is None:
++                terrain_settings = {"type": preset_type}
++            elif isinstance(terrain_settings, str):
++                terrain_settings = {"type": preset_type}
++            elif isinstance(terrain_settings, dict):
++                terrain_settings = terrain_settings.copy()
++                terrain_settings["type"] = preset_type
++            else:
++                raise ValueError(f"terrain_settings for {preset_type!r} must be None, str, or dict.")
++            terrain_type = "mesh"
+ 
+         ######################################## Physics Sim ###########################################
+ 
+@@ -424,6 +444,9 @@
+ 
+                 return fw
+ 
++        else:
++            raise ValueError(f"Unsupported terrain_type: {terrain_type!r}.")
++
+         wall_force = nb.njit(
+             nb.complex64[:, :](nb.complex64[:, :], nb.complex64[:, :])
+         )(func)
+--- a/metamaterial_envs/metamaterial_envs/env/metamaterial.py
++++ b/metamaterial_envs/metamaterial_envs/env/metamaterial.py
+@@ -27,6 +27,11 @@
+                 preset_type = settings['type']
+                 preset_options = settings
+                 del preset_options['type']
++
++            # Accept both the original MeshTerrain key `tunnel` and the
++            # clearer CLI/config key `tunnel_length` for the tunnel preset.
++            if preset_type == 'tunnel' and 'tunnel_length' in preset_options:
++                preset_options['tunnel'] = preset_options.pop('tunnel_length')
+             
+             if preset_type == 'flat':
+                 self.lines = np.array([[-1000, 1000]], dtype=np.complex64)
+@@ -50,7 +55,7 @@
+         lines.append([end_point, end_point + 1000])
+         return np.array(lines, dtype=np.complex64)
+     
+-    def _preset_tunnel(self, start=10, slope=5, slope_height=1, tunnel=10, tunnel_height=2):
++    def _preset_tunnel(self, start=10, slope=5, slope_height=1, tunnel=10, tunnel_height=5.0):
+         lines = [
+             [-1000, start], # _
+             [start, start + slope + slope_height * 1j], # /
+@@ -301,6 +306,21 @@
+             return stacked
+         
+         self._obs_func = nb.njit(nb.float32[:,:,:](nb.complex64[:,:],nb.float32[:,:]))(observation_funcs[observation_func]['func'])
++
++        # Allow user-facing aliases such as terrain_type="tunnel" or "stairs".
++        # Internally both are mesh terrains, matching the training metadata format.
++        if terrain_type in ["stairs", "tunnel"]:
++            preset_type = terrain_type
++            if terrain_settings is None:
++                terrain_settings = {"type": preset_type}
++            elif isinstance(terrain_settings, str):
++                terrain_settings = {"type": preset_type}
++            elif isinstance(terrain_settings, dict):
++                terrain_settings = terrain_settings.copy()
++                terrain_settings["type"] = preset_type
++            else:
++                raise ValueError(f"terrain_settings for {preset_type!r} must be None, str, or dict.")
++            terrain_type = "mesh"
+ 
+         ######################################## Physics Sim ###########################################
+ 
+@@ -454,6 +474,9 @@
+ 
+                 return fw
+ 
++        else:
++            raise ValueError(f"Unsupported terrain_type: {terrain_type!r}.")
++
+         wall_force = nb.njit(
+             nb.complex64[:,:](nb.complex64[:,:],nb.complex64[:,:])
+         )(func)
+@@ -505,7 +528,7 @@
+             fO = convert_torque_to_force(tauO, o, oM)
+ 
+             fs = edge_force(pos, r, dv)
+-            ff = slide_force(pos)
++            ff = slide_force(vel)
+             fw = wall_force(pos, vel)
+             fg = grav_force(pos)
+ 
+@@ -578,10 +601,14 @@
+     def _get_info(self):
+         return TensorDict(
+             {
+-                "speed": torch.tensor(np.real(self.mean_speed))
++                "speed": torch.as_tensor(
++                    np.real(self.mean_speed),
++                    dtype=torch.float32,
++                    device=self.device,
++                )
+             },
+-            batch_size = self.observation_spec['log_info'].shape,
+-            device = self.device
++            batch_size=self.observation_spec['log_info'].shape,
++            device=self.device
+         )
+ 
+     def _reset(self, tensordict):
+@@ -596,24 +623,24 @@
+         pos += (np.random.randn(*pos.shape) * pos_randomness + np.random.randn(*pos.shape) * pos_randomness * 1j)
+         pos += 2j
+         self.pos = np.ascontiguousarray(pos, dtype=np.complex64)
+-        self.vel = np.zeros_like(pos)
++        self.vel = np.zeros_like(self.pos, dtype=np.complex64)
+         self.mean_speed = np.zeros((self.num_envs, 1), dtype=np.float32)
+-        self.thdot = np.zeros(pos.shape, dtype=np.float32)
++        self.thdot = np.zeros(self.pos.shape, dtype=np.float32)
+         self.steps = 0
+ 
+         return TensorDict(
+             {
+                 "agents": TensorDict(
+                     {
+-                        "observation": torch.tensor(self._get_obs())
++                        "observation": torch.as_tensor(self._get_obs(), dtype=torch.float32, device=self.device)
+                     },
+-                    batch_size = self.observation_spec['agents'].shape,
+-                    device = self.device
++                    batch_size=self.observation_spec['agents'].shape,
++                    device=self.device
+                 ),
+                 "log_info": self._get_info()
+             },
+-            batch_size = self.observation_spec.shape,
+-            device = self.device
++            batch_size=self.observation_spec.shape,
++            device=self.device
+         )
+ 
+     def _set_seed(self, seed):
+@@ -630,8 +657,8 @@
+         self.vel = np.ascontiguousarray(self.vel, dtype=np.complex64)
+         self.thdot = np.ascontiguousarray(self.thdot, dtype=np.float32)
+         self.mean_speed = np.asarray(
+-            np.mean((self.pos - last_pos), axis=1, keepdims=True),
+-            dtype=np.complex64
++            np.real(np.mean((self.pos - last_pos), axis=1, keepdims=True)),
++            dtype=np.float32
+         )
+         self.steps += 1
+         done = self.steps >= self.max_steps
+@@ -642,17 +669,17 @@
+             {
+                 "agents": TensorDict(
+                     {
+-                        "observation": torch.tensor(self._get_obs())
++                        "observation": torch.as_tensor(self._get_obs(), dtype=torch.float32, device=self.device)
+                     },
+-                    batch_size = self.observation_spec['agents'].shape,
+-                    device = self.device
++                    batch_size=self.observation_spec['agents'].shape,
++                    device=self.device
+                 ),
+                 "reward": self._reward_func(),
+-                "done": torch.full(self.done_spec.shape, fill_value=done, device = self.device),
++                "done": torch.full(self.done_spec.shape, fill_value=done, device=self.device),
+                 "log_info": self._get_info()
+             },
+-            batch_size = self.observation_spec.shape,
+-            device = self.device
++            batch_size=self.observation_spec.shape,
++            device=self.device
+         )
+     
+     def _init_renderer(self):
+--- a/README_CLEAN.md
++++ b/README_CLEAN.md
+@@ -3,8 +3,8 @@
+ This version organizes the project into three parts:
+ 
+ ```text
+-training/train_metamaterial.py      # Training entry point: switch crawler/ring and flat/stairs
+-training/demo_metamaterial.py       # Demonstration entry point: load a checkpoint and render
++training/train_metamaterial.py      # Training entry point: switch crawler/ring and flat/stairs/tunnel
++training/demo_metamaterial.py       # Demonstration entry point: load a checkpoint and render flat/stairs/tunnel
+ training/rlmm_common.py             # Functions shared by training and demonstration
+ metamaterial_envs/.../metamaterial.py # Repaired environment file
+ cleanup_project.py                  # Optional: move legacy files to the archive directory
+@@ -58,6 +58,20 @@
+ python .\training\train_metamaterial.py --robot ring --terrain stairs --episodes 500 --episode-steps 400 --save-every 50 --start-stairs 5 --step-width 5 --step-height 0.2 --steps 10
+ ```
+ 
++### Chain Robot + Tunnel
++
++```powershell
++python .\training\train_metamaterial.py --robot crawler --terrain tunnel --episodes 500 --episode-steps 500 --save-every 50 --tunnel-start 10 --tunnel-slope 5 --tunnel-slope-height 1 --tunnel-length 10 --tunnel-height 2
++```
++
++### Ring Robot + Tunnel
++
++The default 13-node ring robot has a large diameter, so set `--tunnel-height` to 4 or 5. For a narrower tunnel, first reduce the node count, for example to 10.
++
++```powershell
++python .\training\train_metamaterial.py --robot ring --terrain tunnel --num-particles 13 --episodes 500 --episode-steps 500 --save-every 50 --tunnel-start 10 --tunnel-slope 5 --tunnel-slope-height 1 --tunnel-length 10 --tunnel-height 5.0
++```
++
+ Training results are saved to:
+ 
+ ```text
+@@ -98,13 +112,19 @@
+ 
+ ### Force a Different Terrain During Demonstration
+ 
+-A model trained on flat terrain can be tested on stairs, although performance may be poor:
++A model trained on flat terrain can be tested on stairs or in a tunnel, although performance may be poor:
+ 
+ ```powershell
+ python .\training\demo_metamaterial.py --checkpoint latest --terrain stairs --step-height 0.2
+ ```
+ 
+-Note: do not force a crawler checkpoint to demonstrate a ring, or a ring checkpoint to demonstrate a crawler. The two robots have different action/observation dimensions and require separately trained checkpoints.
++Tunnel simulation/demonstration:
++
++```powershell
++python .\training\demo_metamaterial.py --checkpoint latest --terrain tunnel --tunnel-height 5.0 --follow-camera
++```
++
++Note: do not force a crawler checkpoint to demonstrate a ring, or a ring checkpoint to demonstrate a crawler. The two robots have different action/observation dimensions and require separately trained checkpoints. The same applies in a tunnel; preferably train `crawler_tunnel` and `ring_tunnel` separately.
+ 
+ ## 4. Streamline Legacy Files
+ 
+--- /dev/null
++++ b/README_TUNNEL.md
+@@ -0,0 +1,87 @@
++# Tunnel Environment: Ring / Crawler Training and Simulation
++
++This update integrates the existing `MeshTerrain._preset_tunnel()` into the unified training and demonstration scripts, so `--terrain tunnel` can now directly train and render the `ring` robot and the chain-style `crawler`.
++
++## Training
++
++### Crawler / Chain Robot, Narrower Tunnel
++
++```bash
++python ./training/train_metamaterial.py \
++  --robot crawler \
++  --terrain tunnel \
++  --episodes 500 \
++  --episode-steps 500 \
++  --tunnel-height 2.0 \
++  --run-name crawler_tunnel
++```
++
++### Ring Robot: the Default 13 Nodes Require a Taller Tunnel
++
++```bash
++python ./training/train_metamaterial.py \
++  --robot ring \
++  --terrain tunnel \
++  --episodes 500 \
++  --episode-steps 500 \
++  --tunnel-height 5.0 \
++  --run-name ring_tunnel
++```
++
++After training, the checkpoint is saved to:
++
++```text
++results/<run-name>/checkpoint_<episode>.pt
++```
++
++## Simulate / Render the Trained Policy
++
++Use the robot and terrain metadata embedded in the checkpoint:
++
++```bash
++python ./training/demo_metamaterial.py --checkpoint results/ring_tunnel/checkpoint_500.pt --follow-camera
++```
++
++Alternatively, use the latest checkpoint directly:
++
++```bash
++python ./training/demo_metamaterial.py --checkpoint latest --follow-camera
++```
++
++A compatible checkpoint can also be forced into a tunnel for testing:
++
++```bash
++python ./training/demo_metamaterial.py \
++  --checkpoint latest \
++  --terrain tunnel \
++  --tunnel-height 5.0 \
++  --follow-camera
++```
++
++## Tunnel Arguments
++
++Internally, `--terrain tunnel` is converted to:
++
++```python
++terrain_type = "mesh"
++terrain_settings = {
++    "type": "tunnel",
++    "start": ...,
++    "slope": ...,
++    "slope_height": ...,
++    "tunnel": ...,
++    "tunnel_height": ...,
++}
++```
++
++Adjustable arguments:
++
++| Argument | Meaning | Default |
++|---|---|---:|
++| `--tunnel-start` | Starting x coordinate of the tunnel ramp | `10` |
++| `--tunnel-slope` | Horizontal length of the entrance/exit ramp | `5` |
++| `--tunnel-slope-height` | Height change of the entrance/exit ramp | `1` |
++| `--tunnel-length` | Horizontal length of the constant-height central tunnel | `10` |
++| `--tunnel-height` | Vertical clearance inside the tunnel | `5` |
++
++A `crawler` can use a smaller `--tunnel-height`, such as `2.0`. The default `13`-node `ring` requires more clearance; start with `5.0`.
+--- /dev/null
++++ b/README_TUNNEL_UPDATE.md
+@@ -0,0 +1,51 @@
++# Tunnel environment update
++
++This patch adds `--terrain tunnel` to the existing `training/train_metamaterial.py` and `training/demo_metamaterial.py`, enabling separate training/simulation of the chain-style `crawler` and the `ring` robot.
++
++Core mapping:
++
++```python
++--terrain tunnel
++# Equivalent environment arguments:
++terrain_type = "mesh"
++terrain_settings = {
++    "type": "tunnel",
++    "start": --tunnel-start,
++    "slope": --tunnel-slope,
++    "slope_height": --tunnel-slope-height,
++    "tunnel": --tunnel-length,
++    "tunnel_height": --tunnel-height,
++}
++```
++
++## Training Examples
++
++Chain robot/crawler + tunnel:
++
++```powershell
++python .\training\train_metamaterial.py --robot crawler --terrain tunnel --episodes 500 --episode-steps 500 --save-every 50 --tunnel-height 2.0
++```
++
++Ring robot/ring + tunnel:
++
++```powershell
++python .\training\train_metamaterial.py --robot ring --terrain tunnel --num-particles 13 --episodes 500 --episode-steps 500 --save-every 50 --tunnel-height 5.0
++```
++
++The default `--tunnel-height` is `5.0`, allowing the default 13-node ring to run initially. For a narrower tunnel task, reduce it gradually to `4.0`, `3.0`, `2.5`, or `2.0`. If the ring is too difficult to pass through, first use `--num-particles 10`.
++
++## Simulation/Demonstration Examples
++
++Load the robot and terrain embedded in the checkpoint:
++
++```powershell
++python .\training\demo_metamaterial.py --checkpoint .\results\your_ring_tunnel_result\checkpoint_500.pt --terrain checkpoint --policy-mode deterministic --follow-camera
++```
++
++Force the checkpoint into a tunnel for testing:
++
++```powershell
++python .\training\demo_metamaterial.py --checkpoint latest --terrain tunnel --tunnel-height 5.0 --follow-camera
++```
++
++Note: crawler and ring observation/action dimensions usually differ, so their checkpoints should not be mixed. Train `crawler_tunnel` and `ring_tunnel` separately.
+--- /dev/null
++++ b/TUNNEL_UPDATE_CHANGED_FILES.txt
+@@ -0,0 +1,26 @@
++Tunnel update changed/added files:
++
++- training/rlmm_common.py
++  Added tunnel_settings(), terrain_config('tunnel'), and terrain_label support.
++
++- training/train_metamaterial.py
++  Added --terrain tunnel and tunnel geometry CLI arguments for ring/crawler training.
++
++- training/demo_metamaterial.py
++  Added --terrain tunnel and tunnel geometry CLI arguments for policy simulation/rendering.
++
++- training/train_then_analyze.py
++  Added a tunnel example command.
++
++- policy_analysis_tools/training/train_then_analyze.py
++  Added the same tunnel example command in the copied analysis helper.
++
++- metamaterial_envs/env/metamaterial.py
++  Added direct terrain_type='tunnel'/'stairs' aliases and clearer unsupported-terrain errors.
++
++- metamaterial_envs/metamaterial_envs/env/metamaterial.py
++  Added the same terrain aliases and fixed active-package simulation consistency issues:
++  slide_force uses velocity, mean_speed is real float32, tensors are created with explicit dtype/device.
++
++- README_TUNNEL.md
++  Added Chinese quickstart commands for ring/crawler training and simulation in tunnel terrain.

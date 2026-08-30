@@ -1,0 +1,121 @@
+{
+  "schema": "hpr_sgrr_run0_shared_scale_response_surfaces/v1",
+  "figure": {
+    "description": "Two stacked panels; each panel contains HPR and SGRR rows across J01-J08.",
+    "checkpoint": 1500,
+    "training_seed": 9201,
+    "paper_run_index": 0,
+    "evaluation_reset_seed": 20264101,
+    "deterministic_output": "IndependentNormal loc",
+    "gain_mapping": "K1=100*loc[0], K2=100*loc[1]",
+    "gain_clipping": "none",
+    "physical_torque_note": "The later active-torque computation is clipped to [-9, 9]; that clipping is not applied to this figure.",
+    "grid": {
+      "delta_theta": [
+        -6.283185307179586,
+        6.283185307179586
+      ],
+      "theta_dot": [
+        -10.0,
+        10.0
+      ],
+      "points_per_axis": 101
+    },
+    "colour_scale": "One full-range, zero-centred symmetric scale shared by all 16 mini-plots within each channel panel.",
+    "ranges": {
+      "K1": {
+        "minimum": -388.1058349609375,
+        "maximum": 333.90802001953125,
+        "shared_symmetric_colour_limit": 388.1058349609375,
+        "display_clipping_fraction": 0.0
+      },
+      "K2": {
+        "minimum": -522.1155395507812,
+        "maximum": 617.0648803710938,
+        "shared_symmetric_colour_limit": 617.0648803710938,
+        "display_clipping_fraction": 0.0
+      }
+    },
+    "trace_stride": 5,
+    "visible_trace_point_counts_in_plot_order": [
+      200,
+      200,
+      200,
+      200,
+      199,
+      192,
+      172,
+      142,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      199,
+      192,
+      172,
+      142,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200
+    ]
+  },
+  "inputs": {
+    "surface_atlas": {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\05_Experimental_Data_and_Code\\formal10_initial3_k1k2_atlas_20260804\\data\\all_policy_surfaces_float32.npy",
+      "sha256": "C8AF9654E52446E305B5896DD4BCBCCEDDA38FE025C36DD673DEA87B5366266E"
+    },
+    "hpr_trace": {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\formal_r2_k_analysis_20260804\\traces\\formal__seed9201__R0__eval_seed20264101.npz",
+      "sha256": "1FA41DB1B2C443A76F764A0212BA6CA7108B80028366504415BA7666ED975E95"
+    },
+    "sgrr_trace": {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\formal_r2_k_analysis_20260804\\traces\\formal__seed9201__Rroll__eval_seed20264101.npz",
+      "sha256": "8BC60EC4CC1AB4F1E1380F468567F14D42F485F29F22AB2704B5A218D2F7A3F4"
+    },
+    "checkpoint_sha256": {
+      "HPR-O2-JS run 0": "B697425FFA994CCC4CE32DB29573E6F87576C3C16CE39EA35A50A38A183E7EA6",
+      "SGRR-O2-JS run 0": "B2AE292C1E55A317EA29911CFCF67CF28DB1CC82D5F5E36611C5BF4CA031BF34"
+    },
+    "atlas_indices": {
+      "HPR-O2-JS run 0": [
+        0,
+        14
+      ],
+      "SGRR-O2-JS run 0": [
+        1,
+        14
+      ]
+    }
+  },
+  "outputs": {
+    "png": {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\05_Experimental_Data_and_Code\\hpr_sgrr_run0_shared_scale_response_surfaces_20260826\\Figure_HPR_SGRR_run0_K1_K2_shared_scale.png",
+      "sha256": "378EE091E64D548DBC10337E4AFAE8918FA0F26EFFB471BF7C423FECA4F4B8D9"
+    },
+    "pdf": {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\05_Experimental_Data_and_Code\\hpr_sgrr_run0_shared_scale_response_surfaces_20260826\\Figure_HPR_SGRR_run0_K1_K2_shared_scale.pdf",
+      "sha256": "AF7DF15103DE89C9D5B8C77F3EB1CEE7B619B91F1E03A4F1E02BBBCCE1628699"
+    },
+    "svg": {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\05_Experimental_Data_and_Code\\hpr_sgrr_run0_shared_scale_response_surfaces_20260826\\Figure_HPR_SGRR_run0_K1_K2_shared_scale.svg",
+      "sha256": "D6F28B23A2FE18FDE4993C98A8DC22A13189129DBF02D7F005466D29EDBBBC0F"
+    },
+    "selected_data": {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\05_Experimental_Data_and_Code\\hpr_sgrr_run0_shared_scale_response_surfaces_20260826\\Figure_HPR_SGRR_run0_K1_K2_selected_data.npz",
+      "sha256": "9CC07142884E806E2C9C21C7872921FE773C01B73866AC439AE9567FB47826FF"
+    }
+  }
+}

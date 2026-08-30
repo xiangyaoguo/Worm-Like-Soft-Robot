@@ -1,0 +1,16 @@
+﻿contrast,left_configuration,right_configuration,metric,paired_training_runs,mean_difference_right_minus_left,median_difference_right_minus_left,minimum_difference,maximum_difference,positive_runs,negative_runs,zero_runs,exact_two_sided_sign_flip_p,inference_unit,interpretation
+DTH to THDOT,HPR_DTH_PS,HPR_THDOT_PS,crawling_candidate,5,0.2,0.0,-1.0,1.0,2,1,2,1.0,paired_independent_training_run,exploratory_effect_direction_n_equals_5
+DTH to THDOT,HPR_DTH_PS,HPR_THDOT_PS,formal_rolling,5,0.0,0.0,0.0,0.0,0,0,5,1.0,paired_independent_training_run,exploratory_effect_direction_n_equals_5
+DTH to THDOT,HPR_DTH_PS,HPR_THDOT_PS,productive_locomotion,5,0.2,0.0,-1.0,1.0,2,1,2,1.0,paired_independent_training_run,exploratory_effect_direction_n_equals_5
+DTH to OBS,HPR_DTH_PS,HPR_OBS_PS,crawling_candidate,5,0.2,0.0,0.0,1.0,1,0,4,1.0,paired_independent_training_run,exploratory_effect_direction_n_equals_5
+DTH to OBS,HPR_DTH_PS,HPR_OBS_PS,formal_rolling,5,0.0,0.0,0.0,0.0,0,0,5,1.0,paired_independent_training_run,exploratory_effect_direction_n_equals_5
+DTH to OBS,HPR_DTH_PS,HPR_OBS_PS,productive_locomotion,5,0.2,0.0,0.0,1.0,1,0,4,1.0,paired_independent_training_run,exploratory_effect_direction_n_equals_5
+OBS to O2-PS,HPR_OBS_PS,HPR_O2_PS,crawling_candidate,5,0.6,1.0,0.0,1.0,3,0,2,0.25,paired_independent_training_run,exploratory_effect_direction_n_equals_5
+OBS to O2-PS,HPR_OBS_PS,HPR_O2_PS,formal_rolling,5,0.0,0.0,0.0,0.0,0,0,5,1.0,paired_independent_training_run,exploratory_effect_direction_n_equals_5
+OBS to O2-PS,HPR_OBS_PS,HPR_O2_PS,productive_locomotion,5,0.6,1.0,0.0,1.0,3,0,2,0.25,paired_independent_training_run,exploratory_effect_direction_n_equals_5
+O2-PS to O2-JS,HPR_O2_PS,HPR_O2_JS,crawling_candidate,5,-0.58,-0.9,-1.0,0.0,0,3,2,0.25,paired_independent_training_run,exploratory_effect_direction_n_equals_5
+O2-PS to O2-JS,HPR_O2_PS,HPR_O2_JS,formal_rolling,5,0.47000000000000003,0.35,0.0,1.0,3,0,2,0.25,paired_independent_training_run,exploratory_effect_direction_n_equals_5
+O2-PS to O2-JS,HPR_O2_PS,HPR_O2_JS,productive_locomotion,5,-0.11000000000000001,0.0,-0.55,0.0,0,1,4,1.0,paired_independent_training_run,exploratory_effect_direction_n_equals_5
+O2-JS HPR to SGRR,HPR_O2_JS,SGRR_O2_JS,crawling_candidate,5,-0.42000000000000004,-0.1,-1.0,0.0,0,3,2,0.25,paired_independent_training_run,exploratory_effect_direction_n_equals_5
+O2-JS HPR to SGRR,HPR_O2_JS,SGRR_O2_JS,formal_rolling,5,0.52,0.65,-0.050000000000000044,1.0,3,1,1,0.25,paired_independent_training_run,exploratory_effect_direction_n_equals_5
+O2-JS HPR to SGRR,HPR_O2_JS,SGRR_O2_JS,productive_locomotion,5,0.1,0.0,-0.050000000000000044,0.55,1,1,3,1.0,paired_independent_training_run,exploratory_effect_direction_n_equals_5

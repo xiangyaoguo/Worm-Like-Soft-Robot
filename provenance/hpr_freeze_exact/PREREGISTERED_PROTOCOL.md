@@ -1,0 +1,60 @@
+# Formal HPR frozen-policy mechanism validation
+
+## Purpose
+
+This study tests whether the feedback-channel and multi-joint dependencies first observed in a separate selected-policy case study are also present in the two stable full-body rolling policies obtained from the formal Horizontal-Progress Reward (HPR; internal run label `R0`) experiment. It is an evaluation-only intervention study: no policy is retrained and no checkpoint is modified.
+
+## Frozen study objects
+
+- Formal training runs: `formal__seed9201__R0` and `formal__seed9205__R0`.
+- Endpoint: `checkpoint_1500.pt` only.
+- Checkpoint SHA-256, seed 9201: `b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6`.
+- Checkpoint SHA-256, seed 9205: `0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383`.
+- Runtime: the immutable code snapshot and dependency path recorded by the formal experiment, not the later live repository.
+- Policy mode: deterministic.
+- Environment: ten-particle, eight-joint crawler; two-dimensional flat ground; `legacy_flat` contact; 1000 control steps.
+
+## Paired initial states
+
+For every training run and intervention, the same 20 formal endpoint reset seeds are used: 20264101--20264120. Both NumPy and Torch are seeded before each reset. These 20 rollouts are paired repeated conditions nested within a frozen policy; the two independently trained policies, not the 40 rollouts, are the independent training units.
+
+## Intervention matrix (36 conditions)
+
+The intervention is applied after the joint-specific actor networks produce their deterministic actions and before the environment step. The actor-network parameters and observations are unchanged.
+
+1. Baseline: retain all learned outputs.
+2. Global channel interventions: set all spatial-difference feedback gains, K1, to zero; set all angular-velocity feedback gains, K2, to zero; set both channels to zero.
+3. Joint-specific K1 ablation: for J01--J08 separately, set only that joint's K1 output to zero.
+4. Joint-specific K2 ablation: for J01--J08 separately, set only that joint's K2 output to zero.
+5. Whole-joint ablation: for J01--J08 separately, set both outputs of that joint to zero while retaining the other seven joints.
+6. Single-joint retention: for J01--J08 separately, retain both outputs of that joint and set both outputs of the other seven joints to zero.
+
+The full design contains 2 formal policies x 36 conditions x 20 paired reset states = 1440 evaluation rollouts.
+
+## Primary outcome and acceptance rule
+
+Because the HPR environment did not export the later support-event fields, the primary endpoint is the common kinematic rolling criterion used for the corrected formal cross-arm comparison. A rollout is classified as full-body rolling only if all three conditions hold:
+
+- desired-direction net best-fit body rotation >= 360 degrees;
+- desired active-rotation fraction >= 0.70;
+- forward displacement >= 1 initial body length.
+
+No pulse/contact criterion is silently imputed. The report will keep this kinematic endpoint separate from the original five-part contact-aware SGRR endpoint.
+
+## Integrity gates
+
+- Baseline trajectory metrics for both policies must reproduce the existing formal endpoint evaluation for reset seeds 20264101--20264120 within numerical tolerance before intervention results are accepted.
+- Checkpoint hashes and in-memory policy hashes must be identical before and after evaluation.
+- Initial positions must be identical across intervention conditions for each paired reset.
+- All condition-level files must contain exactly 20 successful evaluations with no NaN or Inf.
+- Results are interpreted across the two stable formal HPR policies. They are not generalised to every possible HPR policy, terrain, robot morphology or physical hardware.
+
+## Planned outputs
+
+- Per-rollout and condition-level CSV/JSON data.
+- Baseline-identity and integrity audit files.
+- A global-channel success plot.
+- Joint-specific ablation and single-joint-retention heatmaps.
+- Paired continuous-outcome plots.
+- Representative morphology sequences for baseline, K1-off and K2-off.
+- A bilingual Word report with embedded figures and explicit evidence boundaries.

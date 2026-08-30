@@ -1,0 +1,72 @@
+{
+  "created_utc": "2026-08-24T01:16:17.804221+00:00",
+  "analysis_status": "complete_automated_pending_human_blind_review",
+  "input_root": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\05_ExperimentalDataAndCode\\formal_six_config_endpoint_eval_20260813\\evaluation_final",
+  "output_root": "E:\\finalproject\\formal_gait_classification_20260824",
+  "analysis_code": {
+    "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_gait_classification_tooling_20260824\\run_gait_classification.py",
+    "sha256": "cde8b20be4377a15a10807f891a314b86f78e0764ea105aa8e1f51f74ef541c6",
+    "blind_review_merger_path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_gait_classification_tooling_20260824\\merge_blind_review.py",
+    "blind_review_merger_sha256": "61e2676857d36141061127624293cedbffb6b6978cb0a048476b8f297cb2f700"
+  },
+  "software": {
+    "python": "3.8.15 (default, Nov 24 2022, 14:38:14) [MSC v.1916 64 bit (AMD64)]",
+    "numpy": "1.24.4",
+    "matplotlib": "3.7.5"
+  },
+  "locked_thresholds": {
+    "transient_steps": 100,
+    "minimum_forward_body_lengths": 1.0,
+    "minimum_post_transient_progress_body_lengths": 0.75,
+    "maximum_crawling_rotation_span_degrees": 180.0,
+    "rocking_rotation_span_degrees": 90.0,
+    "rocking_reversal_index": 0.5,
+    "analysis_window_count": 4,
+    "minimum_window_progress_body_lengths": 0.05,
+    "minimum_positive_progress_windows": 3,
+    "minimum_window_shape_amplitude_degrees": 20.0,
+    "minimum_shape_windows": 3,
+    "minimum_support_windows": 3,
+    "minimum_valid_contact_samples_per_window": 10,
+    "minimum_shape_rms_radians": 0.08,
+    "minimum_shape_velocity_rms_radians": 0.005,
+    "minimum_shape_repeatability": 0.4,
+    "minimum_cycle_count": 2.0,
+    "minimum_positive_cycle_fraction": 0.7,
+    "minimum_median_cycle_progress_body_lengths": 0.05,
+    "minimum_support_span_indices": 1.5,
+    "minimum_support_alternations": 2,
+    "minimum_contact_valid_fraction": 0.5,
+    "active_rotation_increment_degrees": 0.05,
+    "particle_radius": 0.3333333333333333,
+    "contact_band_body_fraction": 0.015,
+    "contact_softness_body_fraction": 0.01,
+    "contact_valid_weight": 0.5,
+    "minimum_period_steps": 20,
+    "maximum_period_steps": 400
+  },
+  "randomization_seed": 20260824,
+  "counts": {
+    "episodes": 600,
+    "independent_training_runs": 30,
+    "configurations": 6,
+    "failed_other": 203,
+    "crawling_candidate": 242,
+    "formal_rolling": 146,
+    "partial_roll": 9
+  },
+  "blind_review_package": {
+    "image_count": 600,
+    "all_600_images_present": true,
+    "rater_1_form_present": true,
+    "rater_2_form_present": true,
+    "private_key_present": true,
+    "image_filenames_are_anonymous_only": true
+  },
+  "statistical_unit": {
+    "configuration_inference_unit": "independent_training_run",
+    "independent_runs_per_configuration": 5,
+    "nested_paired_reset_states_per_run": 20,
+    "warning": "The 600 rollouts are not 600 independent training replicates."
+  }
+}

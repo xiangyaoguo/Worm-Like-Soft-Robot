@@ -1,0 +1,33 @@
+﻿contrast,left_configuration,right_configuration,formal_run,left_gait_label,right_gait_label,paired_reset_count,nested_descriptive_only
+DTH to THDOT,HPR_DTH_PS,HPR_THDOT_PS,0,failed_other,failed_other,20,True
+DTH to THDOT,HPR_DTH_PS,HPR_THDOT_PS,1,failed_other,crawling_candidate,20,True
+DTH to THDOT,HPR_DTH_PS,HPR_THDOT_PS,2,failed_other,failed_other,20,True
+DTH to THDOT,HPR_DTH_PS,HPR_THDOT_PS,3,crawling_candidate,failed_other,20,True
+DTH to THDOT,HPR_DTH_PS,HPR_THDOT_PS,4,failed_other,crawling_candidate,20,True
+DTH to OBS,HPR_DTH_PS,HPR_OBS_PS,0,failed_other,failed_other,20,True
+DTH to OBS,HPR_DTH_PS,HPR_OBS_PS,1,failed_other,crawling_candidate,20,True
+DTH to OBS,HPR_DTH_PS,HPR_OBS_PS,2,failed_other,failed_other,20,True
+DTH to OBS,HPR_DTH_PS,HPR_OBS_PS,3,crawling_candidate,crawling_candidate,20,True
+DTH to OBS,HPR_DTH_PS,HPR_OBS_PS,4,failed_other,failed_other,20,True
+OBS to O2-PS,HPR_OBS_PS,HPR_O2_PS,0,failed_other,crawling_candidate,20,True
+OBS to O2-PS,HPR_OBS_PS,HPR_O2_PS,1,crawling_candidate,crawling_candidate,20,True
+OBS to O2-PS,HPR_OBS_PS,HPR_O2_PS,2,failed_other,crawling_candidate,20,True
+OBS to O2-PS,HPR_OBS_PS,HPR_O2_PS,3,crawling_candidate,crawling_candidate,20,True
+OBS to O2-PS,HPR_OBS_PS,HPR_O2_PS,4,failed_other,crawling_candidate,20,True
+O2-PS to O2-JS,HPR_O2_PS,HPR_O2_JS,0,crawling_candidate,formal_rolling,20,True
+O2-PS to O2-JS,HPR_O2_PS,HPR_O2_JS,1,crawling_candidate,crawling_candidate,20,True
+O2-PS to O2-JS,HPR_O2_PS,HPR_O2_JS,2,crawling_candidate,crawling_candidate,2,True
+O2-PS to O2-JS,HPR_O2_PS,HPR_O2_JS,2,crawling_candidate,failed_other,3,True
+O2-PS to O2-JS,HPR_O2_PS,HPR_O2_JS,2,crawling_candidate,formal_rolling,7,True
+O2-PS to O2-JS,HPR_O2_PS,HPR_O2_JS,2,crawling_candidate,partial_roll,8,True
+O2-PS to O2-JS,HPR_O2_PS,HPR_O2_JS,3,crawling_candidate,crawling_candidate,20,True
+O2-PS to O2-JS,HPR_O2_PS,HPR_O2_JS,4,crawling_candidate,formal_rolling,20,True
+O2-JS HPR to SGRR,HPR_O2_JS,SGRR_O2_JS,0,formal_rolling,formal_rolling,19,True
+O2-JS HPR to SGRR,HPR_O2_JS,SGRR_O2_JS,0,formal_rolling,partial_roll,1,True
+O2-JS HPR to SGRR,HPR_O2_JS,SGRR_O2_JS,1,crawling_candidate,formal_rolling,20,True
+O2-JS HPR to SGRR,HPR_O2_JS,SGRR_O2_JS,2,crawling_candidate,formal_rolling,2,True
+O2-JS HPR to SGRR,HPR_O2_JS,SGRR_O2_JS,2,failed_other,formal_rolling,3,True
+O2-JS HPR to SGRR,HPR_O2_JS,SGRR_O2_JS,2,formal_rolling,formal_rolling,7,True
+O2-JS HPR to SGRR,HPR_O2_JS,SGRR_O2_JS,2,partial_roll,formal_rolling,8,True
+O2-JS HPR to SGRR,HPR_O2_JS,SGRR_O2_JS,3,crawling_candidate,formal_rolling,20,True
+O2-JS HPR to SGRR,HPR_O2_JS,SGRR_O2_JS,4,formal_rolling,formal_rolling,20,True

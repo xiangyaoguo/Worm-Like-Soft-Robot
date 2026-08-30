@@ -1,0 +1,158 @@
+{
+  "schema": "roll_learning_reward_only_formal/v2.1",
+  "study_id": "obs2_reward_only_roll_reproduction_v2_1_formal_20260803_r2",
+  "output_root": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2",
+  "prerequisite": {
+    "regression_gate_relative": "_control\\reference_regression\\V2_1_REGRESSION_GATE_PASS.json",
+    "regression_gate_sha256": "4b0b17ffd52313e7eee0530a0121585cf216dc99118c577afaff2d67ef679198",
+    "regression_config_relative": "_control\\reference_regression\\regression_config.json",
+    "regression_config_sha256": "bbacd8827913defbcbcab72448436451f7c6bf58c5a6b64adc4f5e11543f4a14",
+    "regression_source_manifest_relative": "_control\\reference_regression\\source_manifest.json",
+    "regression_source_manifest_sha256": "6b44530f0df9ad3b4e04e7d6ddbb9b3b237381226a7af3512ad92733fead28b3",
+    "required_passed": true,
+    "required_success_episodes_by_seed": {"9101": 10, "9102": 9, "9103": 10}
+  },
+  "formal_approval": {
+    "required_marker_relative": "_control\\FORMAL_APPROVAL.json",
+    "required_statement": "approved_for_formal_v2_1_from_scratch"
+  },
+  "runtime": {
+    "python": "C:\\Users\\PUBLIC_USER\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "site_packages": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\RLMetamaterialLocomotion-main\\RLMetamaterialLocomotion-main\\.venv\\Lib\\site-packages",
+    "code_snapshot_relative": "_control\\code_snapshot",
+    "trainer_relative": "training\\train_metamaterial.py",
+    "audit_wrapper_relative": "training\\audited_train_reward_only.py",
+    "contract_test_relative": "training\\test_obs2_roll_repro_v2_1.py",
+    "evaluation_wrapper_relative": "training\\evaluate_fast_forward_roll.py"
+  },
+  "rewards": {
+    "R0": "horizontal_speed",
+    "Rroll": "obs2_roll_repro_v2_1"
+  },
+  "controller_contract": {
+    "robot": "crawler",
+    "terrain": "flat",
+    "terrain_contact_mode": "legacy_flat",
+    "num_particles": 10,
+    "observation_func": "dth_tot_plus_friction_thdot",
+    "observation_shape_per_joint": 2,
+    "control_mode": "formula",
+    "action_names": ["k1", "k2"],
+    "action_shape_per_joint": 2,
+    "per_joint_k1_k2": true,
+    "share_policy": false,
+    "share_critic": true,
+    "centralised_critic": true,
+    "k_action_scale": 100.0,
+    "max_torque": 9.0,
+    "torque_formula": "clip(K1*dth_tot + K2*theta_dot, -9, 9)",
+    "rolling_observation": false,
+    "tail_roll_observation": false,
+    "fast_forward_observation": false
+  },
+  "from_scratch_contract": {
+    "pretrained_model_path": null,
+    "pretrained_policy_only": false,
+    "resume_training_state": null,
+    "bc_teacher_checkpoint": null,
+    "wave_bc_teacher_json": null,
+    "bc_steps": 0,
+    "bc_epochs": 0,
+    "policy_anchor_coeff": 0.0,
+    "policy_anchor_anneal_batches": 0,
+    "compatible_input_expansion": false,
+    "pilot_or_historical_checkpoint_as_initialization": false
+  },
+  "training": {
+    "algorithm": "ppo",
+    "policy_depth": 2,
+    "policy_cells": 256,
+    "episode_steps": 1000,
+    "frames_per_batch": 10000,
+    "memory_size": 1000000,
+    "minibatch_size": 128,
+    "optim_steps": 10,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "max_grad_norm": 1.0,
+    "gamma": 0.99,
+    "clip_epsilon": 0.2,
+    "lambda_gae": 0.9,
+    "entropy_epsilon": 0.0001,
+    "save_every": 100,
+    "init_pos_randomness": 0.01,
+    "init_angle_range_degrees": 0.0,
+    "init_height_jitter": 0.0
+  },
+  "reward_schedule": {
+    "schedule_type": "ability_gated_tail_synchrony",
+    "batch_schedule_used": false,
+    "launch_tail_lift_threshold": 0.2,
+    "launch_tail_forward_threshold": 0.1,
+    "launch_curl_prefix_threshold": 0.12,
+    "launch_head_contact_threshold": 0.5,
+    "launch_hold_steps": 8,
+    "pulse_rotation_degrees": 60.0,
+    "pulse_forward_body_fraction": 0.08,
+    "pulse_contact_nodes": 1.5,
+    "pulse_direction_fraction": 0.65
+  },
+  "formal": {
+    "training_seeds": [9201, 9202, 9203, 9204, 9205],
+    "execution_order": [9201, 9202, 9203, 9204, 9205],
+    "arms": ["R0", "Rroll"],
+    "candidate_arm": "Rroll",
+    "batches": 1500,
+    "max_concurrent_processes": 2,
+    "pair_seed_serial": true,
+    "evaluation_device": "cpu",
+    "evaluation_concurrency": 1,
+    "evaluation_base_seed": 20264101,
+    "evaluation_episodes": 20,
+    "evaluation_steps": 1000,
+    "single_training_seed_success_min_episodes": 10,
+    "condition_reproducible_min_training_seeds": 3,
+    "condition_robust_min_training_seeds": 4
+  },
+  "episode_success": {
+    "minimum_roll_pulses": 4,
+    "minimum_desired_net_rotation_degrees": 360.0,
+    "minimum_direction_fraction": 0.7,
+    "minimum_forward_body_lengths": 1.0,
+    "maximum_mean_inter_pulse_interval_steps": 250.0
+  },
+  "technical_retry": {
+    "max_pair_attempts": 2,
+    "retry_scope": "whole_pair",
+    "restart_from_batch0": true,
+    "preserve_failed_attempts": true,
+    "retryable_abrupt_exit_after_valid_batch0": true,
+    "retryable_trainer_error_prefixes": [
+      "OutOfMemoryError:",
+      "RuntimeError: CUDA error:",
+      "OSError: [WinError 1455]"
+    ],
+    "evaluation_max_attempts": 2,
+    "batch0_audit_timeout_seconds": 180,
+    "training_log_stall_timeout_seconds": 900
+  },
+  "resource_policy": {
+    "cuda_visible_devices": "0",
+    "thread_limit_per_process": 8,
+    "minimum_available_memory_gb_before_pair": 5.0,
+    "parallel_training_processes": 2,
+    "parallel_evaluation_processes": 1
+  },
+  "failure_policy": {
+    "fail_closed": true,
+    "automatic_resume": false,
+    "seed_replacement": false,
+    "intermediate_checkpoint_selection": false,
+    "extend_beyond_1500": false,
+    "automatic_reward_change": false,
+    "automatic_hyperparameter_change": false,
+    "automatic_concurrency_change": false,
+    "curve_only_early_stop": false,
+    "historical_checkpoint_as_initialization": false
+  }
+}

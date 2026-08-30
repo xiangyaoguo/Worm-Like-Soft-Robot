@@ -1,0 +1,35 @@
+{
+  "schema": "formal_hpr_run2_freeze/validation/v1",
+  "status": "PASS",
+  "issues": [],
+  "paper_run_id": 2,
+  "internal_training_seed": 9203,
+  "episode_rows": 720,
+  "condition_groups": 36,
+  "paired_resets_per_condition": 20,
+  "baseline_common_success_count": 7,
+  "identity_absolute_tolerance": 1e-06,
+  "checkpoint_sha256": "0428d9a86b6622d924738c68fe09df4c6ab922e2a3225a5c24ba41e96eb1c4b8",
+  "figure_receipts": [
+    {
+      "path": "E:\\finalproject\\result\\formal_hpr_thesis_supplement_20260811\\02_run2_freeze\\figures\\fig_run2_global_channel_outcomes.png",
+      "bytes": 237350,
+      "sha256": "fe8023be2217067af2120defa17f111ab2df3db16c1d2bd367133d53a56ba365"
+    },
+    {
+      "path": "E:\\finalproject\\result\\formal_hpr_thesis_supplement_20260811\\02_run2_freeze\\figures\\fig_run2_joint_ablation_retention.png",
+      "bytes": 145009,
+      "sha256": "811839468d93c048afedc3e40d3bdcaca556d80dae6db48ca3871325e648e1e6"
+    },
+    {
+      "path": "E:\\finalproject\\result\\formal_hpr_thesis_supplement_20260811\\02_run2_freeze\\figures\\fig_run2_joint_channel_effects.png",
+      "bytes": 144160,
+      "sha256": "3f44827c2bae78c10855149ee352bf6b9a9350412d927c5017fa535e73875ad2"
+    },
+    {
+      "path": "E:\\finalproject\\result\\formal_hpr_thesis_supplement_20260811\\02_run2_freeze\\figures\\fig_run2_effect_agreement_runs0_2_4.png",
+      "bytes": 247658,
+      "sha256": "44adc328e5f6f2f08cca4c9044c3e6ab41b8beff91a33b411802a17bf3702267"
+    }
+  ]
+}

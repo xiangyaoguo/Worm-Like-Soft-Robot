@@ -1,0 +1,114 @@
+{
+  "schema": "formal_hpr_o1_sham_frozen_evaluator_config/v1",
+  "study_id": "formal_hpr_o1_sham_vs_o2_20260811",
+  "status": "frozen_before_formal_o1_sham_training",
+  "runtime": {
+    "python": "C:\\Users\\PUBLIC_USER\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "site_packages": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\RLMetamaterialLocomotion-main\\RLMetamaterialLocomotion-main\\.venv\\Lib\\site-packages",
+    "torch_num_threads_per_worker": 1,
+    "maximum_workers": 4
+  },
+  "parent_formal_root": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2",
+  "immutable_runtime": {
+    "training_relative": "_control/code_snapshot/training",
+    "analysis_helper_relative": "_control/code_snapshot/training/analyze_training_results.py",
+    "action_helper_relative": "_control/code_snapshot/training/demo_metamaterial.py",
+    "metric_helper_relative": "_control/code_snapshot/training/evaluate_fast_forward_roll.py",
+    "environment_source_relative": "_control/code_snapshot/metamaterial_envs/metamaterial_envs/env/metamaterial.py"
+  },
+  "output_root": "E:\\finalproject\\result\\formal_hpr_o1_sham_vs_o2_20260811\\evaluation",
+  "arms": {
+    "O2": {
+      "paper_label": "two-channel observation (O2)",
+      "run_relative_template": "formal/runs/formal__seed{seed}__R0",
+      "expected_run_name_template": "formal__seed{seed}__R0",
+      "expected_actor_observation_mode": "full_o2",
+      "permit_locked_legacy_missing_mode": true,
+      "official_endpoint_relative_template": "formal/evaluations/formal__seed{seed}__R0__eval_attempt1.json"
+    },
+    "O1_sham": {
+      "paper_label": "spatial-only sham observation (O1-sham)",
+      "run_relative_template": "formal/extensions/formal_o1_sham_hpr_20260811/runs/formal__seed{seed}__HPR__O1sham",
+      "expected_run_name_template": "formal__seed{seed}__HPR__O1sham",
+      "expected_actor_observation_mode": "spatial_only_sham",
+      "permit_locked_legacy_missing_mode": false,
+      "official_endpoint_relative_template": null
+    }
+  },
+  "training_seeds": [9201, 9202, 9203, 9204, 9205],
+  "seed_to_paper_run": {
+    "9201": 0,
+    "9202": 1,
+    "9203": 2,
+    "9204": 3,
+    "9205": 4
+  },
+  "checkpoint_batches": [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500],
+  "evaluation": {
+    "policy_mode": "deterministic",
+    "terrain": "flat",
+    "steps": 1000,
+    "reset_seeds": [20264101, 20264102, 20264103, 20264104, 20264105, 20264106, 20264107, 20264108, 20264109, 20264110, 20264111, 20264112, 20264113, 20264114, 20264115, 20264116, 20264117, 20264118, 20264119, 20264120],
+    "desired_direction": "right",
+    "tail_side": "left",
+    "common_kinematic_criterion": {
+      "minimum_desired_net_rotation_degrees": 360.0,
+      "minimum_desired_active_rotation_fraction": 0.7,
+      "minimum_forward_body_lengths": 1.0,
+      "pulse_or_contact_gate_used": false
+    },
+    "training_run_discovery_threshold_successes": 10,
+    "endpoint_batch": 1500,
+    "official_identity_absolute_tolerance": 0.000001,
+    "trace_export": "all_episodes_all_checkpoints"
+  },
+  "locked_controller": {
+    "scenario": "crawler",
+    "num_particles": 10,
+    "num_controlled_joints": 8,
+    "observation_func": "dth_tot_plus_friction_thdot",
+    "control_mode": "formula",
+    "reward_func": "horizontal_speed",
+    "algorithm": "ppo",
+    "feedback_gain": 1.0,
+    "k_action_scale": 100.0,
+    "max_torque": 9.0,
+    "per_joint_k1_k2": true,
+    "share_policy": false,
+    "share_critic": true,
+    "centralised_critic": true,
+    "terrain_type": "flat",
+    "terrain_contact_mode": "legacy_flat",
+    "init_pos_randomness": 0.01,
+    "init_angle_range_degrees": 0.0,
+    "init_height_jitter": 0.0,
+    "critic_observation_mode": "full_o2",
+    "formula_action_names": ["k1", "k2"]
+  },
+  "required_trace_arrays": [
+    "reset_seeds",
+    "positions_xy",
+    "raw_environment_observation",
+    "actor_input_observation",
+    "normalised_action",
+    "physical_gain",
+    "tau_k1_unclipped",
+    "tau_k2_unclipped",
+    "tau_active_unclipped",
+    "tau_active_clipped",
+    "torque_saturated",
+    "support_index",
+    "ground_contact_strength"
+  ],
+  "failure_policy": {
+    "fail_closed": true,
+    "refuse_overwrite": true,
+    "refuse_missing_checkpoint": true,
+    "refuse_metadata_mode_inference_for_o1_sham": true,
+    "refuse_nonfinite_observation_action_or_position": true,
+    "verify_checkpoint_unchanged_before_after": true,
+    "require_o2_endpoint_identity_gate": true,
+    "allow_checkpoint_selection_for_primary_endpoint": false,
+    "allow_pulse_or_contact_gate": false
+  }
+}

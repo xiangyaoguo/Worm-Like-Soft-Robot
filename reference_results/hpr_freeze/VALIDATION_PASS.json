@@ -1,0 +1,56 @@
+{
+  "schema": "formal_hpr_freeze_validation/validation/v1",
+  "status": "PASS",
+  "issues": [],
+  "episode_rows": 1440,
+  "condition_policy_groups": 72,
+  "paired_resets_per_group": 20,
+  "recomputed_kinematic_successes_across_all_conditions": 631,
+  "training_seed_count": 2,
+  "checkpoint_hashes": {
+    "9201": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6",
+    "9205": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383"
+  },
+  "figure_receipts": [
+    {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\figures\\fig_01_intervention_design.png",
+      "bytes": 128938,
+      "sha256": "fef30d43d59daffec34a2fd61f4e830e7be27c5dcd6aee3e542594441758d2d9"
+    },
+    {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\figures\\fig_02_global_channel_outcomes.png",
+      "bytes": 220108,
+      "sha256": "9b30668900d789121660a1296fa07e86b3f2d83513064bf2aa7769ecbaa6dd08"
+    },
+    {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\figures\\fig_03_joint_ablation_retention_heatmap.png",
+      "bytes": 180854,
+      "sha256": "f1ee99cd80fbe2e306f1e8a97e64283aa3e4362fdf54cbb4c7150964567b156b"
+    },
+    {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\figures\\fig_04_joint_channel_effect_heatmap.png",
+      "bytes": 204403,
+      "sha256": "1a332fceb899ba76cfafb047b1d42a14e67b4243014e9319c4d7920b6c1ca396"
+    },
+    {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\figures\\fig_05_cross_seed_agreement.png",
+      "bytes": 129584,
+      "sha256": "2ccb7f34f757242fe43b1f3aee7ae8024795124836e774a0133829f9a027f6bd"
+    },
+    {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\figures\\fig_06_morphology_seed9201.png",
+      "bytes": 234141,
+      "sha256": "c55f70b9bd45eb5ed22ab0566212699765d4b7aa456f82960fb8879aa3ebb505"
+    },
+    {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\figures\\fig_07_morphology_seed9205.png",
+      "bytes": 230574,
+      "sha256": "1cc04c2043f0a01b39e9c162010a050092450d9a69d80942fb0908984b112488"
+    },
+    {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\figures\\fig_08_representative_time_series.png",
+      "bytes": 285678,
+      "sha256": "1570cc1b501b609e483067e9a590db853ac651b8f9d28bae3ac3dd8210cf0e77"
+    }
+  ]
+}

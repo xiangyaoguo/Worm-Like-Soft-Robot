@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "Reinforcement Learning for a Soft Multi-Joint Robot: Official Thesis Reproducibility Package"
+type: software
+authors:
+  - family-names: "Guo"
+    given-names: "Xiangyao"
+version: "1.0.0"
+date-released: 2026-08-30
+repository-code: "https://github.com/xiangyaoguo/Worm-Like-Soft-Robot"

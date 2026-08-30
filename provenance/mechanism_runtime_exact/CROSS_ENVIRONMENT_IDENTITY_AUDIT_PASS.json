@@ -1,0 +1,967 @@
+{
+  "schema": "obs2_v2_1_k_cross_environment_identity_audit/v2",
+  "study_id": "obs2_v2_1_k_mechanism_20260804",
+  "training_seeds": [
+    9201,
+    9202,
+    9203,
+    9204,
+    9205
+  ],
+  "hard_gate": {
+    "absolute_tolerance": 1e-10,
+    "required_stepwise_comparisons": [
+      "positions",
+      "env.vel_if_available",
+      "observation",
+      "action"
+    ],
+    "checkpoint_sha256_must_remain_unchanged": true
+  },
+  "results_by_seed": {
+    "9201": {
+      "passed": true,
+      "arms": {
+        "R0": {
+          "passed": true,
+          "eval_sets": {
+            "identity": {
+              "passed": true,
+              "base_seed": 20264101,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 20,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 20,
+                  "env_support": 20
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6",
+                "canonical_Rroll_sha256": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            },
+            "main": {
+              "passed": true,
+              "base_seed": 20264201,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 20,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 20,
+                  "env_support": 20
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6",
+                "canonical_Rroll_sha256": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            }
+          }
+        },
+        "Rroll": {
+          "passed": true,
+          "eval_sets": {
+            "identity": {
+              "passed": true,
+              "base_seed": 20264101,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 19,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 19,
+                  "env_support": 19
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "b2ae292c1e55a317ea29911cfcf67cf28db1cc82d5f5e36611c5bf4ca031bf34",
+                "canonical_Rroll_sha256": "b2ae292c1e55a317ea29911cfcf67cf28db1cc82d5f5e36611c5bf4ca031bf34",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            },
+            "main": {
+              "passed": true,
+              "base_seed": 20264201,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 19,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 19,
+                  "env_support": 19
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "b2ae292c1e55a317ea29911cfcf67cf28db1cc82d5f5e36611c5bf4ca031bf34",
+                "canonical_Rroll_sha256": "b2ae292c1e55a317ea29911cfcf67cf28db1cc82d5f5e36611c5bf4ca031bf34",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            }
+          }
+        }
+      },
+      "checkpoint_immutability_across_seed_audit": {
+        "before": {
+          "sha256": {
+            "R0": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6",
+            "Rroll": "b2ae292c1e55a317ea29911cfcf67cf28db1cc82d5f5e36611c5bf4ca031bf34"
+          },
+          "errors": {}
+        },
+        "after": {
+          "sha256": {
+            "R0": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6",
+            "Rroll": "b2ae292c1e55a317ea29911cfcf67cf28db1cc82d5f5e36611c5bf4ca031bf34"
+          },
+          "errors": {}
+        },
+        "checkpoints_unchanged": true
+      },
+      "failure_reasons": []
+    },
+    "9202": {
+      "passed": true,
+      "arms": {
+        "R0": {
+          "passed": true,
+          "eval_sets": {
+            "identity": {
+              "passed": true,
+              "base_seed": 20264101,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 0,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 0,
+                  "env_support": 0
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "e3715c6deb1410a85a12261883a2eb80d5a8ff9f95c32f7b17624c5b5823cfdc",
+                "canonical_Rroll_sha256": "e3715c6deb1410a85a12261883a2eb80d5a8ff9f95c32f7b17624c5b5823cfdc",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            },
+            "main": {
+              "passed": true,
+              "base_seed": 20264201,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 0,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 0,
+                  "env_support": 0
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "e3715c6deb1410a85a12261883a2eb80d5a8ff9f95c32f7b17624c5b5823cfdc",
+                "canonical_Rroll_sha256": "e3715c6deb1410a85a12261883a2eb80d5a8ff9f95c32f7b17624c5b5823cfdc",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            }
+          }
+        },
+        "Rroll": {
+          "passed": true,
+          "eval_sets": {
+            "identity": {
+              "passed": true,
+              "base_seed": 20264101,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 20,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 20,
+                  "env_support": 20
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "37eda942c5cb171e61fba84bf279a1affdf3b612ac005d43d66ebb1cf441c713",
+                "canonical_Rroll_sha256": "37eda942c5cb171e61fba84bf279a1affdf3b612ac005d43d66ebb1cf441c713",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            },
+            "main": {
+              "passed": true,
+              "base_seed": 20264201,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 20,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 20,
+                  "env_support": 20
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "37eda942c5cb171e61fba84bf279a1affdf3b612ac005d43d66ebb1cf441c713",
+                "canonical_Rroll_sha256": "37eda942c5cb171e61fba84bf279a1affdf3b612ac005d43d66ebb1cf441c713",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            }
+          }
+        }
+      },
+      "checkpoint_immutability_across_seed_audit": {
+        "before": {
+          "sha256": {
+            "R0": "e3715c6deb1410a85a12261883a2eb80d5a8ff9f95c32f7b17624c5b5823cfdc",
+            "Rroll": "37eda942c5cb171e61fba84bf279a1affdf3b612ac005d43d66ebb1cf441c713"
+          },
+          "errors": {}
+        },
+        "after": {
+          "sha256": {
+            "R0": "e3715c6deb1410a85a12261883a2eb80d5a8ff9f95c32f7b17624c5b5823cfdc",
+            "Rroll": "37eda942c5cb171e61fba84bf279a1affdf3b612ac005d43d66ebb1cf441c713"
+          },
+          "errors": {}
+        },
+        "checkpoints_unchanged": true
+      },
+      "failure_reasons": []
+    },
+    "9203": {
+      "passed": true,
+      "arms": {
+        "R0": {
+          "passed": true,
+          "eval_sets": {
+            "identity": {
+              "passed": true,
+              "base_seed": 20264101,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 7,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 7,
+                  "env_support": 7
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "0428d9a86b6622d924738c68fe09df4c6ab922e2a3225a5c24ba41e96eb1c4b8",
+                "canonical_Rroll_sha256": "0428d9a86b6622d924738c68fe09df4c6ab922e2a3225a5c24ba41e96eb1c4b8",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            },
+            "main": {
+              "passed": true,
+              "base_seed": 20264201,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 11,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 11,
+                  "env_support": 11
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "0428d9a86b6622d924738c68fe09df4c6ab922e2a3225a5c24ba41e96eb1c4b8",
+                "canonical_Rroll_sha256": "0428d9a86b6622d924738c68fe09df4c6ab922e2a3225a5c24ba41e96eb1c4b8",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            }
+          }
+        },
+        "Rroll": {
+          "passed": true,
+          "eval_sets": {
+            "identity": {
+              "passed": true,
+              "base_seed": 20264101,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 20,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 20,
+                  "env_support": 20
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "dd721641654bef7ac978f3aba509adcdbcb62e5aeea68bb7b81584728ebcb53a",
+                "canonical_Rroll_sha256": "dd721641654bef7ac978f3aba509adcdbcb62e5aeea68bb7b81584728ebcb53a",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            },
+            "main": {
+              "passed": true,
+              "base_seed": 20264201,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 20,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 20,
+                  "env_support": 20
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "dd721641654bef7ac978f3aba509adcdbcb62e5aeea68bb7b81584728ebcb53a",
+                "canonical_Rroll_sha256": "dd721641654bef7ac978f3aba509adcdbcb62e5aeea68bb7b81584728ebcb53a",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            }
+          }
+        }
+      },
+      "checkpoint_immutability_across_seed_audit": {
+        "before": {
+          "sha256": {
+            "R0": "0428d9a86b6622d924738c68fe09df4c6ab922e2a3225a5c24ba41e96eb1c4b8",
+            "Rroll": "dd721641654bef7ac978f3aba509adcdbcb62e5aeea68bb7b81584728ebcb53a"
+          },
+          "errors": {}
+        },
+        "after": {
+          "sha256": {
+            "R0": "0428d9a86b6622d924738c68fe09df4c6ab922e2a3225a5c24ba41e96eb1c4b8",
+            "Rroll": "dd721641654bef7ac978f3aba509adcdbcb62e5aeea68bb7b81584728ebcb53a"
+          },
+          "errors": {}
+        },
+        "checkpoints_unchanged": true
+      },
+      "failure_reasons": []
+    },
+    "9204": {
+      "passed": true,
+      "arms": {
+        "R0": {
+          "passed": true,
+          "eval_sets": {
+            "identity": {
+              "passed": true,
+              "base_seed": 20264101,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 0,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 0,
+                  "env_support": 0
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "76b6cecf570069a7c7f2e65754114f541a0e475ab395378649c74a9abd061a1a",
+                "canonical_Rroll_sha256": "76b6cecf570069a7c7f2e65754114f541a0e475ab395378649c74a9abd061a1a",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            },
+            "main": {
+              "passed": true,
+              "base_seed": 20264201,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 0,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 0,
+                  "env_support": 0
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "76b6cecf570069a7c7f2e65754114f541a0e475ab395378649c74a9abd061a1a",
+                "canonical_Rroll_sha256": "76b6cecf570069a7c7f2e65754114f541a0e475ab395378649c74a9abd061a1a",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            }
+          }
+        },
+        "Rroll": {
+          "passed": true,
+          "eval_sets": {
+            "identity": {
+              "passed": true,
+              "base_seed": 20264101,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 20,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 20,
+                  "env_support": 20
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "7fd72590cf4491cc7d445785fad07f62d38d6f9635daef321031cf426eecdd60",
+                "canonical_Rroll_sha256": "7fd72590cf4491cc7d445785fad07f62d38d6f9635daef321031cf426eecdd60",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            },
+            "main": {
+              "passed": true,
+              "base_seed": 20264201,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 20,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 20,
+                  "env_support": 20
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "7fd72590cf4491cc7d445785fad07f62d38d6f9635daef321031cf426eecdd60",
+                "canonical_Rroll_sha256": "7fd72590cf4491cc7d445785fad07f62d38d6f9635daef321031cf426eecdd60",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            }
+          }
+        }
+      },
+      "checkpoint_immutability_across_seed_audit": {
+        "before": {
+          "sha256": {
+            "R0": "76b6cecf570069a7c7f2e65754114f541a0e475ab395378649c74a9abd061a1a",
+            "Rroll": "7fd72590cf4491cc7d445785fad07f62d38d6f9635daef321031cf426eecdd60"
+          },
+          "errors": {}
+        },
+        "after": {
+          "sha256": {
+            "R0": "76b6cecf570069a7c7f2e65754114f541a0e475ab395378649c74a9abd061a1a",
+            "Rroll": "7fd72590cf4491cc7d445785fad07f62d38d6f9635daef321031cf426eecdd60"
+          },
+          "errors": {}
+        },
+        "checkpoints_unchanged": true
+      },
+      "failure_reasons": []
+    },
+    "9205": {
+      "passed": true,
+      "arms": {
+        "R0": {
+          "passed": true,
+          "eval_sets": {
+            "identity": {
+              "passed": true,
+              "base_seed": 20264101,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 20,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 20,
+                  "env_support": 20
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383",
+                "canonical_Rroll_sha256": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            },
+            "main": {
+              "passed": true,
+              "base_seed": 20264201,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 19,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 19,
+                  "env_support": 19
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383",
+                "canonical_Rroll_sha256": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            }
+          }
+        },
+        "Rroll": {
+          "passed": true,
+          "eval_sets": {
+            "identity": {
+              "passed": true,
+              "base_seed": 20264101,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 20,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 20,
+                  "env_support": 20
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "1a770ff49a9681e322be2d1c7a68d8593a6b690a8390b04b22e3d92ec9b34f74",
+                "canonical_Rroll_sha256": "1a770ff49a9681e322be2d1c7a68d8593a6b690a8390b04b22e3d92ec9b34f74",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            },
+            "main": {
+              "passed": true,
+              "base_seed": 20264201,
+              "episodes": 20,
+              "steps": 1000,
+              "max_errors": {
+                "position": 0.0,
+                "velocity": 0.0,
+                "observation": 0.0,
+                "action": 0.0
+              },
+              "velocity_comparison": {
+                "compared_samples": 20020,
+                "both_absent_samples": 0,
+                "availability_mismatch_samples": 0
+              },
+              "success_episodes": {
+                "native_R0": {
+                  "legacy": 20,
+                  "env_support": 0
+                },
+                "canonical_Rroll": {
+                  "legacy": 20,
+                  "env_support": 20
+                }
+              },
+              "selected_checkpoint_pair": {
+                "native_R0_sha256": "1a770ff49a9681e322be2d1c7a68d8593a6b690a8390b04b22e3d92ec9b34f74",
+                "canonical_Rroll_sha256": "1a770ff49a9681e322be2d1c7a68d8593a6b690a8390b04b22e3d92ec9b34f74",
+                "same_sha256": true
+              },
+              "failure_reasons": []
+            }
+          }
+        }
+      },
+      "checkpoint_immutability_across_seed_audit": {
+        "before": {
+          "sha256": {
+            "R0": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383",
+            "Rroll": "1a770ff49a9681e322be2d1c7a68d8593a6b690a8390b04b22e3d92ec9b34f74"
+          },
+          "errors": {}
+        },
+        "after": {
+          "sha256": {
+            "R0": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383",
+            "Rroll": "1a770ff49a9681e322be2d1c7a68d8593a6b690a8390b04b22e3d92ec9b34f74"
+          },
+          "errors": {}
+        },
+        "checkpoints_unchanged": true
+      },
+      "failure_reasons": []
+    }
+  },
+  "global_max_errors": {
+    "position": 0.0,
+    "velocity": 0.0,
+    "observation": 0.0,
+    "action": 0.0
+  },
+  "checkpoint_immutability_across_full_audit": {
+    "before": {
+      "sha256": {
+        "seed9201_R0": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6",
+        "seed9201_Rroll": "b2ae292c1e55a317ea29911cfcf67cf28db1cc82d5f5e36611c5bf4ca031bf34",
+        "seed9202_R0": "e3715c6deb1410a85a12261883a2eb80d5a8ff9f95c32f7b17624c5b5823cfdc",
+        "seed9202_Rroll": "37eda942c5cb171e61fba84bf279a1affdf3b612ac005d43d66ebb1cf441c713",
+        "seed9203_R0": "0428d9a86b6622d924738c68fe09df4c6ab922e2a3225a5c24ba41e96eb1c4b8",
+        "seed9203_Rroll": "dd721641654bef7ac978f3aba509adcdbcb62e5aeea68bb7b81584728ebcb53a",
+        "seed9204_R0": "76b6cecf570069a7c7f2e65754114f541a0e475ab395378649c74a9abd061a1a",
+        "seed9204_Rroll": "7fd72590cf4491cc7d445785fad07f62d38d6f9635daef321031cf426eecdd60",
+        "seed9205_R0": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383",
+        "seed9205_Rroll": "1a770ff49a9681e322be2d1c7a68d8593a6b690a8390b04b22e3d92ec9b34f74"
+      },
+      "errors": {}
+    },
+    "after": {
+      "sha256": {
+        "seed9201_R0": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6",
+        "seed9201_Rroll": "b2ae292c1e55a317ea29911cfcf67cf28db1cc82d5f5e36611c5bf4ca031bf34",
+        "seed9202_R0": "e3715c6deb1410a85a12261883a2eb80d5a8ff9f95c32f7b17624c5b5823cfdc",
+        "seed9202_Rroll": "37eda942c5cb171e61fba84bf279a1affdf3b612ac005d43d66ebb1cf441c713",
+        "seed9203_R0": "0428d9a86b6622d924738c68fe09df4c6ab922e2a3225a5c24ba41e96eb1c4b8",
+        "seed9203_Rroll": "dd721641654bef7ac978f3aba509adcdbcb62e5aeea68bb7b81584728ebcb53a",
+        "seed9204_R0": "76b6cecf570069a7c7f2e65754114f541a0e475ab395378649c74a9abd061a1a",
+        "seed9204_Rroll": "7fd72590cf4491cc7d445785fad07f62d38d6f9635daef321031cf426eecdd60",
+        "seed9205_R0": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383",
+        "seed9205_Rroll": "1a770ff49a9681e322be2d1c7a68d8593a6b690a8390b04b22e3d92ec9b34f74"
+      },
+      "errors": {}
+    },
+    "checkpoints_unchanged": true
+  },
+  "checkpoint_sha256": {
+    "before": {
+      "9201": {
+        "R0": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6",
+        "Rroll": "b2ae292c1e55a317ea29911cfcf67cf28db1cc82d5f5e36611c5bf4ca031bf34"
+      },
+      "9202": {
+        "R0": "e3715c6deb1410a85a12261883a2eb80d5a8ff9f95c32f7b17624c5b5823cfdc",
+        "Rroll": "37eda942c5cb171e61fba84bf279a1affdf3b612ac005d43d66ebb1cf441c713"
+      },
+      "9203": {
+        "R0": "0428d9a86b6622d924738c68fe09df4c6ab922e2a3225a5c24ba41e96eb1c4b8",
+        "Rroll": "dd721641654bef7ac978f3aba509adcdbcb62e5aeea68bb7b81584728ebcb53a"
+      },
+      "9204": {
+        "R0": "76b6cecf570069a7c7f2e65754114f541a0e475ab395378649c74a9abd061a1a",
+        "Rroll": "7fd72590cf4491cc7d445785fad07f62d38d6f9635daef321031cf426eecdd60"
+      },
+      "9205": {
+        "R0": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383",
+        "Rroll": "1a770ff49a9681e322be2d1c7a68d8593a6b690a8390b04b22e3d92ec9b34f74"
+      }
+    },
+    "after": {
+      "9201": {
+        "R0": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6",
+        "Rroll": "b2ae292c1e55a317ea29911cfcf67cf28db1cc82d5f5e36611c5bf4ca031bf34"
+      },
+      "9202": {
+        "R0": "e3715c6deb1410a85a12261883a2eb80d5a8ff9f95c32f7b17624c5b5823cfdc",
+        "Rroll": "37eda942c5cb171e61fba84bf279a1affdf3b612ac005d43d66ebb1cf441c713"
+      },
+      "9203": {
+        "R0": "0428d9a86b6622d924738c68fe09df4c6ab922e2a3225a5c24ba41e96eb1c4b8",
+        "Rroll": "dd721641654bef7ac978f3aba509adcdbcb62e5aeea68bb7b81584728ebcb53a"
+      },
+      "9204": {
+        "R0": "76b6cecf570069a7c7f2e65754114f541a0e475ab395378649c74a9abd061a1a",
+        "Rroll": "7fd72590cf4491cc7d445785fad07f62d38d6f9635daef321031cf426eecdd60"
+      },
+      "9205": {
+        "R0": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383",
+        "Rroll": "1a770ff49a9681e322be2d1c7a68d8593a6b690a8390b04b22e3d92ec9b34f74"
+      }
+    }
+  },
+  "stored_main_result_binding": {
+    "passed": true,
+    "checked_episodes": 200,
+    "expected_episodes": 200,
+    "result_file_sha256": {
+      "results/seed9201/C00.json": "b62c26269f673c2abce9758d96b8c8f278aef12747e9959ebed3934c8217e84c",
+      "results/seed9201/C11.json": "a25658256e9142d4b057367fc24364da203fea7f3dbf811624424543ba00bd80",
+      "results/seed9202/C00.json": "15c3126043a3d9130d8587b5ab14d7c979e7249ffb9eb36e7dd7a3cfc2b634db",
+      "results/seed9202/C11.json": "b3c5cf73ceb8104bc0d29f402390eb07a394634e77395fdd724829a69a0c91af",
+      "results/seed9203/C00.json": "bd5355f812c7d98bc54862e4bd0172a02f7be3d9b78e6948deb44151db7f3020",
+      "results/seed9203/C11.json": "d1b94d1a28c7d2d4cf14edb425687d15b5078367956c6a0b6a22dea305d68daa",
+      "results/seed9204/C00.json": "283f59c77f2906e96cb9250c6825bdc86c22f842ee5d66a830f3d4f0d8ae58be",
+      "results/seed9204/C11.json": "41001fc4fd9df75b1cc0ff0b23099d88b9fadb3d4c94832619e278ddc2a3097e",
+      "results/seed9205/C00.json": "055e175b64b0bc16ef0b29e87b53d1f726e20f2bc77fdb60c25e3c8bb725036a",
+      "results/seed9205/C11.json": "420e20accb7c223c390e3ea8641923a2f0a1f1f90607a87a2acb19521a4c4402"
+    },
+    "mismatches": []
+  },
+  "result_file_sha256": {
+    "results/seed9201/C00.json": "b62c26269f673c2abce9758d96b8c8f278aef12747e9959ebed3934c8217e84c",
+    "results/seed9201/C11.json": "a25658256e9142d4b057367fc24364da203fea7f3dbf811624424543ba00bd80",
+    "results/seed9202/C00.json": "15c3126043a3d9130d8587b5ab14d7c979e7249ffb9eb36e7dd7a3cfc2b634db",
+    "results/seed9202/C11.json": "b3c5cf73ceb8104bc0d29f402390eb07a394634e77395fdd724829a69a0c91af",
+    "results/seed9203/C00.json": "bd5355f812c7d98bc54862e4bd0172a02f7be3d9b78e6948deb44151db7f3020",
+    "results/seed9203/C11.json": "d1b94d1a28c7d2d4cf14edb425687d15b5078367956c6a0b6a22dea305d68daa",
+    "results/seed9204/C00.json": "283f59c77f2906e96cb9250c6825bdc86c22f842ee5d66a830f3d4f0d8ae58be",
+    "results/seed9204/C11.json": "41001fc4fd9df75b1cc0ff0b23099d88b9fadb3d4c94832619e278ddc2a3097e",
+    "results/seed9205/C00.json": "055e175b64b0bc16ef0b29e87b53d1f726e20f2bc77fdb60c25e3c8bb725036a",
+    "results/seed9205/C11.json": "420e20accb7c223c390e3ea8641923a2f0a1f1f90607a87a2acb19521a4c4402"
+  },
+  "passed": true,
+  "failure_reasons": [],
+  "audit_source_sha256": "040c8b20eaa86d09f9afe24f2599f0d645faf678ce34576ebee9783485bf1011",
+  "source_sha256": "040c8b20eaa86d09f9afe24f2599f0d645faf678ce34576ebee9783485bf1011"
+}

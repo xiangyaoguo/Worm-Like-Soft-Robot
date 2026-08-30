@@ -1,0 +1,39 @@
+{
+  "schema": "o1_o2_formal_observation_ablation/v1",
+  "study_role": "pre-specified formal observation-ablation extension",
+  "primary_arm": "O2",
+  "comparison_arm": "O1_sham",
+  "paper_run_labels": [0, 1, 2, 3, 4],
+  "internal_seed_map": {"0": 9201, "1": 9202, "2": 9203, "3": 9204, "4": 9205},
+  "actor_observations": {
+    "O2": "[spatial_difference, angular_velocity]",
+    "O1_sham": "[spatial_difference, 0]"
+  },
+  "shared_centralised_critic_observation": "full_O2",
+  "physical_controller": "clip(K1*spatial_difference + K2*angular_velocity, -9, 9)",
+  "reward": "Horizontal-Progress Reward (HPR; implementation label horizontal_speed)",
+  "training_budget": {"collection_batches": 1500, "frames_per_batch": 10000, "steps": 15000000},
+  "checkpoint_schedule": [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500],
+  "evaluation": {
+    "policy_mode": "deterministic",
+    "steps_per_episode": 1000,
+    "episodes_per_checkpoint": 20,
+    "reset_seeds": [20264101, 20264102, 20264103, 20264104, 20264105, 20264106, 20264107, 20264108, 20264109, 20264110, 20264111, 20264112, 20264113, 20264114, 20264115, 20264116, 20264117, 20264118, 20264119, 20264120]
+  },
+  "common_kinematic_criterion": {
+    "desired_net_rotation_deg_min": 360.0,
+    "desired_direction_fraction_min": 0.70,
+    "forward_body_lengths_min": 1.0,
+    "pulse_or_contact_gate": false
+  },
+  "run_level_discovery_threshold": "at least 10 of 20 endpoint episodes",
+  "sensitivity_grid": {
+    "desired_net_rotation_deg_min": [270.0, 360.0, 450.0],
+    "desired_direction_fraction_min": [0.60, 0.70, 0.80],
+    "forward_body_lengths_min": [0.5, 1.0, 1.5]
+  },
+  "predeclared_representative_reset": 20264101,
+  "inference_unit": "matched independent training run",
+  "episode_rows_are_nested": true
+}
+

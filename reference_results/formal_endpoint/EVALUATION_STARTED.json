@@ -1,0 +1,13 @@
+{
+  "schema": "formal_six_config_checkpoint1500_evaluator/v1",
+  "status": "started",
+  "started_at_utc": "2026-08-13T18:02:48.027329+00:00",
+  "config": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\05_ExperimentalDataAndCode\\formal_six_config_endpoint_eval_20260813\\evaluator_config.json",
+  "config_sha256": "8a8daaa8bb72cf8d57ba8ef9ee286d59c570279dfcf38192b2b580c588242336",
+  "evaluator": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\05_ExperimentalDataAndCode\\formal_six_config_endpoint_eval_20260813\\six_config_endpoint_evaluator.py",
+  "evaluator_sha256": "3a6607051b5d03e6f89e25daf1876cd41bec5d49cdfad5578cc73c425239de38",
+  "task_count": 30,
+  "nested_rollout_count": 600,
+  "workers": 2,
+  "resume_policy": "only verified identical complete tasks"
+}

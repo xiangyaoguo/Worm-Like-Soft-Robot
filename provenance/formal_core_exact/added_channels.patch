@@ -1,0 +1,1260 @@
+diff -ru '--exclude=__pycache__' '--exclude=.idea' '--exclude=*.pyc' tunnel_support_patch_original/README.md tunnel_support_patch_work/README.md
+--- tunnel_support_patch_original/README.md	2026-06-16 16:39:34.000000000 +0000
++++ tunnel_support_patch_work/README.md	2026-06-20 21:47:51.801663557 +0000
+@@ -4,14 +4,14 @@
+ 
+ - **Two robot morphologies**: the `crawler` chain robot and the `ring` robot.
+ - **Three terrains**: `flat`, `stairs`, and `tunnel`.
+-- **Two main channels**: the `obs` direct-torque channel and the `action` formula-action channel.
++- **Five main channels**: `obs`, `action`, `paper`, `k2_positive`, and `k2_negative`.
+ - **Two reinforcement-learning algorithms**: `ppo` and `ddpg`.
+ - **Freely switch training and demonstration settings**: both scripts select the robot, terrain, channel, and algorithm through command-line arguments.
+ 
+ The resulting combinations are:
+ 
+ ```text
+-2 robots × 3 terrains × 2 channels × 2 algorithms = 24 main experiment groups
++2 robots × 3 terrains × 5 channels × 2 algorithms = 60 main experiment groups
+ ```
+ 
+ ---
+@@ -187,13 +187,16 @@
+ 
+ ---
+ 
+-## 5. Two Main Channels
++## 5. Five Main Channels
+ 
+-The two formula diagrams you provided have been implemented as two main channels:
++The current implementation retains the original `obs` and `action` channels and adds three selectable formula channels:
+ 
+ ```text
+-action = k1 * (theta(i+1)-theta(i-1)) + k2 * F*dtheta
+-obs    = theta(i+1) - theta(i-1)
++obs             : policy -> tau_i
++action          : policy -> [k1_i, k2_i]
++paper           : policy -> kappa_alpha_i
++k2_positive     : fixed k1, policy -> k2_i > 0
++k2_negative     : fixed k1, policy -> k2_i < 0
+ ```
+ 
+ In the code:
+@@ -276,11 +279,89 @@
+ action dimension = 2
+ ```
+ 
+-This channel more closely matches the `action = k1 * (...) + k2 * F*dtheta` equation you provided.
++This channel implements the `tau = k1*(...) + k2*F*theta_dot` equation you provided and learns both `k1` and `k2`.
+ 
+-### 5.3 Optional Ablation Channels
++### 5.3 `--channel paper`: Thesis Nonreciprocal Formula Channel
+ 
+-For ordinary thesis experiments, primarily use `obs` and `action`. The code also retains two advanced ablation channels:
++```powershell
++--channel paper
++```
++
++The total torque follows the thesis equation:
++
++```text
++tau_i = -kappa * delta_theta_i
++        + kappa_alpha_i * (delta_theta_(i+1) - delta_theta_(i-1))
++```
++
++The fixed passive term `-kappa*delta_theta_i` is implemented by the environment's torsional spring, and the policy network outputs only one learnable coefficient, `kappa_alpha_i`. Defaults:
++
++```text
++--passive-kappa 4.0
++--max-control-gain 9.0
++```
++
++In the environment, this corresponds to:
++
++```text
++observation_func = dth_tot
++control_mode     = nonreciprocity
++action dimension = 1
++```
++
++### 5.4 `--channel k2_positive`: Fix k1 and Constrain k2 to Remain Positive
++
++```powershell
++--channel k2_positive
++```
++
++The environment computes:
++
++```text
++tau_i = fixed_k1 * [theta(i+1)-theta(i-1)]
++        + k2_i * F * theta_dot_i
++k2_i > 0
++```
++
++The policy outputs only `k2_i`. The action-space lower bound defaults to `1e-3`, so this is not merely `k2 >= 0`; the sign remains strictly positive.
++
++### 5.5 `--channel k2_negative`: Fix k1 and Constrain k2 to Remain Negative
++
++```powershell
++--channel k2_negative
++```
++
++The environment computes:
++
++```text
++tau_i = fixed_k1 * [theta(i+1)-theta(i-1)]
++        + k2_i * F * theta_dot_i
++k2_i < 0
++```
++
++The default fixed arguments are:
++
++```text
++--fixed-k1 -5.0
++--min-k2-magnitude 1e-3
++--max-control-gain 9.0
++```
++
++`--fixed-k1 -5.0` is the default control value and can be changed on the command line for an ablation or grid search. Both signed-k2 channels have action dimension `1`.
++
++Training examples:
++
++```powershell
++python .\training\train_metamaterial.py --robot ring --terrain tunnel --channel paper --algorithm ppo --episodes 500 --run-name ring_tunnel_paper_ppo
++
++python .\training\train_metamaterial.py --robot ring --terrain tunnel --channel k2_positive --algorithm ppo --fixed-k1 -5 --episodes 500 --run-name ring_tunnel_k2_positive_ppo
++
++python .\training\train_metamaterial.py --robot ring --terrain tunnel --channel k2_negative --algorithm ddpg --fixed-k1 -5 --episodes 500 --run-name ring_tunnel_k2_negative_ddpg
++```
++
++### 5.6 Optional Ablation Channels
++
++The code also retains two advanced observation-ablation channels:
+ 
+ | Channel | Observation | Control method |
+ |---|---|---|
+@@ -343,7 +424,7 @@
+ python .\training\train_metamaterial.py `
+   --robot <crawler|ring> `
+   --terrain <flat|stairs|tunnel> `
+-  --channel <obs|action> `
++  --channel <obs|action|paper|k2_positive|k2_negative> `
+   --algorithm <ppo|ddpg> `
+   --episodes 500 `
+   --episode-steps 500 `
+@@ -578,9 +659,9 @@
+ The demonstration script supports these arguments:
+ 
+ ```powershell
+---channel checkpoint|obs|action
++--channel checkpoint|obs|action|paper|k2_positive|k2_negative
+ --algorithm checkpoint|ppo|ddpg
+---control-mode checkpoint|auto|direct|formula
++--control-mode checkpoint|auto|direct|formula|nonreciprocity|fixed_k1_k2_positive|fixed_k1_k2_negative
+ ```
+ 
+ The default is `checkpoint`, which uses the information saved during training.
+@@ -660,9 +741,18 @@
+ 
+ channel_config("action")
+ # -> ("action", "dth_tot", "formula")
++
++channel_config("paper")
++# -> ("paper", "dth_tot", "nonreciprocity")
++
++channel_config("k2_positive")
++# -> ("k2_positive", "dth_tot", "fixed_k1_k2_positive")
++
++channel_config("k2_negative")
++# -> ("k2_negative", "dth_tot", "fixed_k1_k2_negative")
+ ```
+ 
+-This is the core mapping for command-line channels `--channel obs` and `--channel action`.
++This is the core mapping between the five main channels and the environment control modes.
+ 
+ ### 10.2 `training/train_metamaterial.py`
+ 
+@@ -687,6 +777,9 @@
+     control_mode=control_mode,
+     feedback_gain=args.feedback_gain,
+     max_control_gain=args.max_control_gain,
++    fixed_k1=args.fixed_k1,
++    min_k2_magnitude=args.min_k2_magnitude,
++    passive_kappa=args.passive_kappa,
+ )
+ ```
+ 
+@@ -697,6 +790,9 @@
+ "channel_label": resolved_channel_label,
+ "observation_func": observation_func,
+ "control_mode": control_mode,
++"fixed_k1": args.fixed_k1,
++"min_k2_magnitude": args.min_k2_magnitude,
++"passive_kappa": args.passive_kappa,
+ "feedback_gain": args.feedback_gain,
+ "max_control_gain": args.max_control_gain,
+ "algorithm": args.algorithm,
+@@ -746,8 +842,11 @@
+ Control modes:
+ 
+ ```text
+-control_mode = direct   actor outputs direct torque tau
+-control_mode = formula  actor outputs [k1, k2]
++control_mode = direct                    actor outputs direct torque tau
++control_mode = formula                   actor outputs [k1, k2]
++control_mode = nonreciprocity            actor outputs kappa_alpha
++control_mode = fixed_k1_k2_positive      actor outputs strictly positive k2
++control_mode = fixed_k1_k2_negative      actor outputs strictly negative k2
+ ```
+ 
+ The environment executes the following in formula mode:
+@@ -761,7 +860,7 @@
+ The action dimension switches automatically:
+ 
+ ```text
+-direct mode: action dimension = 1
++direct / nonreciprocity / signed-k2 modes: action dimension = 1
+ formula mode: action dimension = 2
+ ```
+ 
+@@ -929,7 +1028,7 @@
+ 
+ ## 15. Implementation Description Suitable for the Thesis
+ 
+-This project extends the original deformable-robot reinforcement-learning framework with a unified interface for switching robot morphology, terrain, control channel, and reinforcement-learning algorithm. Robot morphologies include the open-chain crawler and closed-loop ring; terrains include flat ground, stairs, and a mesh-based tunnel environment. The control channels include direct torque and formula action. The direct-torque channel observes the adjacent-angle difference `theta(i+1)-theta(i-1)` and has the policy network output joint torque directly. The formula-action channel uses the same angle difference, but the policy network outputs two control coefficients, `k1` and `k2`; during physical integration the environment computes the actual torque in real time as `tau = k1*(theta(i+1)-theta(i-1)) + k2*F*theta_dot`. The training script supports the continuous-control methods PPO and DDPG and uses the environment action spec to match the different action dimensions of direct-torque and formula-action modes automatically. All key configurations are saved in checkpoint metadata, allowing the demonstration script to restore the training robot, terrain, channel, control mode, and algorithm automatically and thereby keep training and simulation consistent.
++This project extends the original deformable-robot reinforcement-learning framework with a unified interface for switching robot morphology, terrain, control channel, and reinforcement-learning algorithm. Robot morphologies include the open-chain crawler and closed-loop ring; terrains include flat ground, stairs, and a mesh-based tunnel environment. Five main control channels are implemented: direct-torque `obs`; `action`, which learns `k1/k2` jointly; the thesis nonreciprocal formula `paper`; and `k2_positive` and `k2_negative`, which fix `k1` and constrain `k2>0` and `k2<0`, respectively. In the `paper` channel, the environment implements the fixed passive term `-kappa*delta_theta_i`, while the policy network outputs the active nonreciprocal coefficient `kappa_alpha_i`. Each signed-k2 channel learns one sign-constrained `k2_i`, with actual torque `tau = fixed_k1*(theta(i+1)-theta(i-1)) + k2_i*F*theta_dot_i`. The training script supports the continuous-control methods PPO and DDPG and uses the environment action spec to select one- or two-dimensional action outputs automatically. All key configurations, including `fixed_k1`, `min_k2_magnitude`, and `passive_kappa`, are saved in checkpoint metadata, allowing the demonstration and analysis scripts to restore the training configuration automatically.
+ 
+ ---
+ 
+diff -ru '--exclude=__pycache__' '--exclude=.idea' '--exclude=*.pyc' tunnel_support_patch_original/metamaterial_envs/env/metamaterial.py tunnel_support_patch_work/metamaterial_envs/env/metamaterial.py
+--- tunnel_support_patch_original/metamaterial_envs/env/metamaterial.py	2026-06-16 16:23:45.000000000 +0000
++++ tunnel_support_patch_work/metamaterial_envs/env/metamaterial.py	2026-06-20 21:38:47.767298370 +0000
+@@ -98,7 +98,8 @@
+ 
+     def __init__(self, num_envs=1, material_shape="ring", num_particles=4, max_steps=1000, terrain_type="flat", terrain_settings=None, 
+                  render_mode=None, observation_func="dth_neighbours", reward_func="horizontal_speed", render=False, window_width=1000, window_height=500, render_text_lines=[],
+-                 control_mode="direct", feedback_gain=None, max_control_gain=9.0, action_mode=None, feedback_velocity_gain=None, coefficient_limit=None):
++                 control_mode="direct", feedback_gain=None, max_control_gain=9.0, action_mode=None, feedback_velocity_gain=None, coefficient_limit=None,
++                 fixed_k1=-5.0, min_k2_magnitude=1e-3, passive_kappa=4.0):
+         assert material_shape in ["ring", "crawler"]
+         super().__init__(device="cpu", batch_size=[num_envs])
+         num_agents = num_particles - 2 if material_shape == "crawler" else num_particles
+@@ -116,6 +117,19 @@
+         max_control_gain = np.float32(max_control_gain)
+         if max_control_gain <= 0:
+             raise ValueError("max_control_gain / coefficient_limit must be positive.")
++        fixed_k1_value = np.float32(fixed_k1)
++        min_k2_magnitude_value = np.float32(min_k2_magnitude)
++        passive_kappa_value = np.float32(passive_kappa)
++        if not np.isfinite(fixed_k1_value):
++            raise ValueError("fixed_k1 must be finite.")
++        if not np.isfinite(passive_kappa_value) or passive_kappa_value <= 0:
++            raise ValueError("passive_kappa must be a positive finite value.")
++        if (
++            not np.isfinite(min_k2_magnitude_value)
++            or min_k2_magnitude_value <= 0
++            or min_k2_magnitude_value >= max_control_gain
++        ):
++            raise ValueError("min_k2_magnitude must be > 0 and < max_control_gain.")
+         control_mode_aliases = {
+             "direct": "direct",
+             "obs": "direct",
+@@ -136,12 +150,34 @@
+             "two_channels": "formula",
+             "wave_formula": "formula",
+             "wave_feedback": "formula",
++            # Paper-formula channel. The passive term -kappa*dtheta_i is
++            # supplied by passive_hinge_force; the policy outputs kappa_alpha.
++            "paper": "nonreciprocity",
++            "paper_formula": "nonreciprocity",
++            "nonreciprocity": "nonreciprocity",
++            "non_reciprocity": "nonreciprocity",
++            "nonreciprocal": "nonreciprocity",
++            "odd": "nonreciprocity",
++            "odd_elasticity": "nonreciprocity",
++            "kappa_alpha": "nonreciprocity",
++            # Proposed formula with fixed k1 and a strictly signed k2.
++            "k2_positive": "fixed_k1_k2_positive",
++            "k2_pos": "fixed_k1_k2_positive",
++            "positive_k2": "fixed_k1_k2_positive",
++            "fixed_k1_k2_positive": "fixed_k1_k2_positive",
++            "fixed_k1_positive": "fixed_k1_k2_positive",
++            "k2_negative": "fixed_k1_k2_negative",
++            "k2_neg": "fixed_k1_k2_negative",
++            "negative_k2": "fixed_k1_k2_negative",
++            "fixed_k1_k2_negative": "fixed_k1_k2_negative",
++            "fixed_k1_negative": "fixed_k1_k2_negative",
+         }
+         control_mode_key = str(control_mode).strip().lower().replace("-", "_")
+         if control_mode_key not in control_mode_aliases:
+             raise ValueError(
+                 f"Unsupported control_mode: {control_mode!r}. "
+-                "Use 'direct' or 'formula'/'feedback'."
++                "Use 'direct', 'formula', 'nonreciprocity', "
++                "'fixed_k1_k2_positive', or 'fixed_k1_k2_negative'."
+             )
+         control_mode = control_mode_aliases[control_mode_key]
+         particle_radius = np.float32(1/3.0) # edge length
+@@ -153,7 +189,7 @@
+         background_friction = np.float32(0.0)
+         angle_eq = np.float32(((np.pi * (num_particles - 2)) / num_particles) if material_shape == "ring" else np.pi)
+ 
+-        angle_stiffness = np.float32(4.0)
++        angle_stiffness = passive_kappa_value
+         angle_damping = np.float32(0.42)
+         ground_stiffness = np.float32(1e3)
+         ground_damping = np.float32(20)
+@@ -179,6 +215,9 @@
+         self.max_torque = float(max_torque)
+         self.coefficient_limit = float(max_control_gain)
+         self.max_control_gain = float(max_control_gain)  # backward-compatible alias
++        self.fixed_k1 = float(fixed_k1_value)
++        self.min_k2_magnitude = float(min_k2_magnitude_value)
++        self.passive_kappa = float(passive_kappa_value)
+ 
+         self._reward_func = MethodType(reward_funcs[reward_func]['func'], self)
+         self._renderer_inited = False
+@@ -672,6 +711,93 @@
+             velocity_verlet = nb.njit(
+                 nb.types.Tuple((nb.complex64[:,:],nb.complex64[:,:],nb.float32[:,:]))(nb.float32[:,:,:],nb.complex64[:,:],nb.complex64[:,:])
+             )(func)
++        elif control_mode in {
++            "nonreciprocity",
++            "fixed_k1_k2_positive",
++            "fixed_k1_k2_negative",
++        }:
++            # All three modes use a single policy output per joint.
++            #
++            # nonreciprocity:
++            #   total torque = -kappa*dtheta_i
++            #                  + kappa_alpha*(dtheta_{i+1}-dtheta_{i-1})
++            #   The passive -kappa*dtheta_i term is already supplied by fE, while
++            #   the policy output is the learnable kappa_alpha coefficient.
++            #
++            # fixed_k1_k2_positive / fixed_k1_k2_negative:
++            #   active torque = fixed_k1*(theta_{i+1}-theta_{i-1})
++            #                   + k2*F*theta_dot_i
++            #   Only k2 is learned, and its sign is enforced here in addition to
++            #   the action-spec bounds.
++            is_nonreciprocity = control_mode == "nonreciprocity"
++            is_k2_positive = control_mode == "fixed_k1_k2_positive"
++
++            def func(action_coefficient: np.ndarray, pos: np.ndarray, vel: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
++
++                r, dv, mag, rh, th, dth, dthP, dthM, thdot, thdotP, thdotM, o, oC, oM = calculate(pos, vel)
++
++                fE, fD = passive_hinge_force(o, oC, oM, dth, dthM, dthP, thdot, thdotP, thdotM)
++
++                dth_for_action = dth.copy()
++                if has_boundary_conditions:
++                    dth_for_action[:, 0] = 0.
++                    dth_for_action[:, -1] = 0.
++                dth_tot = roll_neg1_real(dth_for_action) - roll_pos1_real(dth_for_action)
++
++                if is_nonreciprocity:
++                    kappa_alpha = np.minimum(
++                        np.maximum(action_coefficient, -max_control_gain),
++                        max_control_gain,
++                    )
++                    tauO = np.clip(kappa_alpha * dth_tot, -max_torque, max_torque)
++                else:
++                    k2_magnitude = np.minimum(
++                        np.maximum(np.abs(action_coefficient), min_k2_magnitude_value),
++                        max_control_gain,
++                    )
++                    if is_k2_positive:
++                        k2 = k2_magnitude
++                    else:
++                        k2 = -k2_magnitude
++                    tauO = np.clip(
++                        fixed_k1_value * dth_tot + k2 * feedback_gain_value * thdot,
++                        -max_torque,
++                        max_torque,
++                    )
++
++                if has_boundary_conditions:
++                    tauO[:, 0] = 0.
++                    tauO[:, -1] = 0.
++                fO = convert_torque_to_force(tauO, o, oM)
++
++                fs = edge_force(pos, r, dv)
++                ff = slide_force(vel)
++                fw = wall_force(pos, vel)
++                fg = grav_force(pos)
++
++                ftot = fO + fs + ff + fw + fg + fE + fD
++
++                return ftot, thdot
++            get_forces = nb.njit(
++                nb.types.Tuple((nb.complex64[:,:],nb.float32[:,:]))(nb.float32[:,:],nb.complex64[:,:],nb.complex64[:,:])
++            )(func)
++
++            # velocity verlet
++            def func(action_coefficient: np.ndarray, pos: np.ndarray, vel: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
++                if has_boundary_conditions:
++                    a = np.zeros((num_envs, num_particles), dtype=np.float32)
++                    a[:, 1:-1] = action_coefficient
++                    action_coefficient = a
++                for _ in range(physics_steps_per_timestep):
++                    f, _ = get_forces(action_coefficient, pos, vel)
++                    vel += f * 0.5 * dt / particle_mass
++                    pos += vel * dt
++                    f, thdot = get_forces(action_coefficient, pos, vel)
++                    vel += f * 0.5 * dt / particle_mass
++                return pos, vel, thdot
++            velocity_verlet = nb.njit(
++                nb.types.Tuple((nb.complex64[:,:],nb.complex64[:,:],nb.float32[:,:]))(nb.float32[:,:],nb.complex64[:,:],nb.complex64[:,:])
++            )(func)
+         else:
+             def func(action: np.ndarray, pos: np.ndarray, vel: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+ 
+@@ -737,8 +863,21 @@
+ 
+         action_size = 2 if control_mode == "formula" else 1
+         self.action_size = action_size
+-        action_low = -max_control_gain if control_mode == "formula" else -max_torque
+-        action_high = max_control_gain if control_mode == "formula" else max_torque
++        if control_mode == "formula":
++            action_low = -max_control_gain
++            action_high = max_control_gain
++        elif control_mode == "nonreciprocity":
++            action_low = -max_control_gain
++            action_high = max_control_gain
++        elif control_mode == "fixed_k1_k2_positive":
++            action_low = min_k2_magnitude_value
++            action_high = max_control_gain
++        elif control_mode == "fixed_k1_k2_negative":
++            action_low = -max_control_gain
++            action_high = -min_k2_magnitude_value
++        else:
++            action_low = -max_torque
++            action_high = max_torque
+         self.action_spec = Composite(
+             agents = Composite(
+                 action = Bounded (
+@@ -808,7 +947,7 @@
+     def _step(self, tensordict):
+         action = tensordict["agents", "action"]
+         last_pos = np.copy(self.pos)
+-        if self.control_mode == "formula":
++        if self.action_size > 1:
+             action_np = np.ascontiguousarray(action.detach().cpu().numpy(), dtype=np.float32)
+         else:
+             action_np = np.ascontiguousarray(action.squeeze(-1).detach().cpu().numpy(), dtype=np.float32)
+diff -ru '--exclude=__pycache__' '--exclude=.idea' '--exclude=*.pyc' tunnel_support_patch_original/metamaterial_envs/metamaterial_envs/env/metamaterial.py tunnel_support_patch_work/metamaterial_envs/metamaterial_envs/env/metamaterial.py
+--- tunnel_support_patch_original/metamaterial_envs/metamaterial_envs/env/metamaterial.py	2026-06-16 16:23:45.000000000 +0000
++++ tunnel_support_patch_work/metamaterial_envs/metamaterial_envs/env/metamaterial.py	2026-06-20 21:41:28.654549278 +0000
+@@ -98,7 +98,8 @@
+ 
+     def __init__(self, num_envs=1, material_shape="ring", num_particles=4, max_steps=1000, terrain_type="flat", terrain_settings=None, 
+                  render_mode=None, observation_func="dth_neighbours", reward_func="horizontal_speed", render=False, window_width=1000, window_height=500, render_text_lines=[],
+-                 control_mode="direct", feedback_gain=None, max_control_gain=9.0, action_mode=None, feedback_velocity_gain=None, coefficient_limit=None):
++                 control_mode="direct", feedback_gain=None, max_control_gain=9.0, action_mode=None, feedback_velocity_gain=None, coefficient_limit=None,
++                 fixed_k1=-5.0, min_k2_magnitude=1e-3, passive_kappa=4.0):
+         assert material_shape in ["ring", "crawler"]
+         super().__init__(device="cpu", batch_size=[num_envs])
+         num_agents = num_particles - 2 if material_shape == "crawler" else num_particles
+@@ -116,6 +117,19 @@
+         max_control_gain = np.float32(max_control_gain)
+         if max_control_gain <= 0:
+             raise ValueError("max_control_gain / coefficient_limit must be positive.")
++        fixed_k1_value = np.float32(fixed_k1)
++        min_k2_magnitude_value = np.float32(min_k2_magnitude)
++        passive_kappa_value = np.float32(passive_kappa)
++        if not np.isfinite(fixed_k1_value):
++            raise ValueError("fixed_k1 must be finite.")
++        if not np.isfinite(passive_kappa_value) or passive_kappa_value <= 0:
++            raise ValueError("passive_kappa must be a positive finite value.")
++        if (
++            not np.isfinite(min_k2_magnitude_value)
++            or min_k2_magnitude_value <= 0
++            or min_k2_magnitude_value >= max_control_gain
++        ):
++            raise ValueError("min_k2_magnitude must be > 0 and < max_control_gain.")
+         control_mode_aliases = {
+             "direct": "direct",
+             "obs": "direct",
+@@ -136,12 +150,34 @@
+             "two_channels": "formula",
+             "wave_formula": "formula",
+             "wave_feedback": "formula",
++            # Paper-formula channel. The passive term -kappa*dtheta_i is
++            # supplied by passive_hinge_force; the policy outputs kappa_alpha.
++            "paper": "nonreciprocity",
++            "paper_formula": "nonreciprocity",
++            "nonreciprocity": "nonreciprocity",
++            "non_reciprocity": "nonreciprocity",
++            "nonreciprocal": "nonreciprocity",
++            "odd": "nonreciprocity",
++            "odd_elasticity": "nonreciprocity",
++            "kappa_alpha": "nonreciprocity",
++            # Proposed formula with fixed k1 and a strictly signed k2.
++            "k2_positive": "fixed_k1_k2_positive",
++            "k2_pos": "fixed_k1_k2_positive",
++            "positive_k2": "fixed_k1_k2_positive",
++            "fixed_k1_k2_positive": "fixed_k1_k2_positive",
++            "fixed_k1_positive": "fixed_k1_k2_positive",
++            "k2_negative": "fixed_k1_k2_negative",
++            "k2_neg": "fixed_k1_k2_negative",
++            "negative_k2": "fixed_k1_k2_negative",
++            "fixed_k1_k2_negative": "fixed_k1_k2_negative",
++            "fixed_k1_negative": "fixed_k1_k2_negative",
+         }
+         control_mode_key = str(control_mode).strip().lower().replace("-", "_")
+         if control_mode_key not in control_mode_aliases:
+             raise ValueError(
+                 f"Unsupported control_mode: {control_mode!r}. "
+-                "Use 'direct' or 'formula'/'feedback'."
++                "Use 'direct', 'formula', 'nonreciprocity', "
++                "'fixed_k1_k2_positive', or 'fixed_k1_k2_negative'."
+             )
+         control_mode = control_mode_aliases[control_mode_key]
+         particle_radius = np.float32(1/3.0) # edge length
+@@ -153,7 +189,7 @@
+         background_friction = np.float32(0.0)
+         angle_eq = np.float32(((np.pi * (num_particles - 2)) / num_particles) if material_shape == "ring" else np.pi)
+ 
+-        angle_stiffness = np.float32(4.0)
++        angle_stiffness = passive_kappa_value
+         angle_damping = np.float32(0.42)
+         ground_stiffness = np.float32(1e3)
+         ground_damping = np.float32(20)
+@@ -179,6 +215,9 @@
+         self.max_torque = float(max_torque)
+         self.coefficient_limit = float(max_control_gain)
+         self.max_control_gain = float(max_control_gain)  # backward-compatible alias
++        self.fixed_k1 = float(fixed_k1_value)
++        self.min_k2_magnitude = float(min_k2_magnitude_value)
++        self.passive_kappa = float(passive_kappa_value)
+ 
+         self._reward_func = MethodType(reward_funcs[reward_func]['func'], self)
+         self._renderer_inited = False
+@@ -672,6 +711,93 @@
+             velocity_verlet = nb.njit(
+                 nb.types.Tuple((nb.complex64[:,:],nb.complex64[:,:],nb.float32[:,:]))(nb.float32[:,:,:],nb.complex64[:,:],nb.complex64[:,:])
+             )(func)
++        elif control_mode in {
++            "nonreciprocity",
++            "fixed_k1_k2_positive",
++            "fixed_k1_k2_negative",
++        }:
++            # All three modes use a single policy output per joint.
++            #
++            # nonreciprocity:
++            #   total torque = -kappa*dtheta_i
++            #                  + kappa_alpha*(dtheta_{i+1}-dtheta_{i-1})
++            #   The passive -kappa*dtheta_i term is already supplied by fE, while
++            #   the policy output is the learnable kappa_alpha coefficient.
++            #
++            # fixed_k1_k2_positive / fixed_k1_k2_negative:
++            #   active torque = fixed_k1*(theta_{i+1}-theta_{i-1})
++            #                   + k2*F*theta_dot_i
++            #   Only k2 is learned, and its sign is enforced here in addition to
++            #   the action-spec bounds.
++            is_nonreciprocity = control_mode == "nonreciprocity"
++            is_k2_positive = control_mode == "fixed_k1_k2_positive"
++
++            def func(action_coefficient: np.ndarray, pos: np.ndarray, vel: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
++
++                r, dv, mag, rh, th, dth, dthP, dthM, thdot, thdotP, thdotM, o, oC, oM = calculate(pos, vel)
++
++                fE, fD = passive_hinge_force(o, oC, oM, dth, dthM, dthP, thdot, thdotP, thdotM)
++
++                dth_for_action = dth.copy()
++                if has_boundary_conditions:
++                    dth_for_action[:, 0] = 0.
++                    dth_for_action[:, -1] = 0.
++                dth_tot = roll_neg1_real(dth_for_action) - roll_pos1_real(dth_for_action)
++
++                if is_nonreciprocity:
++                    kappa_alpha = np.minimum(
++                        np.maximum(action_coefficient, -max_control_gain),
++                        max_control_gain,
++                    )
++                    tauO = np.clip(kappa_alpha * dth_tot, -max_torque, max_torque)
++                else:
++                    k2_magnitude = np.minimum(
++                        np.maximum(np.abs(action_coefficient), min_k2_magnitude_value),
++                        max_control_gain,
++                    )
++                    if is_k2_positive:
++                        k2 = k2_magnitude
++                    else:
++                        k2 = -k2_magnitude
++                    tauO = np.clip(
++                        fixed_k1_value * dth_tot + k2 * feedback_gain_value * thdot,
++                        -max_torque,
++                        max_torque,
++                    )
++
++                if has_boundary_conditions:
++                    tauO[:, 0] = 0.
++                    tauO[:, -1] = 0.
++                fO = convert_torque_to_force(tauO, o, oM)
++
++                fs = edge_force(pos, r, dv)
++                ff = slide_force(vel)
++                fw = wall_force(pos, vel)
++                fg = grav_force(pos)
++
++                ftot = fO + fs + ff + fw + fg + fE + fD
++
++                return ftot, thdot
++            get_forces = nb.njit(
++                nb.types.Tuple((nb.complex64[:,:],nb.float32[:,:]))(nb.float32[:,:],nb.complex64[:,:],nb.complex64[:,:])
++            )(func)
++
++            # velocity verlet
++            def func(action_coefficient: np.ndarray, pos: np.ndarray, vel: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
++                if has_boundary_conditions:
++                    a = np.zeros((num_envs, num_particles), dtype=np.float32)
++                    a[:, 1:-1] = action_coefficient
++                    action_coefficient = a
++                for _ in range(physics_steps_per_timestep):
++                    f, _ = get_forces(action_coefficient, pos, vel)
++                    vel += f * 0.5 * dt / particle_mass
++                    pos += vel * dt
++                    f, thdot = get_forces(action_coefficient, pos, vel)
++                    vel += f * 0.5 * dt / particle_mass
++                return pos, vel, thdot
++            velocity_verlet = nb.njit(
++                nb.types.Tuple((nb.complex64[:,:],nb.complex64[:,:],nb.float32[:,:]))(nb.float32[:,:],nb.complex64[:,:],nb.complex64[:,:])
++            )(func)
+         else:
+             def func(action: np.ndarray, pos: np.ndarray, vel: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+ 
+@@ -737,8 +863,21 @@
+ 
+         action_size = 2 if control_mode == "formula" else 1
+         self.action_size = action_size
+-        action_low = -max_control_gain if control_mode == "formula" else -max_torque
+-        action_high = max_control_gain if control_mode == "formula" else max_torque
++        if control_mode == "formula":
++            action_low = -max_control_gain
++            action_high = max_control_gain
++        elif control_mode == "nonreciprocity":
++            action_low = -max_control_gain
++            action_high = max_control_gain
++        elif control_mode == "fixed_k1_k2_positive":
++            action_low = min_k2_magnitude_value
++            action_high = max_control_gain
++        elif control_mode == "fixed_k1_k2_negative":
++            action_low = -max_control_gain
++            action_high = -min_k2_magnitude_value
++        else:
++            action_low = -max_torque
++            action_high = max_torque
+         self.action_spec = Composite(
+             agents = Composite(
+                 action = Bounded (
+@@ -808,7 +947,7 @@
+     def _step(self, tensordict):
+         action = tensordict["agents", "action"]
+         last_pos = np.copy(self.pos)
+-        if self.control_mode == "formula":
++        if self.action_size > 1:
+             action_np = np.ascontiguousarray(action.detach().cpu().numpy(), dtype=np.float32)
+         else:
+             action_np = np.ascontiguousarray(action.squeeze(-1).detach().cpu().numpy(), dtype=np.float32)
+diff -ru '--exclude=__pycache__' '--exclude=.idea' '--exclude=*.pyc' tunnel_support_patch_original/policy_analysis_tools/training/analyze_policy_heatmaps.py tunnel_support_patch_work/policy_analysis_tools/training/analyze_policy_heatmaps.py
+--- tunnel_support_patch_original/policy_analysis_tools/training/analyze_policy_heatmaps.py	2026-06-16 16:23:45.000000000 +0000
++++ tunnel_support_patch_work/policy_analysis_tools/training/analyze_policy_heatmaps.py	2026-06-20 21:48:38.573030966 +0000
+@@ -134,6 +134,9 @@
+     control_mode = metadata.get("control_mode", metadata.get("control_channel", "direct"))
+     feedback_gain = float(metadata.get("feedback_gain", metadata.get("feedback_velocity_gain", 1.0)))
+     max_control_gain = float(metadata.get("max_control_gain", metadata.get("coefficient_limit", 9.0)))
++    fixed_k1 = float(metadata.get("fixed_k1", -5.0))
++    min_k2_magnitude = float(metadata.get("min_k2_magnitude", 1e-3))
++    passive_kappa = float(metadata.get("passive_kappa", 4.0))
+     return metamaterial.env(
+         num_envs=1,
+         material_shape=material_shape,
+@@ -145,6 +148,9 @@
+         control_mode=control_mode,
+         feedback_gain=feedback_gain,
+         max_control_gain=max_control_gain,
++        fixed_k1=fixed_k1,
++        min_k2_magnitude=min_k2_magnitude,
++        passive_kappa=passive_kappa,
+         render_mode="rgb_array",
+         window_width=1000,
+         window_height=500,
+@@ -270,6 +276,13 @@
+     clipped to the environment actuator limit. This makes formula-channel and
+     obs-channel heatmaps comparable.
+ 
++    In paper/nonreciprocity mode, the policy output is kappa_alpha and the
++    plotted active torque is kappa_alpha * (theta(i+1)-theta(i-1)). The fixed
++    passive term is zero on these plots because own deflection is held at zero.
++
++    In signed-k2 modes, the policy output is k2 and the plotted active torque is
++        fixed_k1 * (theta(i+1)-theta(i-1)) + k2 * F * theta_dot.
++
+     Returns shape:
+       - all_agents=False: [num_points]
+       - all_agents=True:  [num_agents, num_points]
+@@ -279,7 +292,7 @@
+     num_agents = env.num_agents
+     action_key = env.action_key
+     det_mode = deterministic_exploration_type()
+-    formula_mode = getattr(env, "control_mode", "direct") == "formula"
++    control_mode = getattr(env, "control_mode", "direct")
+ 
+     if dth_tot_grid is None:
+         dth_tot_flat = obs_flat[:, 0].astype(np.float32, copy=False)
+@@ -320,13 +333,28 @@
+             )
+             out = policy(td)
+             raw_action = out[action_key].detach().cpu().numpy()
+-            if formula_mode and raw_action.shape[-1] >= 2:
++            if control_mode == "formula" and raw_action.shape[-1] >= 2:
+                 k1 = raw_action[..., 0]
+                 k2 = raw_action[..., 1]
+                 local_dth = dth_tot_flat[start:end][:, None]
+                 local_thdot = theta_dot_flat[start:end][:, None]
+                 act = k1 * local_dth + k2 * float(getattr(env, "feedback_gain", 1.0)) * local_thdot
+                 act = np.clip(act, -float(getattr(env, "max_torque", 9.0)), float(getattr(env, "max_torque", 9.0)))
++            elif control_mode == "nonreciprocity":
++                kappa_alpha = raw_action[..., 0]
++                local_dth = dth_tot_flat[start:end][:, None]
++                act = kappa_alpha * local_dth
++                act = np.clip(act, -float(getattr(env, "max_torque", 9.0)), float(getattr(env, "max_torque", 9.0)))
++            elif control_mode in {"fixed_k1_k2_positive", "fixed_k1_k2_negative"}:
++                k2 = raw_action[..., 0]
++                min_mag = float(getattr(env, "min_k2_magnitude", 1e-3))
++                max_gain = float(getattr(env, "max_control_gain", 9.0))
++                k2_mag = np.clip(np.abs(k2), min_mag, max_gain)
++                k2 = k2_mag if control_mode == "fixed_k1_k2_positive" else -k2_mag
++                local_dth = dth_tot_flat[start:end][:, None]
++                local_thdot = theta_dot_flat[start:end][:, None]
++                act = float(getattr(env, "fixed_k1", -5.0)) * local_dth + k2 * float(getattr(env, "feedback_gain", 1.0)) * local_thdot
++                act = np.clip(act, -float(getattr(env, "max_torque", 9.0)), float(getattr(env, "max_torque", 9.0)))
+             else:
+                 act = raw_action[..., 0]
+             if all_agents:
+@@ -535,7 +563,11 @@
+     )
+ 
+     # Main selected-agent plot. If obs includes theta-dot, create slices; otherwise create one heatmap.
+-    uses_theta_dot = (getattr(env, "control_mode", "direct") == "formula") or observation_func in {
++    uses_theta_dot = getattr(env, "control_mode", "direct") in {
++        "formula",
++        "fixed_k1_k2_positive",
++        "fixed_k1_k2_negative",
++    } or observation_func in {
+         "dth_neighbours_plus_thdot",
+         "dth_tot_plus_friction_thdot",
+         "dth_tot_plus_feedback_thdot",
+diff -ru '--exclude=__pycache__' '--exclude=.idea' '--exclude=*.pyc' tunnel_support_patch_original/training/analyze_policy_heatmaps.py tunnel_support_patch_work/training/analyze_policy_heatmaps.py
+--- tunnel_support_patch_original/training/analyze_policy_heatmaps.py	2026-06-16 16:23:45.000000000 +0000
++++ tunnel_support_patch_work/training/analyze_policy_heatmaps.py	2026-06-20 21:40:34.415625754 +0000
+@@ -134,6 +134,9 @@
+     control_mode = metadata.get("control_mode", metadata.get("control_channel", "direct"))
+     feedback_gain = float(metadata.get("feedback_gain", metadata.get("feedback_velocity_gain", 1.0)))
+     max_control_gain = float(metadata.get("max_control_gain", metadata.get("coefficient_limit", 9.0)))
++    fixed_k1 = float(metadata.get("fixed_k1", -5.0))
++    min_k2_magnitude = float(metadata.get("min_k2_magnitude", 1e-3))
++    passive_kappa = float(metadata.get("passive_kappa", 4.0))
+     return metamaterial.env(
+         num_envs=1,
+         material_shape=material_shape,
+@@ -145,6 +148,9 @@
+         control_mode=control_mode,
+         feedback_gain=feedback_gain,
+         max_control_gain=max_control_gain,
++        fixed_k1=fixed_k1,
++        min_k2_magnitude=min_k2_magnitude,
++        passive_kappa=passive_kappa,
+         render_mode="rgb_array",
+         window_width=1000,
+         window_height=500,
+@@ -270,6 +276,13 @@
+     clipped to the environment actuator limit. This makes formula-channel and
+     obs-channel heatmaps comparable.
+ 
++    In paper/nonreciprocity mode, the policy output is kappa_alpha and the
++    plotted active torque is kappa_alpha * (theta(i+1)-theta(i-1)). The fixed
++    passive term is zero on these plots because own deflection is held at zero.
++
++    In signed-k2 modes, the policy output is k2 and the plotted active torque is
++        fixed_k1 * (theta(i+1)-theta(i-1)) + k2 * F * theta_dot.
++
+     Returns shape:
+       - all_agents=False: [num_points]
+       - all_agents=True:  [num_agents, num_points]
+@@ -279,7 +292,7 @@
+     num_agents = env.num_agents
+     action_key = env.action_key
+     det_mode = deterministic_exploration_type()
+-    formula_mode = getattr(env, "control_mode", "direct") == "formula"
++    control_mode = getattr(env, "control_mode", "direct")
+ 
+     if dth_tot_grid is None:
+         dth_tot_flat = obs_flat[:, 0].astype(np.float32, copy=False)
+@@ -320,13 +333,28 @@
+             )
+             out = policy(td)
+             raw_action = out[action_key].detach().cpu().numpy()
+-            if formula_mode and raw_action.shape[-1] >= 2:
++            if control_mode == "formula" and raw_action.shape[-1] >= 2:
+                 k1 = raw_action[..., 0]
+                 k2 = raw_action[..., 1]
+                 local_dth = dth_tot_flat[start:end][:, None]
+                 local_thdot = theta_dot_flat[start:end][:, None]
+                 act = k1 * local_dth + k2 * float(getattr(env, "feedback_gain", 1.0)) * local_thdot
+                 act = np.clip(act, -float(getattr(env, "max_torque", 9.0)), float(getattr(env, "max_torque", 9.0)))
++            elif control_mode == "nonreciprocity":
++                kappa_alpha = raw_action[..., 0]
++                local_dth = dth_tot_flat[start:end][:, None]
++                act = kappa_alpha * local_dth
++                act = np.clip(act, -float(getattr(env, "max_torque", 9.0)), float(getattr(env, "max_torque", 9.0)))
++            elif control_mode in {"fixed_k1_k2_positive", "fixed_k1_k2_negative"}:
++                k2 = raw_action[..., 0]
++                min_mag = float(getattr(env, "min_k2_magnitude", 1e-3))
++                max_gain = float(getattr(env, "max_control_gain", 9.0))
++                k2_mag = np.clip(np.abs(k2), min_mag, max_gain)
++                k2 = k2_mag if control_mode == "fixed_k1_k2_positive" else -k2_mag
++                local_dth = dth_tot_flat[start:end][:, None]
++                local_thdot = theta_dot_flat[start:end][:, None]
++                act = float(getattr(env, "fixed_k1", -5.0)) * local_dth + k2 * float(getattr(env, "feedback_gain", 1.0)) * local_thdot
++                act = np.clip(act, -float(getattr(env, "max_torque", 9.0)), float(getattr(env, "max_torque", 9.0)))
+             else:
+                 act = raw_action[..., 0]
+             if all_agents:
+@@ -535,7 +563,11 @@
+     )
+ 
+     # Main selected-agent plot. If obs includes theta-dot, create slices; otherwise create one heatmap.
+-    uses_theta_dot = (getattr(env, "control_mode", "direct") == "formula") or observation_func in {
++    uses_theta_dot = getattr(env, "control_mode", "direct") in {
++        "formula",
++        "fixed_k1_k2_positive",
++        "fixed_k1_k2_negative",
++    } or observation_func in {
+         "dth_neighbours_plus_thdot",
+         "dth_tot_plus_friction_thdot",
+         "dth_tot_plus_feedback_thdot",
+diff -ru '--exclude=__pycache__' '--exclude=.idea' '--exclude=*.pyc' tunnel_support_patch_original/training/analyze_training_results.py tunnel_support_patch_work/training/analyze_training_results.py
+--- tunnel_support_patch_original/training/analyze_training_results.py	2026-06-16 16:39:34.000000000 +0000
++++ tunnel_support_patch_work/training/analyze_training_results.py	2026-06-20 21:46:20.345969906 +0000
+@@ -158,6 +158,9 @@
+     control_mode = str(metadata.get("control_mode", metadata.get("control_channel", "direct")))
+     feedback_gain = float(metadata.get("feedback_gain", metadata.get("feedback_velocity_gain", 1.0)))
+     max_control_gain = float(metadata.get("max_control_gain", metadata.get("coefficient_limit", 9.0)))
++    fixed_k1 = float(metadata.get("fixed_k1", -5.0))
++    min_k2_magnitude = float(metadata.get("min_k2_magnitude", 1e-3))
++    passive_kappa = float(metadata.get("passive_kappa", 4.0))
+ 
+     env = metamaterial.env(
+         num_envs=num_envs,
+@@ -170,6 +173,9 @@
+         control_mode=control_mode,
+         feedback_gain=feedback_gain,
+         max_control_gain=max_control_gain,
++        fixed_k1=fixed_k1,
++        min_k2_magnitude=min_k2_magnitude,
++        passive_kappa=passive_kappa,
+         render_mode=render_mode,
+         window_width=window_width,
+         window_height=window_height,
+@@ -318,6 +324,7 @@
+             terrain_type=terrain_type,
+             terrain_settings=terrain_settings,
+             control_mode="direct",
++            passive_kappa=float(metadata.get("passive_kappa", 4.0)),
+             render_mode="rgb_array",
+             window_width=1000,
+             window_height=420,
+diff -ru '--exclude=__pycache__' '--exclude=.idea' '--exclude=*.pyc' tunnel_support_patch_original/training/demo_metamaterial.py tunnel_support_patch_work/training/demo_metamaterial.py
+--- tunnel_support_patch_original/training/demo_metamaterial.py	2026-06-16 16:39:34.000000000 +0000
++++ tunnel_support_patch_work/training/demo_metamaterial.py	2026-06-20 21:40:08.658903797 +0000
+@@ -29,6 +29,7 @@
+ 
+ from rlmm_common import (
+     BiasedNormalParamExtractor,
++    CONTROL_MODE_CHOICES,
+     FirstOrderGaussian,
+     add_env_package_to_path,
+     channel_config,
+@@ -70,13 +71,14 @@
+         default="checkpoint",
+         help=(
+             "Use the checkpoint channel by default. Set 'obs' for the direct torque channel or "
+-            "'action' for the k1,k2 formula channel. Advanced aliases: theta, formula, wave, wave_sum."
++            "'action' for the k1,k2 formula channel. New channels: 'paper', "
++            "'k2_positive', and 'k2_negative'. Advanced aliases: theta, formula, wave, wave_sum."
+         ),
+     )
+     parser.add_argument("--observation-func", default=None, help="Advanced override for raw observation function; normally use checkpoint metadata.")
+     parser.add_argument(
+         "--control-mode",
+-        choices=["checkpoint", "auto", "direct", "formula"],
++        choices=["checkpoint", "auto", *CONTROL_MODE_CHOICES],
+         default="checkpoint",
+         help="Use the checkpoint control mode by default. Override only with a compatible checkpoint.",
+     )
+@@ -95,6 +97,14 @@
+         default=None,
+         help="Override k1/k2 bounds for formula/action control; normally use checkpoint metadata.",
+     )
++    parser.add_argument("--fixed-k1", type=float, default=None, help="Override fixed k1 for signed-k2 channels; normally use checkpoint metadata.")
++    parser.add_argument(
++        "--min-k2-magnitude",
++        type=float,
++        default=None,
++        help="Override strict lower bound on |k2| for signed-k2 channels; normally use checkpoint metadata.",
++    )
++    parser.add_argument("--passive-kappa", type=float, default=None, help="Override passive stiffness kappa; normally use checkpoint metadata.")
+ 
+     parser.add_argument("--start-stairs", type=float, default=5)
+     parser.add_argument("--step-width", type=float, default=5)
+@@ -259,6 +269,13 @@
+         if args.max_control_gain is None
+         else args.max_control_gain
+     )
++    fixed_k1 = float(metadata.get("fixed_k1", -5.0) if args.fixed_k1 is None else args.fixed_k1)
++    min_k2_magnitude = float(
++        metadata.get("min_k2_magnitude", 1e-3)
++        if args.min_k2_magnitude is None
++        else args.min_k2_magnitude
++    )
++    passive_kappa = float(metadata.get("passive_kappa", 4.0) if args.passive_kappa is None else args.passive_kappa)
+ 
+     algorithm = metadata.get("algorithm", "ppo") if args.algorithm == "checkpoint" else args.algorithm
+     metadata = dict(metadata)
+@@ -302,6 +319,9 @@
+     print("  algorithm        =", algorithm)
+     print("  feedback_gain    =", feedback_gain)
+     print("  max_control_gain =", max_control_gain)
++    print("  fixed_k1         =", fixed_k1)
++    print("  min_k2_magnitude =", min_k2_magnitude)
++    print("  passive_kappa    =", passive_kappa)
+     print("  terrain_type     =", terrain_type)
+     print("  terrain_settings =", terrain_settings)
+     print("  policy_mode      =", args.policy_mode)
+@@ -320,6 +340,9 @@
+         control_mode=control_mode,
+         feedback_gain=feedback_gain,
+         max_control_gain=max_control_gain,
++        fixed_k1=fixed_k1,
++        min_k2_magnitude=min_k2_magnitude,
++        passive_kappa=passive_kappa,
+         render_text_lines=["trained policy demo"],
+     )
+ 
+diff -ru '--exclude=__pycache__' '--exclude=.idea' '--exclude=*.pyc' tunnel_support_patch_original/training/rlmm_common.py tunnel_support_patch_work/training/rlmm_common.py
+--- tunnel_support_patch_original/training/rlmm_common.py	2026-06-16 16:23:45.000000000 +0000
++++ tunnel_support_patch_work/training/rlmm_common.py	2026-06-20 21:48:10.980246041 +0000
+@@ -110,7 +110,7 @@
+ 
+ # User-facing channel/control presets used by train_metamaterial.py and demo_metamaterial.py.
+ #
+-# The two project-level presets requested in the report are:
++# Main project-level presets:
+ #   --channel obs
+ #       obs_i = theta(i+1) - theta(i-1)
+ #       policy action is the physical torque directly.
+@@ -118,11 +118,34 @@
+ #       obs_i = theta(i+1) - theta(i-1)
+ #       policy action is [k1_i, k2_i], and the simulator applies
+ #       tau_i = k1_i * [theta(i+1) - theta(i-1)] + k2_i * F * theta_dot_i.
++#   --channel paper
++#       policy action is kappa_alpha_i; the simulator combines it with the
++#       fixed passive term to implement
++#       tau_i = -kappa*dtheta_i + kappa_alpha_i*(dtheta(i+1)-dtheta(i-1)).
++#   --channel k2_positive / k2_negative
++#       k1 is fixed and the policy learns only k2, with a strict positive or
++#       negative sign constraint.
+ #
+ # The simulator stores theta_dot as `thdot`. Two extra observation-only ablations
+-# are kept for experiments, but the README and normal workflow use obs/action.
+-CHANNEL_CHOICES = ("obs", "action", "theta", "formula", "theta_feedback", "wave")
+-CONTROL_MODE_CHOICES = ("direct", "formula")
++# are kept for experiments in addition to the five main channels above.
++CHANNEL_CHOICES = (
++    "obs",
++    "action",
++    "paper",
++    "k2_positive",
++    "k2_negative",
++    "theta",
++    "formula",
++    "theta_feedback",
++    "wave",
++)
++CONTROL_MODE_CHOICES = (
++    "direct",
++    "formula",
++    "nonreciprocity",
++    "fixed_k1_k2_positive",
++    "fixed_k1_k2_negative",
++)
+ 
+ _CHANNEL_ALIASES = {
+     # Main observation channel from the prompt.
+@@ -147,6 +170,27 @@
+     "action_formula": "action",
+     "two_channel_action": "action",
+     "formula_action": "action",
++    # Paper non-reciprocity formula. The passive -kappa*dtheta_i term is
++    # implemented by the simulator and the actor outputs kappa_alpha.
++    "paper": "paper",
++    "paper_formula": "paper",
++    "nonreciprocity": "paper",
++    "non_reciprocity": "paper",
++    "nonreciprocal": "paper",
++    "odd": "paper",
++    "odd_elasticity": "paper",
++    "kappa_alpha": "paper",
++    # Fixed-k1 signed-k2 ablations.
++    "k2_positive": "k2_positive",
++    "k2_pos": "k2_positive",
++    "positive_k2": "k2_positive",
++    "fixed_k1_positive": "k2_positive",
++    "fixed_k1_k2_positive": "k2_positive",
++    "k2_negative": "k2_negative",
++    "k2_neg": "k2_negative",
++    "negative_k2": "k2_negative",
++    "fixed_k1_negative": "k2_negative",
++    "fixed_k1_k2_negative": "k2_negative",
+     # Optional ablations kept for comparison experiments.
+     "theta_feedback": "theta_feedback",
+     "feedback_obs": "theta_feedback",
+@@ -167,6 +211,9 @@
+ _CHANNEL_TO_OBSERVATION = {
+     "obs": "dth_tot",
+     "action": "dth_tot",
++    "paper": "dth_tot",
++    "k2_positive": "dth_tot",
++    "k2_negative": "dth_tot",
+     "theta_feedback": "dth_tot_plus_friction_thdot",
+     "wave": "dth_wave_feedback",
+ }
+@@ -174,6 +221,9 @@
+ _CHANNEL_TO_DEFAULT_CONTROL = {
+     "obs": "direct",
+     "action": "formula",
++    "paper": "nonreciprocity",
++    "k2_positive": "fixed_k1_k2_positive",
++    "k2_negative": "fixed_k1_k2_negative",
+     "theta_feedback": "direct",
+     "wave": "direct",
+ }
+@@ -202,6 +252,24 @@
+     "action_formula": "formula",
+     "wave_formula": "formula",
+     "wave_feedback": "formula",
++    "paper": "nonreciprocity",
++    "paper_formula": "nonreciprocity",
++    "nonreciprocity": "nonreciprocity",
++    "non_reciprocity": "nonreciprocity",
++    "nonreciprocal": "nonreciprocity",
++    "odd": "nonreciprocity",
++    "odd_elasticity": "nonreciprocity",
++    "kappa_alpha": "nonreciprocity",
++    "k2_positive": "fixed_k1_k2_positive",
++    "k2_pos": "fixed_k1_k2_positive",
++    "positive_k2": "fixed_k1_k2_positive",
++    "fixed_k1_positive": "fixed_k1_k2_positive",
++    "fixed_k1_k2_positive": "fixed_k1_k2_positive",
++    "k2_negative": "fixed_k1_k2_negative",
++    "k2_neg": "fixed_k1_k2_negative",
++    "negative_k2": "fixed_k1_k2_negative",
++    "fixed_k1_negative": "fixed_k1_k2_negative",
++    "fixed_k1_k2_negative": "fixed_k1_k2_negative",
+ }
+ 
+ 
+@@ -222,8 +290,9 @@
+         key = "obs"
+     if key not in _CHANNEL_ALIASES:
+         raise ValueError(
+-            f"Unsupported channel {channel!r}. Use 'obs' or 'action' "
+-            "for the main experiments. Optional ablations: 'theta_feedback', 'wave'."
++            f"Unsupported channel {channel!r}. Main choices: 'obs', 'action', "
++            "'paper', 'k2_positive', and 'k2_negative'. Optional observation "
++            "ablations: 'theta_feedback', 'wave'."
+         )
+     return _CHANNEL_ALIASES[key]
+ 
+@@ -243,7 +312,10 @@
+     if key in {"", "auto", "checkpoint"}:
+         return "direct"
+     if key not in _CONTROL_MODE_ALIASES:
+-        raise ValueError(f"Unsupported control mode {mode!r}. Use 'direct' or 'formula'.")
++        raise ValueError(
++            f"Unsupported control mode {mode!r}. Use one of: "
++            f"{', '.join(CONTROL_MODE_CHOICES)}."
++        )
+     return _CONTROL_MODE_ALIASES[key]
+ 
+ 
+@@ -277,8 +349,12 @@
+ 
+     Main presets:
+       obs     -> observation=dth_tot, actor output is one direct torque value.
+-      action  -> observation=dth_tot, actor output is [k1, k2] and the simulator
+-                 applies tau=k1*theta_diff+k2*F*theta_dot.
++      action       -> observation=dth_tot, actor output is [k1, k2] and the
++                      simulator applies tau=k1*theta_diff+k2*F*theta_dot.
++      paper        -> observation=dth_tot, actor output is kappa_alpha and the
++                      simulator adds the fixed passive -kappa*dtheta_i term.
++      k2_positive  -> observation=dth_tot, fixed k1, actor output k2 > 0.
++      k2_negative  -> observation=dth_tot, fixed k1, actor output k2 < 0.
+     """
+     observation_func_resolved, canonical = resolve_observation_func(channel, observation_func)
+     if _is_auto(control_mode):
+@@ -302,6 +378,12 @@
+         return "obs: obs = theta(i+1)-theta(i-1), policy outputs physical torque directly"
+     if canonical == "action":
+         return "action: obs = theta(i+1)-theta(i-1), policy outputs [k1,k2], env applies tau=k1*theta_diff+k2*F*theta_dot"
++    if canonical == "paper":
++        return "paper: policy outputs kappa_alpha; env applies tau=-kappa*dtheta_i+kappa_alpha*(dtheta_next-dtheta_prev)"
++    if canonical == "k2_positive":
++        return "k2_positive: k1 is fixed, policy outputs strictly positive k2, env applies tau=k1*theta_diff+k2*F*theta_dot"
++    if canonical == "k2_negative":
++        return "k2_negative: k1 is fixed, policy outputs strictly negative k2, env applies tau=k1*theta_diff+k2*F*theta_dot"
+     if canonical == "theta_feedback":
+         return "theta_feedback: obs = [theta(i+1)-theta(i-1), F*theta_dot], policy outputs torque directly"
+     return "wave: obs = theta(i+1)-theta(i-1)+F*theta_dot, policy outputs torque directly"
+@@ -325,10 +407,6 @@
+     if not metadata:
+         return "obs"
+     observation_func = str(metadata.get("observation_func", "dth_tot"))
+-    saved_control = metadata.get("control_mode", metadata.get("control_channel", "direct"))
+-    control_key = _normalise_key(str(saved_control))
+-    if control_key in {"formula", "action", "gain", "feedback", "k1k2", "k1_k2"}:
+-        return "action"
+     saved = metadata.get("channel")
+     if saved:
+         try:
+@@ -340,6 +418,16 @@
+             return normalise_channel(str(saved))
+         except Exception:
+             pass
++    saved_control = metadata.get("control_mode", metadata.get("control_channel", "direct"))
++    control_key = _normalise_key(str(saved_control))
++    if control_key in {"formula", "action", "gain", "feedback", "k1k2", "k1_k2"}:
++        return "action"
++    if control_key in {"paper", "paper_formula", "nonreciprocity", "non_reciprocity", "nonreciprocal", "odd", "odd_elasticity", "kappa_alpha"}:
++        return "paper"
++    if control_key in {"k2_positive", "k2_pos", "positive_k2", "fixed_k1_positive", "fixed_k1_k2_positive"}:
++        return "k2_positive"
++    if control_key in {"k2_negative", "k2_neg", "negative_k2", "fixed_k1_negative", "fixed_k1_k2_negative"}:
++        return "k2_negative"
+     return _OBSERVATION_TO_CHANNEL.get(observation_func, "obs")
+ 
+ 
+diff -ru '--exclude=__pycache__' '--exclude=.idea' '--exclude=*.pyc' tunnel_support_patch_original/training/train_metamaterial.py tunnel_support_patch_work/training/train_metamaterial.py
+--- tunnel_support_patch_original/training/train_metamaterial.py	2026-06-16 16:39:34.000000000 +0000
++++ tunnel_support_patch_work/training/train_metamaterial.py	2026-06-20 21:39:55.359579898 +0000
+@@ -3,13 +3,18 @@
+ Primary switchable settings:
+   --robot crawler|ring
+   --terrain flat|stairs|tunnel
+-  --channel obs|action
++  --channel obs|action|paper|k2_positive|k2_negative
+   --algorithm ppo|ddpg
+ 
+ Main channel equations:
+   obs:    obs_i = theta(i+1)-theta(i-1), policy outputs torque directly.
+   action: obs_i = theta(i+1)-theta(i-1), policy outputs [k1_i, k2_i],
+           tau_i = k1_i * [theta(i+1)-theta(i-1)] + k2_i * F * theta_dot_i.
++  paper:  policy outputs kappa_alpha_i; the simulator applies
++          tau_i = -kappa*dtheta_i + kappa_alpha_i*(dtheta(i+1)-dtheta(i-1)).
++  k2_positive / k2_negative:
++          k1 is fixed, policy outputs only k2, and k2 is constrained to be
++          strictly positive or strictly negative.
+ 
+ Examples:
+   python ./training/train_metamaterial.py --robot crawler --terrain tunnel --channel obs --algorithm ppo --episodes 500 --tunnel-height 2
+@@ -42,6 +47,7 @@
+ 
+ from rlmm_common import (
+     BiasedNormalParamExtractor,
++    CONTROL_MODE_CHOICES,
+     FirstOrderGaussian,
+     SafeTanhNormal,
+     add_env_package_to_path,
+@@ -71,6 +77,8 @@
+             "Main channel preset. 'obs': obs=theta(i+1)-theta(i-1), policy outputs one direct torque. "
+             "'action': policy outputs [k1,k2], and the simulator applies "
+             "tau=k1*(theta(i+1)-theta(i-1))+k2*F*theta_dot. "
++            "'paper': policy outputs kappa_alpha for the paper non-reciprocity formula. "
++            "'k2_positive'/'k2_negative': k1 is fixed and only signed k2 is learned. "
+             "Aliases: theta=obs, formula=action. Advanced ablations: theta_feedback, wave."
+         ),
+     )
+@@ -81,11 +89,12 @@
+     )
+     parser.add_argument(
+         "--control-mode",
+-        choices=["auto", "direct", "formula"],
++        choices=["auto", *CONTROL_MODE_CHOICES],
+         default="auto",
+         help=(
+             "Advanced override. 'auto' uses the mode implied by --channel: "
+-            "obs -> direct torque, action -> formula control."
++            "obs -> direct torque, action -> formula control, paper -> nonreciprocity, "
++            "and the signed-k2 channels -> fixed-k1 control."
+         ),
+     )
+     parser.add_argument("--feedback-gain", type=float, default=1.0, help="F in the feedback/formula term F*theta_dot.")
+@@ -97,6 +106,28 @@
+         default=9.0,
+         help="Bound for k1 and k2 when formula/action control is used.",
+     )
++    parser.add_argument(
++        "--fixed-k1",
++        type=float,
++        default=-5.0,
++        help=(
++            "Fixed k1 used by k2_positive and k2_negative. The default -5.0 "
++            "matches the sign and scale of the paper-style non-reciprocal benchmark; "
++            "override it for an ablation or grid search."
++        ),
++    )
++    parser.add_argument(
++        "--min-k2-magnitude",
++        type=float,
++        default=1e-3,
++        help="Strict lower bound on |k2| in the signed-k2 channels; must be smaller than --max-control-gain.",
++    )
++    parser.add_argument(
++        "--passive-kappa",
++        type=float,
++        default=4.0,
++        help="Passive torsional stiffness kappa in -kappa*dtheta_i. Default preserves the original simulator value.",
++    )
+ 
+     parser.add_argument("--episodes", type=int, default=10)
+     parser.add_argument("--episode-steps", type=int, default=100)
+@@ -514,6 +545,9 @@
+     print("algorithm:", args.algorithm)
+     print("feedback_gain:", args.feedback_gain)
+     print("max_control_gain:", args.max_control_gain)
++    print("fixed_k1:", args.fixed_k1)
++    print("min_k2_magnitude:", args.min_k2_magnitude)
++    print("passive_kappa:", args.passive_kappa)
+     print("save_dir:", save_dir)
+ 
+     base_env = metamaterial.env(
+@@ -528,6 +562,9 @@
+         control_mode=control_mode,
+         feedback_gain=args.feedback_gain,
+         max_control_gain=args.max_control_gain,
++        fixed_k1=args.fixed_k1,
++        min_k2_magnitude=args.min_k2_magnitude,
++        passive_kappa=args.passive_kappa,
+     )
+     env = TransformedEnv(base_env, RewardSum(in_keys=base_env.reward_keys, reset_keys=["_reset"]))
+     check_env_specs(env)
+@@ -551,6 +588,9 @@
+         "feedback_gain": args.feedback_gain,
+         "max_control_gain": args.max_control_gain,
+         "coefficient_limit": args.max_control_gain,
++        "fixed_k1": args.fixed_k1,
++        "min_k2_magnitude": args.min_k2_magnitude,
++        "passive_kappa": args.passive_kappa,
+         "terrain_type": terrain_type,
+         "terrain_settings": terrain_settings,
+         "terrain_label": args.terrain,

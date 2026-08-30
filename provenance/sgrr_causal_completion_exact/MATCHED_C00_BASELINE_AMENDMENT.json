@@ -1,0 +1,125 @@
+{
+  "schema": "obs2_v2_1_k_causal_completion/matched_c00_amendment/v1",
+  "parent_study_id": "obs2_v2_1_k_causal_completion_20260804",
+  "supplemental_study_id": "obs2_v2_1_k_causal_completion_matched_c00_20260804",
+  "status": "prospectively_frozen_before_joint_pair_sufficiency_outcomes",
+  "frozen_at": "2026-08-04T20:50:44.6429460+01:00",
+  "purpose": "Provide the strictly initial-state-matched complete-R0 C00 reference required to estimate the eight already frozen C00_PAIR_SUFF_J01..J08 effects.",
+  "reason_for_technical_amendment": "The legacy mechanism-study C00 reference used a different evaluation initial-state set. The 113-condition matrix evaluates joint-pair sufficiency on 20264401..20264420, so a complete-R0 reference on those exact same states is required for a valid paired contrast.",
+  "prospective_freeze_evidence": {
+    "checked_at": "2026-08-04T20:50:44.6429460+01:00",
+    "expected_joint_pair_sufficiency_result_pattern": "results/seed{9201..9205}/C00_PAIR_SUFF_J{01..08}.json",
+    "expected_joint_pair_sufficiency_result_count": 40,
+    "existing_joint_pair_sufficiency_result_count": 0,
+    "joint_pair_sufficiency_outcomes_run": false,
+    "joint_pair_sufficiency_outcomes_viewed": false,
+    "statement": "This amendment and its runner were frozen before any of the 40 joint-pair sufficiency result files existed and before any such outcomes were inspected."
+  },
+  "parent_condition_count_unchanged": 113,
+  "parent_condition_sha256_unchanged": "8e8e1901b927e1f2c8627571a0c166a4ef4a3f77c9a99e76de33757b77b9dc52",
+  "amendment_scope": {
+    "adds_to_113_condition_matrix": false,
+    "changes_existing_condition": false,
+    "changes_existing_outcome": false,
+    "changes_observation_channel": false,
+    "changes_action_channel": false,
+    "changes_policy_or_checkpoint": false,
+    "changes_physics_or_evaluator": false,
+    "training_or_resume_permitted": false,
+    "writes_to_formal_or_legacy_root": false,
+    "new_output_root": "matched_c00"
+  },
+  "matched_baseline": {
+    "condition": {
+      "id": "C00",
+      "family": "supplemental_matched_c00_reference",
+      "description": "Complete R0 K1 and K2 evaluated on the exact main causal initial-state set used by C00_PAIR_SUFF_J01..J08.",
+      "spec": {
+        "op": "matched_c00_baseline",
+        "source": "complete_R0_K1_and_K2"
+      }
+    },
+    "condition_sha256": "5f672963505292d7cd144ed608d72c6730c83f801ecba984205199b741123b1a",
+    "training_seeds": [9201, 9202, 9203, 9204, 9205],
+    "evaluation_base_seed": 20264401,
+    "evaluation_seeds": [
+      20264401,
+      20264402,
+      20264403,
+      20264404,
+      20264405,
+      20264406,
+      20264407,
+      20264408,
+      20264409,
+      20264410,
+      20264411,
+      20264412,
+      20264413,
+      20264414,
+      20264415,
+      20264416,
+      20264417,
+      20264418,
+      20264419,
+      20264420
+    ],
+    "episodes_per_training_seed": 20,
+    "steps_per_episode": 1000,
+    "total_episodes": 100,
+    "policy_mode": "deterministic",
+    "environment_arm": "Rroll",
+    "environment_arm_reason": "Match the exact environment construction used by the 113-condition C00_PAIR_SUFF rollouts; R0 and Rroll compatibility metadata remain contract-equal.",
+    "applied_action": "bitwise clone of complete R0 [K1,K2] at all 8 joints on every step",
+    "observation_per_joint": ["delta_theta", "theta_dot"],
+    "action_per_joint": ["K1", "K2"],
+    "torque_formula": "clip(K1*delta_theta + K2*theta_dot, -9, 9)",
+    "k_action_scale": 100.0,
+    "device": "cpu",
+    "terrain": "flat"
+  },
+  "episode_success": {
+    "minimum_roll_pulses": 4,
+    "minimum_desired_net_rotation_degrees": 360.0,
+    "minimum_direction_fraction": 0.7,
+    "minimum_forward_body_lengths": 1.0,
+    "maximum_mean_inter_pulse_interval_steps": 250.0
+  },
+  "admissible_scientific_use": {
+    "primary_use": "For each C00_PAIR_SUFF_Jxx condition, compute the paired effect against this matched C00 using the same training seed and the same 20 evaluation seeds.",
+    "legacy_C00_use_for_these_effects": "diagnostic_only_not_a_strict_paired_reference",
+    "inference_unit": "independent_training_seed",
+    "sufficiency_rule_unchanged": "success-rate gain from matched C00 >= 0.30 and at least 3 of 5 training seeds reach >=10/20 successes",
+    "no_post_hoc_rule_change": true
+  },
+  "execution_gates": {
+    "source_sha256_must_match": true,
+    "parent_source_manifest_must_pass": true,
+    "parent_condition_count_and_hash_must_remain_unchanged": true,
+    "checkpoint_sha256_must_match_parent_contract": true,
+    "R0_applied_action_must_be_bitwise_equal": true,
+    "evaluation_seed_vector_must_equal_20264401_through_20264420": true,
+    "official_frozen_metric_source_required": true,
+    "contact_metric_source_required": "env_fast_forward_log_info",
+    "all_20_episode_metrics_required_per_training_seed": true,
+    "first_episode_trace_and_sha256_required": true,
+    "checkpoint_before_after_sha256_must_match": true,
+    "policy_before_after_state_sha256_must_match": true,
+    "fail_closed_on_any_mismatch": true
+  },
+  "outputs": {
+    "result_pattern": "matched_c00/results/seed{training_seed}/C00.json",
+    "result_schema": "obs2_v2_1_k_causal_completion/matched_c00_seed/v1",
+    "trace_pattern": "matched_c00/traces/seed{training_seed}/C00__evalseed20264401.npz",
+    "index": "matched_c00/results/MATCHED_C00_INDEX.json",
+    "completion_gate": "matched_c00/MATCHED_C00_COMPLETE.json",
+    "completion_gate_schema": "obs2_v2_1_k_causal_completion/matched_c00_complete/v1"
+  },
+  "source_sha256": {
+    "run_matched_c00_baseline.py": "33bb6c00b7665f3f8e59dd0326f4739916aa72f964d941d2f162080e53ef944b",
+    "run_causal_completion.py": "b0d9b9338c52be5ddcf41c62607cc31e61f0ca331eb466731673db45a4568a95",
+    "study_config.json": "5ef6de33dc4a04c8fc32a9f4c4e86e8a0b459027984079c9a393dbde27830b85",
+    "study_contract.json": "0ba45a2d8936545e060073fe2756056a3485abfcb4d4d76186704516122eff3b",
+    "SOURCE_MANIFEST.json": "6ba105dd906b87d5b3036a02d6a32cb84f4f4bdd1bf3c16291e4f85e6fe80d81"
+  }
+}

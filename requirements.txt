@@ -1,0 +1,19 @@
+# Install PyTorch 2.12.1 first using the CPU/CUDA command in README.md.
+# These versions reproduce the tested Python 3.11 software stack as closely as
+# public stable wheels allow.
+torchrl==0.12.0
+tensordict==0.12.4
+numpy==2.4.6
+numba==0.65.1
+llvmlite==0.47.0
+gymnasium==1.3.0
+pettingzoo==1.26.1
+pygame==2.6.1
+matplotlib==3.10.9
+pandas==3.0.3
+scipy==1.17.1
+tqdm==4.67.3
+pillow==12.2.0
+seaborn==0.13.2
+python-docx==1.2.0
+hatchling>=1.27,<2

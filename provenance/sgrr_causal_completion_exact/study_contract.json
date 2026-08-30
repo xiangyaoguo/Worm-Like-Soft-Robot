@@ -1,0 +1,80 @@
+{
+  "schema": "obs2_v2_1_k_causal_completion/contract/v1",
+  "study_id": "obs2_v2_1_k_causal_completion_20260804",
+  "frozen_before_outcome_evaluation": true,
+  "created_date": "2026-08-04",
+  "purpose": "Complete per-joint/per-channel K1/K2 necessity, dose, sign, timing, and joint-pair sufficiency evidence using immutable formal checkpoint_1500 actors.",
+  "scientific_boundaries": [
+    "This is evaluation-time intervention, not retraining.",
+    "All interventions retain the original per-joint [delta_theta, theta_dot] observation and [K1, K2] action channels.",
+    "PPO, physics, environment, deterministic actor mode, torque clipping, episode length, and success criteria remain frozen.",
+    "Calibration initial states (20264101..20264120) never contribute causal outcome estimates.",
+    "Main causal outcomes use disjoint initial states 20264401..20264420.",
+    "Twenty episode rollouts are paired repeated initial states; the independent inference unit is the five training seeds.",
+    "Per-condition first traces are mechanistic diagnostics; endpoint success effects use all 20 episodes."
+  ],
+  "conditions": {
+    "count": 113,
+    "canonical_sha256": "8e8e1901b927e1f2c8627571a0c166a4ef4a3f77c9a99e76de33757b77b9dc52",
+    "baseline": "C11: complete Rroll K1 and K2",
+    "full_C11_channel_interventions": "16 channels x {zero, 0.5x, 1.5x, sign flip, calibrated static mean, calibrated time permutation} = 96",
+    "C11_joint_pair_necessity": "8 joints x simultaneously zero target joint K1+K2 in complete C11 = 8",
+    "C00_joint_pair_sufficiency": "8 joints x simultaneous Rroll K1+K2 transplant into complete R0 controller = 8"
+  },
+  "causal_decision_rules_frozen_before_outcomes": {
+    "necessary_contribution": {
+      "success_rate_drop_from_C11_minimum_percentage_points": 30,
+      "minimum_training_seeds_degraded": 4
+    },
+    "strong_necessity": {
+      "success_rate_drop_from_C11_minimum_percentage_points": 50,
+      "minimum_training_seeds_degraded": 4
+    },
+    "timing_critical": {
+      "static_or_permuted_success_rate_drop_from_C11_minimum_percentage_points": 30,
+      "minimum_training_seeds_degraded": 4
+    },
+    "single_channel_or_joint_pair_sufficiency": {
+      "success_rate_gain_from_C00_minimum_percentage_points": 30,
+      "minimum_training_seeds_reaching_10_of_20_successes": 3
+    },
+    "equivalent_or_redundant": {
+      "success_rate_absolute_difference_maximum_percentage_points": 5,
+      "primary_continuous_metric_absolute_difference_maximum_reference_sd": 0.2,
+      "consistent_training_seed_degradation_allowed": false
+    }
+  },
+  "checkpoint_sha256": {
+    "9201": {
+      "R0": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6",
+      "Rroll": "b2ae292c1e55a317ea29911cfcf67cf28db1cc82d5f5e36611c5bf4ca031bf34"
+    },
+    "9202": {
+      "R0": "e3715c6deb1410a85a12261883a2eb80d5a8ff9f95c32f7b17624c5b5823cfdc",
+      "Rroll": "37eda942c5cb171e61fba84bf279a1affdf3b612ac005d43d66ebb1cf441c713"
+    },
+    "9203": {
+      "R0": "0428d9a86b6622d924738c68fe09df4c6ab922e2a3225a5c24ba41e96eb1c4b8",
+      "Rroll": "dd721641654bef7ac978f3aba509adcdbcb62e5aeea68bb7b81584728ebcb53a"
+    },
+    "9204": {
+      "R0": "76b6cecf570069a7c7f2e65754114f541a0e475ab395378649c74a9abd061a1a",
+      "Rroll": "7fd72590cf4491cc7d445785fad07f62d38d6f9635daef321031cf426eecdd60"
+    },
+    "9205": {
+      "R0": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383",
+      "Rroll": "1a770ff49a9681e322be2d1c7a68d8593a6b690a8390b04b22e3d92ec9b34f74"
+    }
+  },
+  "known_source_sha256": {
+    "legacy_mechanism_rollout.py": "7d49d917ce9bbc3b8a8074fe3a7c61febf73cfab970c17d38b88fcd9042749a0",
+    "legacy_condition_matrix.py": "945f7b078e6a7b3715b5d387daa17cf9352609853f159bc30a373c4c850af72e",
+    "formal_evaluate_fast_forward_roll.py": "fec95c3cc18a2c8d2debee16d022b54878752722fbd6d8df6b39ce3f51335c0f"
+  },
+  "execution_authorization": {
+    "training": false,
+    "checkpoint_write": false,
+    "formal_or_legacy_directory_write": false,
+    "new_study_output_write": true
+  }
+}

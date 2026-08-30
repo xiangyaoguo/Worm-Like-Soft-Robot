@@ -1,0 +1,68 @@
+{
+  "schema": "obs2_v2_1_k_identity_gate/v1",
+  "study_id": "obs2_v2_1_k_mechanism_20260804",
+  "passed": true,
+  "environment_identity": {
+    "C00": "native R0 environment exactly matched frozen formal R0 metrics",
+    "C11": "native Rroll environment exactly matched frozen formal Rroll metrics",
+    "main_interventions": "all 59 conditions use one canonical Rroll-metadata environment and env_fast_forward_log_info"
+  },
+  "R0_success_episodes_by_seed": {
+    "9201": 0,
+    "9202": 0,
+    "9203": 0,
+    "9204": 0,
+    "9205": 0
+  },
+  "Rroll_success_episodes_by_seed": {
+    "9201": 19,
+    "9202": 20,
+    "9203": 20,
+    "9204": 20,
+    "9205": 20
+  },
+  "calibration_sha256": {
+    "9201": "5034101346f773b57b1bdd485f4f0913585df62668ce68487e43192dd5a0c96a",
+    "9202": "2415c2186279708428b071f6cfd180bd9452f0f9f95126f98254bbf0fc385cad",
+    "9203": "db6e409cd7ff0bbec5b2bfa7cb8cf4facdc9c16fef55e4b65d2f07040cc8fc0d",
+    "9204": "25f1f00a1f0c3fa23eb150bdeb423227a35ed0918bd4b442ef87eb631eb44d9a",
+    "9205": "3f82793cc449739f22bda156c0f18f064f63af9eb0b4baf8b012d9d5e72fc72e"
+  },
+  "receipts": [
+    {
+      "seed": 9201,
+      "stage": "identity",
+      "exit_code": 0,
+      "stdout": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\logs\\identity_seed9201.stdout.log",
+      "stderr": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\logs\\identity_seed9201.stderr.log"
+    },
+    {
+      "seed": 9202,
+      "stage": "identity",
+      "exit_code": 0,
+      "stdout": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\logs\\identity_seed9202.stdout.log",
+      "stderr": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\logs\\identity_seed9202.stderr.log"
+    },
+    {
+      "seed": 9203,
+      "stage": "identity",
+      "exit_code": 0,
+      "stdout": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\logs\\identity_seed9203.stdout.log",
+      "stderr": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\logs\\identity_seed9203.stderr.log"
+    },
+    {
+      "seed": 9204,
+      "stage": "identity",
+      "exit_code": 0,
+      "stdout": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\logs\\identity_seed9204.stdout.log",
+      "stderr": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\logs\\identity_seed9204.stderr.log"
+    },
+    {
+      "seed": 9205,
+      "stage": "identity",
+      "exit_code": 0,
+      "stdout": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\logs\\identity_seed9205.stdout.log",
+      "stderr": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\logs\\identity_seed9205.stderr.log"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "roll_learning_formal_approval/v1",
+  "study_id": "obs2_reward_only_roll_reproduction_v2_1_formal_20260803_r2",
+  "approved_statement": "approved_for_formal_v2_1_from_scratch",
+  "approved_by": "user_in_current_codex_thread",
+  "approved_at_local": "2026-08-03T13:18:03.6809872+01:00",
+  "scope": {
+    "training_seeds": [9201, 9202, 9203, 9204, 9205],
+    "arms": ["R0", "Rroll"],
+    "runs": 10,
+    "batches_per_run": 1500,
+    "max_concurrent_training_processes": 2,
+    "from_batch0": true,
+    "historical_checkpoint_loaded": false
+  },
+  "technical_relaunch": {
+    "previous_root": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803",
+    "previous_failure": "WinError 5 while atomically replacing orchestrator_state.json after all prechecks passed",
+    "previous_training_processes_started": 0,
+    "previous_training_logs": 0,
+    "previous_checkpoints": 0,
+    "relaunch_from_batch0": true,
+    "authority": "user requested automatic repair of formal technical problems"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "roll_learning_formal_execution_started/v1",
+  "study_id": "obs2_reward_only_roll_reproduction_v2_1_formal_20260803_r2",
+  "started_at_utc": "2026-08-03T13:03:06.717785+00:00",
+  "approved_marker": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\_control\\FORMAL_APPROVAL.json",
+  "approved_regression_gate": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\_control\\reference_regression\\V2_1_REGRESSION_GATE_PASS.json",
+  "training_seeds": [
+    9201,
+    9202,
+    9203,
+    9204,
+    9205
+  ],
+  "arms": [
+    "R0",
+    "Rroll"
+  ],
+  "batches": 1500,
+  "maximum_concurrent_training_processes": 2,
+  "pair_concurrency": "same-seed R0 and Rroll",
+  "from_batch0": true,
+  "pretrained_loaded": false,
+  "resume_loaded": false,
+  "pilot_or_historical_checkpoint_loaded": false
+}

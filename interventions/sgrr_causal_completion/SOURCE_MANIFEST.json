@@ -1,0 +1,99 @@
+{
+  "schema": "obs2_v2_1_k_causal_completion/source_manifest/v1",
+  "study_id": "obs2_v2_1_k_causal_completion_20260804",
+  "frozen_before_outcomes": true,
+  "canonical_condition_sha256": "8e8e1901b927e1f2c8627571a0c166a4ef4a3f77c9a99e76de33757b77b9dc52",
+  "files": [
+    {
+      "role": "causal_runner",
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\obs2_v2_1_k_causal_completion_20260804\\run_causal_completion.py",
+      "sha256": "b0d9b9338c52be5ddcf41c62607cc31e61f0ca331eb466731673db45a4568a95"
+    },
+    {
+      "role": "study_config",
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\obs2_v2_1_k_causal_completion_20260804\\study_config.json",
+      "sha256": "71a5a1cc72815098f1db514eb8da65007a20375357f9998b2b0f34bb90bdaca6"
+    },
+    {
+      "role": "study_contract",
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\obs2_v2_1_k_causal_completion_20260804\\study_contract.json",
+      "sha256": "0ba45a2d8936545e060073fe2756056a3485abfcb4d4d76186704516122eff3b"
+    },
+    {
+      "role": "readme",
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\obs2_v2_1_k_causal_completion_20260804\\README.md",
+      "sha256": "62513e620322f914c165565ed31c25f4d94d9b8336bf794282210e0674ece0d9"
+    },
+    {
+      "role": "legacy_validated_runtime",
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\obs2_v2_1_k_mechanism_20260804\\mechanism_rollout.py",
+      "sha256": "7d49d917ce9bbc3b8a8074fe3a7c61febf73cfab970c17d38b88fcd9042749a0"
+    },
+    {
+      "role": "legacy_condition_reference",
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\obs2_v2_1_k_mechanism_20260804\\condition_matrix.py",
+      "sha256": "945f7b078e6a7b3715b5d387daa17cf9352609853f159bc30a373c4c850af72e"
+    },
+    {
+      "role": "formal_source_manifest_and_nested_snapshot",
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\_control\\source_manifest.json",
+      "sha256": "59dc86cc5a7fc89b6365c8e5d6b2bb43cf25c453538cf84b90220d37b804ed78",
+      "verify_nested_files": true
+    },
+    {
+      "role": "formal_frozen_evaluator",
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\_control\\code_snapshot\\training\\evaluate_fast_forward_roll.py",
+      "sha256": "fec95c3cc18a2c8d2debee16d022b54878752722fbd6d8df6b39ce3f51335c0f"
+    },
+    {
+      "role": "checkpoint_9201_R0",
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9201__R0\\checkpoint_1500.pt",
+      "sha256": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6"
+    },
+    {
+      "role": "checkpoint_9201_Rroll",
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9201__Rroll\\checkpoint_1500.pt",
+      "sha256": "b2ae292c1e55a317ea29911cfcf67cf28db1cc82d5f5e36611c5bf4ca031bf34"
+    },
+    {
+      "role": "checkpoint_9202_R0",
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9202__R0\\checkpoint_1500.pt",
+      "sha256": "e3715c6deb1410a85a12261883a2eb80d5a8ff9f95c32f7b17624c5b5823cfdc"
+    },
+    {
+      "role": "checkpoint_9202_Rroll",
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9202__Rroll\\checkpoint_1500.pt",
+      "sha256": "37eda942c5cb171e61fba84bf279a1affdf3b612ac005d43d66ebb1cf441c713"
+    },
+    {
+      "role": "checkpoint_9203_R0",
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9203__R0\\checkpoint_1500.pt",
+      "sha256": "0428d9a86b6622d924738c68fe09df4c6ab922e2a3225a5c24ba41e96eb1c4b8"
+    },
+    {
+      "role": "checkpoint_9203_Rroll",
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9203__Rroll\\checkpoint_1500.pt",
+      "sha256": "dd721641654bef7ac978f3aba509adcdbcb62e5aeea68bb7b81584728ebcb53a"
+    },
+    {
+      "role": "checkpoint_9204_R0",
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9204__R0\\checkpoint_1500.pt",
+      "sha256": "76b6cecf570069a7c7f2e65754114f541a0e475ab395378649c74a9abd061a1a"
+    },
+    {
+      "role": "checkpoint_9204_Rroll",
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9204__Rroll\\checkpoint_1500.pt",
+      "sha256": "7fd72590cf4491cc7d445785fad07f62d38d6f9635daef321031cf426eecdd60"
+    },
+    {
+      "role": "checkpoint_9205_R0",
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9205__R0\\checkpoint_1500.pt",
+      "sha256": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383"
+    },
+    {
+      "role": "checkpoint_9205_Rroll",
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9205__Rroll\\checkpoint_1500.pt",
+      "sha256": "1a770ff49a9681e322be2d1c7a68d8593a6b690a8390b04b22e3d92ec9b34f74"
+    }
+  ]
+}

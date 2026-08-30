@@ -1,0 +1,146 @@
+{
+  "schema": "obs2_v2_1_k_causal_completion/v1",
+  "study_id": "obs2_v2_1_k_causal_completion_20260804",
+  "analysis_type": "frozen_checkpoint_read_only_causal_completion",
+  "legacy_mechanism_root": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804",
+  "formal_root": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2",
+  "formal_study_id": "obs2_reward_only_roll_reproduction_v2_1_formal_20260803_r2",
+  "training_seeds": [9201, 9202, 9203, 9204, 9205],
+  "checkpoint_batch": 1500,
+  "arms": {
+    "R0": "horizontal_speed",
+    "Rroll": "obs2_roll_repro_v2_1"
+  },
+  "locked_contract": {
+    "observation_per_joint": ["delta_theta", "theta_dot"],
+    "action_per_joint": ["K1", "K2"],
+    "joint_count": 8,
+    "particle_count": 10,
+    "control_mode": "formula",
+    "torque_formula": "clip(K1*delta_theta + K2*theta_dot, -9, 9)",
+    "k_action_scale": 100.0,
+    "max_torque": 9.0,
+    "policy_mode": "deterministic",
+    "device": "cpu",
+    "terrain": "flat",
+    "terrain_contact_mode": "legacy_flat",
+    "direction": "right",
+    "tail_side": "left",
+    "training_permitted": false,
+    "checkpoint_mutation_permitted": false,
+    "observation_channel_mutation_permitted": false,
+    "action_channel_mutation_permitted": false
+  },
+  "identity_gate": {
+    "base_seed": 20264101,
+    "episodes": 20,
+    "steps": 1000,
+    "required_formal_success_counts": {
+      "9201": 19,
+      "9202": 20,
+      "9203": 20,
+      "9204": 20,
+      "9205": 20
+    },
+    "metric_absolute_tolerance": 1e-9,
+    "calibration_source": "C11_Rroll_actions_only_on_frozen_identity_initial_states"
+  },
+  "calibration": {
+    "base_seed": 20264101,
+    "episodes": 20,
+    "steps": 1000,
+    "outputs": [
+      "roll_action_time_template[1000,8,2]",
+      "roll_action_static_mean[8,2]",
+      "physical_k_time_template[1000,8,2]",
+      "physical_k_static_mean[8,2]"
+    ],
+    "main_outcome_states_used": false
+  },
+  "main_evaluation": {
+    "base_seed": 20264401,
+    "episodes": 20,
+    "steps": 1000,
+    "condition_count": 113,
+    "training_seed_count": 5,
+    "total_episodes": 11300,
+    "max_parallel_seed_workers": 5,
+    "fixed_time_permutation_seed": 20264501
+  },
+  "smoke": {
+    "base_seed": 20264601,
+    "episodes": 1,
+    "default_condition": "C11"
+  },
+  "condition_matrix": {
+    "baseline_count": 1,
+    "per_channel_count": 96,
+    "joint_pair_necessity_count": 8,
+    "joint_pair_sufficiency_count": 8,
+    "total_count": 113,
+    "canonical_sha256": "8e8e1901b927e1f2c8627571a0c166a4ef4a3f77c9a99e76de33757b77b9dc52",
+    "channel_transforms": [
+      "zero",
+      "scale_0p5",
+      "scale_1p5",
+      "sign_flip",
+      "static_mean",
+      "time_permuted"
+    ],
+    "per_channel_background": "complete_C11_Rroll",
+    "joint_pair_necessity_background": "complete_C11_Rroll_with_target_joint_K1_and_K2_zeroed",
+    "joint_pair_sufficiency_background": "complete_C00_R0"
+  },
+  "causal_decision_rules": {
+    "necessary_contribution": "success_rate_drop_from_C11_at_least_0.30_and_at_least_4_of_5_training_seeds_degrade",
+    "strong_necessity": "success_rate_drop_from_C11_at_least_0.50_and_at_least_4_of_5_training_seeds_degrade",
+    "timing_critical": "static_or_time_permuted_success_rate_drop_from_C11_at_least_0.30_and_at_least_4_of_5_training_seeds_degrade",
+    "sufficiency": "success_rate_gain_from_C00_at_least_0.30_and_at_least_3_of_5_training_seeds_reach_at_least_10_of_20_successes",
+    "equivalent_or_redundant": "success_rate_within_plus_or_minus_0.05_of_reference_and_primary_continuous_metrics_within_plus_or_minus_0.2_reference_SD_and_no_consistent_seed_degradation"
+  },
+  "trace_contract": {
+    "save_all_baseline_C11_episodes": true,
+    "save_first_episode_of_every_nonbaseline_condition": true,
+    "trace_format": "compressed_npz",
+    "trace_contains": [
+      "observation",
+      "R0_action",
+      "Rroll_action",
+      "applied_action",
+      "physical_K",
+      "tau1_unclipped",
+      "tau2_unclipped",
+      "tau_unclipped",
+      "tau_clipped",
+      "boundary_power",
+      "positions",
+      "support_index",
+      "ground_contact_strength",
+      "desired_rotation_increment_rad",
+      "desired_cumulative_rotation_rad"
+    ]
+  },
+  "episode_success": {
+    "minimum_roll_pulses": 4,
+    "minimum_desired_net_rotation_degrees": 360.0,
+    "minimum_direction_fraction": 0.70,
+    "minimum_forward_body_lengths": 1.0,
+    "maximum_mean_inter_pulse_interval_steps": 250.0
+  },
+  "metric_parameters": {
+    "pulse_rotation_degrees": 60.0,
+    "pulse_forward_body_fraction": 0.08,
+    "pulse_contact_index_fraction": 0.20,
+    "active_rotation_degrees": 0.05,
+    "pulse_reset_drawdown_degrees": 20.0,
+    "pulse_reset_backward_body_fraction": 0.03,
+    "tail_launch_lift_fraction": 0.025,
+    "tail_launch_forward_fraction": 0.015,
+    "tail_launch_curvature_degrees": 15.0,
+    "tail_launch_min_separation": 30
+  },
+  "inference_unit": "independent_training_seed",
+  "condition_seed_success_min_episodes": 10,
+  "reproducible_min_training_seeds": 3,
+  "robust_min_training_seeds": 4
+}

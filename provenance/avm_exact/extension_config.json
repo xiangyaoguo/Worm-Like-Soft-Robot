@@ -1,0 +1,110 @@
+{
+  "schema": "formal_hpr_actor_observation_ablation/v1",
+  "study_id": "formal_hpr_o1_sham_vs_o2_20260811",
+  "status": "preregistered_not_started",
+  "parent_study_id": "obs2_reward_only_roll_reproduction_v2_1_formal_20260803_r2",
+  "parent_root": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2",
+  "control_root": "E:\\finalproject\\result\\formal_hpr_o1_sham_vs_o2_20260811",
+  "runtime": {
+    "python": "C:\\Users\\PUBLIC_USER\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "site_packages": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\RLMetamaterialLocomotion-main\\RLMetamaterialLocomotion-main\\.venv\\Lib\\site-packages",
+    "cuda_visible_devices": "0",
+    "thread_limit_per_process": 8,
+    "maximum_concurrent_training_processes": 2
+  },
+  "source_contract": {
+    "_control/experiment_config.json": "bed4e525c1adc8d764cb5a15542f62a31f95315e66cf86445cab3925bff91e00",
+    "_control/code_snapshot/training/train_metamaterial.py": "4b4c5366b3b27bef7d2dde74a6ea011b7b9def3af7cf10f1164e3be8d17d5a24",
+    "_control/code_snapshot/training/audited_train_reward_only.py": "6e28312e0a6c107eaf51f8b03a103a55fef7a5886b8a8829f20653e0dbe71700",
+    "_control/code_snapshot/metamaterial_envs/metamaterial_envs/env/metamaterial.py": "1f0335b65dab64569ddba7536df4a0ae2ab31c54904d0a041a68741988d32900"
+  },
+  "formal_runs": {
+    "internal_seeds": [9201, 9202, 9203, 9204, 9205],
+    "paper_run_ids": [0, 1, 2, 3, 4],
+    "seed_to_paper_run": {
+      "9201": 0,
+      "9202": 1,
+      "9203": 2,
+      "9204": 3,
+      "9205": 4
+    },
+    "reward": "horizontal_speed",
+    "parent_arm_internal_name": "R0",
+    "new_arm": "HPR_O1_sham",
+    "formal_extension_relative": "formal/extensions/formal_o1_sham_hpr_20260811",
+    "run_name_template": "formal__seed{seed}__HPR__O1sham",
+    "batches": 1500,
+    "save_every": 100
+  },
+  "observation_ablation": {
+    "environment_observation": "[s_i, theta_dot_i]",
+    "o2_actor_observation": "[s_i, theta_dot_i]",
+    "o1_sham_actor_observation": "[s_i, 0]",
+    "actor_observation_mode": "spatial_only_sham",
+    "actor_tensor_dimension": 2,
+    "critic_observation_mode": "full_o2",
+    "critic_receives_real_theta_dot": true,
+    "physical_k2_theta_dot_enabled": true,
+    "feedback_gain": 1.0,
+    "implementation": "parameter-free actor-backbone forward pre-hook"
+  },
+  "initialization_gate": {
+    "comparison": "exact",
+    "required_fields": [
+      "actor_sha256",
+      "critic_sha256",
+      "optimizer_sha256",
+      "torch_cpu_rng_sha256",
+      "torch_cuda_rng_sha256",
+      "numpy_rng_sha256",
+      "python_rng_sha256"
+    ],
+    "compare_actor_total_numel": true,
+    "compare_critic_total_numel": true,
+    "failure_action": "stop_before_collector_iteration"
+  },
+  "training_contract": {
+    "robot": "crawler",
+    "terrain": "flat",
+    "terrain_contact_mode": "legacy_flat",
+    "num_particles": 10,
+    "observation_func": "dth_tot_plus_friction_thdot",
+    "control_mode": "formula",
+    "per_joint_k1_k2": true,
+    "share_policy": false,
+    "share_critic": true,
+    "centralised_critic": true,
+    "k_action_scale": 100.0,
+    "max_torque": 9.0,
+    "passive_kappa": 4.0,
+    "algorithm": "ppo",
+    "policy_depth": 2,
+    "policy_cells": 256,
+    "episode_steps": 1000,
+    "frames_per_batch": 10000,
+    "memory_size": 1000000,
+    "minibatch_size": 128,
+    "optim_steps": 10,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "max_grad_norm": 1.0,
+    "gamma": 0.99,
+    "clip_epsilon": 0.2,
+    "lambda_gae": 0.9,
+    "entropy_epsilon": 0.0001,
+    "init_pos_randomness": 0.01,
+    "init_angle_range_degrees": 0.0,
+    "init_height_jitter": 0.0
+  },
+  "failure_policy": {
+    "fail_closed": true,
+    "automatic_resume": false,
+    "overwrite_existing_run": false,
+    "seed_replacement": false,
+    "intermediate_checkpoint_selection": false,
+    "extend_beyond_1500": false,
+    "automatic_hyperparameter_change": false,
+    "historical_checkpoint_as_initialization": false
+  },
+  "formal_approval_statement": "approved_for_formal_hpr_o1_sham_extension_from_scratch"
+}

@@ -1,0 +1,1211 @@
+{
+  "schema": "obs2_v2_1_k_frozen_contract/v1",
+  "study_id": "obs2_v2_1_k_mechanism_20260804",
+  "analysis_type": "frozen_checkpoint_evaluation_only",
+  "condition_count": 59,
+  "condition_counts_by_module": {
+    "A": 4,
+    "B": 32,
+    "C": 13,
+    "D": 10
+  },
+  "conditions_sha256": "417f121b51326e4b25b60a42aa74af16ead017ef412e1f61c0c23b479d9b3c17",
+  "conditions": [
+    {
+      "id": "C00",
+      "module": "A",
+      "family": "channel_factorial",
+      "description": "K1 and K2 both come from R0 (recipient identity control).",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "C10",
+      "module": "A",
+      "family": "channel_factorial",
+      "description": "All K1 comes from Rroll; all K2 remains from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "C01",
+      "module": "A",
+      "family": "channel_factorial",
+      "description": "All K1 remains from R0; all K2 comes from Rroll.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [],
+        "k2_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "id": "C11",
+      "module": "A",
+      "family": "channel_factorial",
+      "description": "K1 and K2 both come from Rroll (rolling identity control).",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "k2_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "id": "K1_SUFF_J01",
+      "module": "B",
+      "family": "k1_joint_sufficiency",
+      "description": "Only J01 K1 comes from Rroll; every other K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_SUFF_J02",
+      "module": "B",
+      "family": "k1_joint_sufficiency",
+      "description": "Only J02 K1 comes from Rroll; every other K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          1
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_SUFF_J03",
+      "module": "B",
+      "family": "k1_joint_sufficiency",
+      "description": "Only J03 K1 comes from Rroll; every other K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          2
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_SUFF_J04",
+      "module": "B",
+      "family": "k1_joint_sufficiency",
+      "description": "Only J04 K1 comes from Rroll; every other K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          3
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_SUFF_J05",
+      "module": "B",
+      "family": "k1_joint_sufficiency",
+      "description": "Only J05 K1 comes from Rroll; every other K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          4
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_SUFF_J06",
+      "module": "B",
+      "family": "k1_joint_sufficiency",
+      "description": "Only J06 K1 comes from Rroll; every other K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          5
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_SUFF_J07",
+      "module": "B",
+      "family": "k1_joint_sufficiency",
+      "description": "Only J07 K1 comes from Rroll; every other K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          6
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_SUFF_J08",
+      "module": "B",
+      "family": "k1_joint_sufficiency",
+      "description": "Only J08 K1 comes from Rroll; every other K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          7
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_NEC_J01",
+      "module": "B",
+      "family": "k1_joint_necessity",
+      "description": "All K1 except J01 comes from Rroll; J01 K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_NEC_J02",
+      "module": "B",
+      "family": "k1_joint_necessity",
+      "description": "All K1 except J02 comes from Rroll; J02 K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_NEC_J03",
+      "module": "B",
+      "family": "k1_joint_necessity",
+      "description": "All K1 except J03 comes from Rroll; J03 K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_NEC_J04",
+      "module": "B",
+      "family": "k1_joint_necessity",
+      "description": "All K1 except J04 comes from Rroll; J04 K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          7
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_NEC_J05",
+      "module": "B",
+      "family": "k1_joint_necessity",
+      "description": "All K1 except J05 comes from Rroll; J05 K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          6,
+          7
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_NEC_J06",
+      "module": "B",
+      "family": "k1_joint_necessity",
+      "description": "All K1 except J06 comes from Rroll; J06 K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6,
+          7
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_NEC_J07",
+      "module": "B",
+      "family": "k1_joint_necessity",
+      "description": "All K1 except J07 comes from Rroll; J07 K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_NEC_J08",
+      "module": "B",
+      "family": "k1_joint_necessity",
+      "description": "All K1 except J08 comes from Rroll; J08 K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K2_SUFF_J01",
+      "module": "B",
+      "family": "k2_joint_sufficiency",
+      "description": "Only J01 K2 comes from Rroll; every other K2 and all K1 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [],
+        "k2_roll_joints": [
+          0
+        ]
+      }
+    },
+    {
+      "id": "K2_SUFF_J02",
+      "module": "B",
+      "family": "k2_joint_sufficiency",
+      "description": "Only J02 K2 comes from Rroll; every other K2 and all K1 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [],
+        "k2_roll_joints": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "K2_SUFF_J03",
+      "module": "B",
+      "family": "k2_joint_sufficiency",
+      "description": "Only J03 K2 comes from Rroll; every other K2 and all K1 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [],
+        "k2_roll_joints": [
+          2
+        ]
+      }
+    },
+    {
+      "id": "K2_SUFF_J04",
+      "module": "B",
+      "family": "k2_joint_sufficiency",
+      "description": "Only J04 K2 comes from Rroll; every other K2 and all K1 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [],
+        "k2_roll_joints": [
+          3
+        ]
+      }
+    },
+    {
+      "id": "K2_SUFF_J05",
+      "module": "B",
+      "family": "k2_joint_sufficiency",
+      "description": "Only J05 K2 comes from Rroll; every other K2 and all K1 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [],
+        "k2_roll_joints": [
+          4
+        ]
+      }
+    },
+    {
+      "id": "K2_SUFF_J06",
+      "module": "B",
+      "family": "k2_joint_sufficiency",
+      "description": "Only J06 K2 comes from Rroll; every other K2 and all K1 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [],
+        "k2_roll_joints": [
+          5
+        ]
+      }
+    },
+    {
+      "id": "K2_SUFF_J07",
+      "module": "B",
+      "family": "k2_joint_sufficiency",
+      "description": "Only J07 K2 comes from Rroll; every other K2 and all K1 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [],
+        "k2_roll_joints": [
+          6
+        ]
+      }
+    },
+    {
+      "id": "K2_SUFF_J08",
+      "module": "B",
+      "family": "k2_joint_sufficiency",
+      "description": "Only J08 K2 comes from Rroll; every other K2 and all K1 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [],
+        "k2_roll_joints": [
+          7
+        ]
+      }
+    },
+    {
+      "id": "K2_NEC_J01",
+      "module": "B",
+      "family": "k2_joint_necessity",
+      "description": "K1 is all Rroll; K2 is Rroll except J01, whose K2 comes from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "k2_roll_joints": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "id": "K2_NEC_J02",
+      "module": "B",
+      "family": "k2_joint_necessity",
+      "description": "K1 is all Rroll; K2 is Rroll except J02, whose K2 comes from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "k2_roll_joints": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "id": "K2_NEC_J03",
+      "module": "B",
+      "family": "k2_joint_necessity",
+      "description": "K1 is all Rroll; K2 is Rroll except J03, whose K2 comes from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "k2_roll_joints": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "id": "K2_NEC_J04",
+      "module": "B",
+      "family": "k2_joint_necessity",
+      "description": "K1 is all Rroll; K2 is Rroll except J04, whose K2 comes from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "k2_roll_joints": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "id": "K2_NEC_J05",
+      "module": "B",
+      "family": "k2_joint_necessity",
+      "description": "K1 is all Rroll; K2 is Rroll except J05, whose K2 comes from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "k2_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "id": "K2_NEC_J06",
+      "module": "B",
+      "family": "k2_joint_necessity",
+      "description": "K1 is all Rroll; K2 is Rroll except J06, whose K2 comes from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "k2_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "id": "K2_NEC_J07",
+      "module": "B",
+      "family": "k2_joint_necessity",
+      "description": "K1 is all Rroll; K2 is Rroll except J07, whose K2 comes from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "k2_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "id": "K2_NEC_J08",
+      "module": "B",
+      "family": "k2_joint_necessity",
+      "description": "K1 is all Rroll; K2 is Rroll except J08, whose K2 comes from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "k2_roll_joints": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "id": "K1_SUFF_J02_J03",
+      "module": "C",
+      "family": "k1_subset_sufficiency",
+      "description": "Only K1 at J02,J03 comes from Rroll; all other K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          1,
+          2
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_SUFF_J02_J05",
+      "module": "C",
+      "family": "k1_subset_sufficiency",
+      "description": "Only K1 at J02,J05 comes from Rroll; all other K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          1,
+          4
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_SUFF_J03_J05",
+      "module": "C",
+      "family": "k1_subset_sufficiency",
+      "description": "Only K1 at J03,J05 comes from Rroll; all other K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          2,
+          4
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_SUFF_J02_J03_J05",
+      "module": "C",
+      "family": "k1_subset_sufficiency",
+      "description": "Only K1 at J02,J03,J05 comes from Rroll; all other K1 and all K2 come from R0.",
+      "spec": {
+        "op": "source_mix",
+        "k1_roll_joints": [
+          1,
+          2,
+          4
+        ],
+        "k2_roll_joints": []
+      }
+    },
+    {
+      "id": "K1_ZERO_ALL",
+      "module": "C",
+      "family": "k1_sign_space",
+      "description": "Set K1 to zero at J01..J08 while retaining all Rroll K2.",
+      "spec": {
+        "op": "k1_zero",
+        "k2_source": "Rroll"
+      }
+    },
+    {
+      "id": "K1_SIGN_J01_POS_J02_J08_NEG",
+      "module": "C",
+      "family": "k1_sign_space",
+      "description": "Force J01 K1 positive and J02..J08 K1 negative using sign*abs(Rroll K1).",
+      "spec": {
+        "op": "k1_sign",
+        "signs": [
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "k2_source": "Rroll"
+      }
+    },
+    {
+      "id": "K1_SIGN_J01_J02_POS_J03_J08_NEG",
+      "module": "C",
+      "family": "k1_sign_space",
+      "description": "Force J01..J02 K1 positive and J03..J08 K1 negative using sign*abs(Rroll K1).",
+      "spec": {
+        "op": "k1_sign",
+        "signs": [
+          1,
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "k2_source": "Rroll"
+      }
+    },
+    {
+      "id": "K1_SIGN_J01_J03_POS_J04_J08_NEG",
+      "module": "C",
+      "family": "k1_sign_space",
+      "description": "Force J01..J03 K1 positive and J04..J08 K1 negative using sign*abs(Rroll K1).",
+      "spec": {
+        "op": "k1_sign",
+        "signs": [
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "k2_source": "Rroll"
+      }
+    },
+    {
+      "id": "K1_SIGN_J01_J04_POS_J05_J08_NEG",
+      "module": "C",
+      "family": "k1_sign_space",
+      "description": "Force J01..J04 K1 positive and J05..J08 K1 negative using sign*abs(Rroll K1).",
+      "spec": {
+        "op": "k1_sign",
+        "signs": [
+          1,
+          1,
+          1,
+          1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "k2_source": "Rroll"
+      }
+    },
+    {
+      "id": "K1_SIGN_ALL_POS",
+      "module": "C",
+      "family": "k1_sign_space",
+      "description": "Force J01..J08 K1 positive using abs(Rroll K1).",
+      "spec": {
+        "op": "k1_sign",
+        "signs": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "k2_source": "Rroll"
+      }
+    },
+    {
+      "id": "K1_SIGN_ALL_NEG",
+      "module": "C",
+      "family": "k1_sign_space",
+      "description": "Force J01..J08 K1 negative using -abs(Rroll K1).",
+      "spec": {
+        "op": "k1_sign",
+        "signs": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "k2_source": "Rroll"
+      }
+    },
+    {
+      "id": "K1_SIGN_ALTERNATING_J01_POS",
+      "module": "C",
+      "family": "k1_sign_space",
+      "description": "Force alternating K1 signs +,-,+,-,+,-,+,- from J01 to J08.",
+      "spec": {
+        "op": "k1_sign",
+        "signs": [
+          1,
+          -1,
+          1,
+          -1,
+          1,
+          -1,
+          1,
+          -1
+        ],
+        "k2_source": "Rroll"
+      }
+    },
+    {
+      "id": "K1_SIGN_MIRROR_CANONICAL_J08_POS",
+      "module": "C",
+      "family": "k1_sign_space",
+      "description": "Mirror the canonical learned sign template: force J01..J07 negative and J08 positive on each target joint's own abs(Rroll K1); this is not a policy-function or observation mirror.",
+      "spec": {
+        "op": "k1_sign",
+        "signs": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1
+        ],
+        "k2_source": "Rroll"
+      }
+    },
+    {
+      "id": "K2_SCALE_0",
+      "module": "D",
+      "family": "k2_amplitude",
+      "description": "Set all K2 to zero while retaining all Rroll K1.",
+      "spec": {
+        "op": "k2_scale",
+        "alpha": 0.0,
+        "k1_source": "Rroll"
+      }
+    },
+    {
+      "id": "K2_SCALE_0P5",
+      "module": "D",
+      "family": "k2_amplitude",
+      "description": "Apply 0.5 times Rroll K2 while retaining all Rroll K1.",
+      "spec": {
+        "op": "k2_scale",
+        "alpha": 0.5,
+        "k1_source": "Rroll"
+      }
+    },
+    {
+      "id": "K2_SCALE_1P5",
+      "module": "D",
+      "family": "k2_amplitude",
+      "description": "Apply 1.5 times Rroll K2 while retaining all Rroll K1.",
+      "spec": {
+        "op": "k2_scale",
+        "alpha": 1.5,
+        "k1_source": "Rroll"
+      }
+    },
+    {
+      "id": "K2_FORCE_POSITIVE",
+      "module": "D",
+      "family": "k2_sign",
+      "description": "Force K2 positive as abs(Rroll K2); retain all Rroll K1.",
+      "spec": {
+        "op": "k2_sign_force",
+        "source": "Rroll",
+        "sign": 1,
+        "k1_source": "Rroll"
+      }
+    },
+    {
+      "id": "K2_FORCE_NEGATIVE",
+      "module": "D",
+      "family": "k2_sign",
+      "description": "Force K2 negative as -abs(Rroll K2); retain all Rroll K1.",
+      "spec": {
+        "op": "k2_sign_force",
+        "source": "Rroll",
+        "sign": -1,
+        "k1_source": "Rroll"
+      }
+    },
+    {
+      "id": "K2_TAIL_ONLY_J01_J02",
+      "module": "D",
+      "family": "k2_region",
+      "description": "Keep Rroll K2 only at tail-proximal J01..J02; set J03..J08 K2 to zero.",
+      "spec": {
+        "op": "k2_region",
+        "source": "Rroll",
+        "keep_joints": [
+          0,
+          1
+        ],
+        "fill": 0.0,
+        "k1_source": "Rroll"
+      }
+    },
+    {
+      "id": "K2_BODY_ONLY_J03_J08",
+      "module": "D",
+      "family": "k2_region",
+      "description": "Set J01..J02 K2 to zero and keep Rroll K2 at body joints J03..J08.",
+      "spec": {
+        "op": "k2_region",
+        "source": "Rroll",
+        "keep_joints": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "fill": 0.0,
+        "k1_source": "Rroll"
+      }
+    },
+    {
+      "id": "K2_CALIBRATION_STATIC_MEAN",
+      "module": "D",
+      "family": "k2_temporal_calibration",
+      "description": "Use the per-joint static mean K2 calibrated only from C11 identity-gate episodes.",
+      "spec": {
+        "op": "k2_calibration_static_mean",
+        "k1_source": "Rroll",
+        "template_source": "C11_Rroll_actions_on_identity_gate_episodes",
+        "aggregation": "per_joint_mean_over_calibration_episodes_and_time",
+        "application": "constant_per_joint_for_entire_episode"
+      }
+    },
+    {
+      "id": "K2_CALIBRATION_TIME_TEMPLATE",
+      "module": "D",
+      "family": "k2_temporal_calibration",
+      "description": "Use the fixed per-step, per-joint K2 time template calibrated only from C11 identity-gate episodes.",
+      "spec": {
+        "op": "k2_calibration_time_template",
+        "k1_source": "Rroll",
+        "template_source": "C11_Rroll_actions_on_identity_gate_episodes",
+        "aggregation": "per_step_per_joint_mean_across_calibration_episodes",
+        "application": "open_loop_by_control_step"
+      }
+    },
+    {
+      "id": "K2_CALIBRATION_PERMUTED_TEMPLATE",
+      "module": "D",
+      "family": "k2_temporal_calibration",
+      "description": "Apply one fixed time permutation of the calibrated K2 template; retain its values but destroy timing.",
+      "spec": {
+        "op": "k2_calibration_permuted_template",
+        "k1_source": "Rroll",
+        "template_source": "C11_Rroll_actions_on_identity_gate_episodes",
+        "base_template": "K2_CALIBRATION_TIME_TEMPLATE",
+        "permutation_axis": "control_step",
+        "permutation_seed": 20264301,
+        "permutation_rng": "numpy.random.PCG64",
+        "fixed_across_training_and_evaluation_seeds": true
+      }
+    }
+  ],
+  "training_seeds": [
+    9201,
+    9202,
+    9203,
+    9204,
+    9205
+  ],
+  "identity_gate": {
+    "base_seed": 20264101,
+    "episodes": 20,
+    "steps": 1000,
+    "required_formal_success_counts": {
+      "9201": 19,
+      "9202": 20,
+      "9203": 20,
+      "9204": 20,
+      "9205": 20
+    },
+    "metric_absolute_tolerance": 1e-09,
+    "must_match_official_C00_and_C11": true,
+    "calibration_source": "C11_Rroll_actions_on_identity_gate_episodes"
+  },
+  "main_evaluation": {
+    "base_seed": 20264201,
+    "episodes": 20,
+    "steps": 1000,
+    "condition_count": 59,
+    "training_seed_count": 5,
+    "total_episodes": 5900,
+    "max_parallel_seed_workers": 5,
+    "fixed_time_permutation_seed": 20264301
+  },
+  "episode_success": {
+    "minimum_roll_pulses": 4,
+    "minimum_desired_net_rotation_degrees": 360.0,
+    "minimum_direction_fraction": 0.7,
+    "minimum_forward_body_lengths": 1.0,
+    "maximum_mean_inter_pulse_interval_steps": 250.0
+  },
+  "locked_contract": {
+    "observation_per_joint": [
+      "delta_theta",
+      "theta_dot"
+    ],
+    "action_per_joint": [
+      "K1",
+      "K2"
+    ],
+    "joint_count": 8,
+    "particle_count": 10,
+    "control_mode": "formula",
+    "torque_formula": "clip(K1*delta_theta + K2*theta_dot, -9, 9)",
+    "k_action_scale": 100.0,
+    "max_torque": 9.0,
+    "policy_mode": "deterministic",
+    "device": "cpu",
+    "terrain": "flat",
+    "terrain_contact_mode": "legacy_flat",
+    "direction": "right",
+    "tail_side": "left",
+    "training_permitted": false,
+    "checkpoint_mutation_permitted": false
+  },
+  "source_files": {
+    "study_config.json": {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\study_config.json",
+      "sha256": "6c0ab90e40b44c1f4b373814b08f832f27aafb33bf39620fd1ea0c9c5401cc3b",
+      "size": 3273
+    },
+    "condition_matrix.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\condition_matrix.py",
+      "sha256": "945f7b078e6a7b3715b5d387daa17cf9352609853f159bc30a373c4c850af72e",
+      "size": 18416
+    },
+    "mechanism_rollout.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\mechanism_rollout.py",
+      "sha256": "399abcff9764b3b2d94a779f2057480dcd764a7046ac537d264c5d4c5ad09f82",
+      "size": 32613
+    },
+    "smoke_test.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\smoke_test.py",
+      "sha256": "6d0905b5b76ed0c91f9341ff60a6e069c3e6d55de0d36ac7f38de7f91a6ed3d0",
+      "size": 5490
+    },
+    "run_study.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\run_study.py",
+      "sha256": "9a701dac0f7a15513e16a9f0fa393b52fa5aa4a0e69b3f84fccb9898ad698887",
+      "size": 15747
+    }
+  },
+  "protected_formal_files": {
+    "formal_config": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\_control\\experiment_config.json",
+      "size": 5882,
+      "sha256": "bed4e525c1adc8d764cb5a15542f62a31f95315e66cf86445cab3925bff91e00"
+    },
+    "formal_result": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\FORMAL_RESULT.json",
+      "size": 12802,
+      "sha256": "138addb71ca74c660d1a44fde35dd5bb684a068f42554e66e97bee9adb1930b1"
+    },
+    "formal_source_manifest": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\_control\\source_manifest.json",
+      "size": 41525,
+      "sha256": "59dc86cc5a7fc89b6365c8e5d6b2bb43cf25c453538cf84b90220d37b804ed78"
+    },
+    "frozen_evaluator": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\_control\\code_snapshot\\training\\evaluate_fast_forward_roll.py",
+      "size": 37145,
+      "sha256": "fec95c3cc18a2c8d2debee16d022b54878752722fbd6d8df6b39ce3f51335c0f"
+    },
+    "checkpoint_seed9201_R0": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9201__R0\\checkpoint_1500.pt",
+      "size": 2459471,
+      "sha256": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6"
+    },
+    "checkpoint_seed9201_Rroll": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9201__Rroll\\checkpoint_1500.pt",
+      "size": 2459471,
+      "sha256": "b2ae292c1e55a317ea29911cfcf67cf28db1cc82d5f5e36611c5bf4ca031bf34"
+    },
+    "checkpoint_seed9202_R0": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9202__R0\\checkpoint_1500.pt",
+      "size": 2459471,
+      "sha256": "e3715c6deb1410a85a12261883a2eb80d5a8ff9f95c32f7b17624c5b5823cfdc"
+    },
+    "checkpoint_seed9202_Rroll": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9202__Rroll\\checkpoint_1500.pt",
+      "size": 2459471,
+      "sha256": "37eda942c5cb171e61fba84bf279a1affdf3b612ac005d43d66ebb1cf441c713"
+    },
+    "checkpoint_seed9203_R0": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9203__R0\\checkpoint_1500.pt",
+      "size": 2459471,
+      "sha256": "0428d9a86b6622d924738c68fe09df4c6ab922e2a3225a5c24ba41e96eb1c4b8"
+    },
+    "checkpoint_seed9203_Rroll": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9203__Rroll\\checkpoint_1500.pt",
+      "size": 2459471,
+      "sha256": "dd721641654bef7ac978f3aba509adcdbcb62e5aeea68bb7b81584728ebcb53a"
+    },
+    "checkpoint_seed9204_R0": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9204__R0\\checkpoint_1500.pt",
+      "size": 2459471,
+      "sha256": "76b6cecf570069a7c7f2e65754114f541a0e475ab395378649c74a9abd061a1a"
+    },
+    "checkpoint_seed9204_Rroll": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9204__Rroll\\checkpoint_1500.pt",
+      "size": 2459471,
+      "sha256": "7fd72590cf4491cc7d445785fad07f62d38d6f9635daef321031cf426eecdd60"
+    },
+    "checkpoint_seed9205_R0": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9205__R0\\checkpoint_1500.pt",
+      "size": 2459471,
+      "sha256": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383"
+    },
+    "checkpoint_seed9205_Rroll": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9205__Rroll\\checkpoint_1500.pt",
+      "size": 2459471,
+      "sha256": "1a770ff49a9681e322be2d1c7a68d8593a6b690a8390b04b22e3d92ec9b34f74"
+    }
+  },
+  "scientific_boundaries": {
+    "primary": "A and B are the preregistered causal core.",
+    "secondary": "C tests prespecified K1 subsets and fixed-sign spatial constraints.",
+    "exploratory": "D tests K2 dose, region, and calibration-derived temporal structure.",
+    "training_seed_inference": "n=5 supports effect sizes and direction consistency; a two-sided exact sign-flip p<0.05 is mathematically impossible.",
+    "fixed_policy_initial_state_inference": "The 20 paired main initial states support conditional claims for these five frozen policy pairs only.",
+    "temporal_information_sets": "D static uses no online input; template and shuffled-template use a global step clock; none may be described as the original local feedback information set."
+  }
+}

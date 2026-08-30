@@ -1,0 +1,108 @@
+{
+  "schema": "roll_learning_v2_1_regression_gate/v1",
+  "study_id": "obs2_reward_only_roll_reproduction_v2_1_regression_20260803",
+  "evaluated_at_utc": "2026-08-03T11:25:42.193075+00:00",
+  "checkpoint": 600,
+  "passed": true,
+  "terminal_reason": "all four pre-registered v2.1 regression criteria passed",
+  "completed_seed_count": 3,
+  "planned_seed_count": 3,
+  "success_episodes_by_seed": {
+    "9101": 10,
+    "9102": 9,
+    "9103": 10
+  },
+  "successful_each_seed": [
+    9101,
+    9102,
+    9103
+  ],
+  "total_success_episodes": 29,
+  "criteria": {
+    "minimum_success_each_seed": 5,
+    "minimum_total_success_episodes": 24,
+    "seed_specific_minimum_success": {
+      "9101": 5,
+      "9102": 8,
+      "9103": 8
+    }
+  },
+  "reference_v2_success_episodes": {
+    "9101": 0,
+    "9102": 10,
+    "9103": 8
+  },
+  "observation_channels_unchanged": true,
+  "action_channels_unchanged": true,
+  "from_scratch": true,
+  "historical_checkpoint_loaded": false,
+  "formal_started": false,
+  "results": [
+    {
+      "stage": "regression",
+      "seed": 9101,
+      "arm": "V2_1",
+      "checkpoint": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\regression\\runs\\regression__seed9101__V2_1\\checkpoint_600.pt",
+      "evaluation_output": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\regression\\evaluations\\regression__seed9101__V2_1.json",
+      "success_episodes": 10,
+      "evaluation_episodes": 10,
+      "success_rate": 1.0,
+      "episode_success": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "stage": "regression",
+      "seed": 9102,
+      "arm": "V2_1",
+      "checkpoint": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\regression\\runs\\regression__seed9102__V2_1\\checkpoint_600.pt",
+      "evaluation_output": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\regression\\evaluations\\regression__seed9102__V2_1.json",
+      "success_episodes": 9,
+      "evaluation_episodes": 10,
+      "success_rate": 0.9,
+      "episode_success": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true
+      ]
+    },
+    {
+      "stage": "regression",
+      "seed": 9103,
+      "arm": "V2_1",
+      "checkpoint": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\regression\\runs\\regression__seed9103__V2_1\\checkpoint_600.pt",
+      "evaluation_output": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\regression\\evaluations\\regression__seed9103__V2_1.json",
+      "success_episodes": 10,
+      "evaluation_episodes": 10,
+      "success_rate": 1.0,
+      "episode_success": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  ]
+}

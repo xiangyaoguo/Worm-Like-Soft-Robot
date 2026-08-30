@@ -1,0 +1,123 @@
+{
+  "schema": "formal_hpr_freeze_validation/analysis_summary/v1",
+  "formal_training_units": 2,
+  "paired_rollouts_per_policy_condition": 20,
+  "total_rollouts": 1440,
+  "global_conditions": [
+    {
+      "training_seed": 9201,
+      "condition_id": "BASELINE",
+      "success_count": 20,
+      "desired_revolutions_mean": 2.26650603690148,
+      "forward_body_lengths_mean": 3.1285480230589835,
+      "direction_fraction_mean": 0.8507314915684349
+    },
+    {
+      "training_seed": 9201,
+      "condition_id": "GLOBAL_K1_OFF",
+      "success_count": 0,
+      "desired_revolutions_mean": -0.0012336034791144,
+      "forward_body_lengths_mean": 0.6002157744713517,
+      "direction_fraction_mean": 0.4960401964548533
+    },
+    {
+      "training_seed": 9201,
+      "condition_id": "GLOBAL_K2_OFF",
+      "success_count": 15,
+      "desired_revolutions_mean": 1.562422911079162,
+      "forward_body_lengths_mean": 3.255250299998365,
+      "direction_fraction_mean": 0.7351699662958553
+    },
+    {
+      "training_seed": 9201,
+      "condition_id": "GLOBAL_BOTH_OFF",
+      "success_count": 0,
+      "desired_revolutions_mean": 1.1653846816412248e-05,
+      "forward_body_lengths_mean": -1.1557594823073027e-05,
+      "direction_fraction_mean": 0.4330485560748718
+    },
+    {
+      "training_seed": 9205,
+      "condition_id": "BASELINE",
+      "success_count": 20,
+      "desired_revolutions_mean": 1.604744605656076,
+      "forward_body_lengths_mean": 2.7073029136883395,
+      "direction_fraction_mean": 0.8623090622348869
+    },
+    {
+      "training_seed": 9205,
+      "condition_id": "GLOBAL_K1_OFF",
+      "success_count": 0,
+      "desired_revolutions_mean": 0.0080046587807077,
+      "forward_body_lengths_mean": -0.0256918361289697,
+      "direction_fraction_mean": 0.5509345964776156
+    },
+    {
+      "training_seed": 9205,
+      "condition_id": "GLOBAL_K2_OFF",
+      "success_count": 0,
+      "desired_revolutions_mean": 0.3930685283300194,
+      "forward_body_lengths_mean": 0.9945509484220192,
+      "direction_fraction_mean": 0.5760013633447345
+    },
+    {
+      "training_seed": 9205,
+      "condition_id": "GLOBAL_BOTH_OFF",
+      "success_count": 0,
+      "desired_revolutions_mean": 1.1653846816412248e-05,
+      "forward_body_lengths_mean": -1.1557594823073027e-05,
+      "direction_fraction_mean": 0.4330485560748718
+    }
+  ],
+  "family_summaries": {
+    "whole_joint_ablation": {
+      "minimum_success_count_across_policy_conditions": 0,
+      "maximum_success_count_across_policy_conditions": 20,
+      "mean_paired_revolution_change": -1.129929227877443,
+      "conditions_with_same_effect_direction_across_two_policies": 8
+    },
+    "single_joint_retention": {
+      "minimum_success_count_across_policy_conditions": 0,
+      "maximum_success_count_across_policy_conditions": 0,
+      "mean_paired_revolution_change": -1.9359396245853058,
+      "conditions_with_same_effect_direction_across_two_policies": 8
+    },
+    "joint_k1_ablation": {
+      "minimum_success_count_across_policy_conditions": 0,
+      "maximum_success_count_across_policy_conditions": 20,
+      "mean_paired_revolution_change": -0.8224905836196708,
+      "conditions_with_same_effect_direction_across_two_policies": 6
+    },
+    "joint_k2_ablation": {
+      "minimum_success_count_across_policy_conditions": 0,
+      "maximum_success_count_across_policy_conditions": 20,
+      "mean_paired_revolution_change": -0.21468301856933916,
+      "conditions_with_same_effect_direction_across_two_policies": 6
+    }
+  },
+  "cross_seed_agreement": {
+    "whole_joint_ablation": {
+      "spearman_rank_correlation": 0.7857142857142858,
+      "effect_direction_agreement_fraction": 1.0
+    },
+    "joint_k1_ablation": {
+      "spearman_rank_correlation": -0.19047619047619052,
+      "effect_direction_agreement_fraction": 0.75
+    },
+    "joint_k2_ablation": {
+      "spearman_rank_correlation": 0.5952380952380953,
+      "effect_direction_agreement_fraction": 0.75
+    }
+  },
+  "figure_paths": [
+    "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\figures\\fig_01_intervention_design.png",
+    "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\figures\\fig_02_global_channel_outcomes.png",
+    "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\figures\\fig_03_joint_ablation_retention_heatmap.png",
+    "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\figures\\fig_04_joint_channel_effect_heatmap.png",
+    "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\figures\\fig_05_cross_seed_agreement.png",
+    "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\figures\\fig_06_morphology_seed9201.png",
+    "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\figures\\fig_07_morphology_seed9205.png",
+    "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\figures\\fig_08_representative_time_series.png"
+  ],
+  "evidence_boundary": "Agreement across the two consistently rolling formal HPR policies supports cross-policy replication within this formal study, not a universal mechanism for every possible HPR-trained policy. The 20 reset rollouts are nested paired conditions, not independent training runs."
+}

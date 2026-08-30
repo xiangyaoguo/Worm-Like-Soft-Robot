@@ -1,0 +1,27 @@
+{
+  "schema": "formal_six_config_checkpoint1500_evaluator/validation/v1",
+  "status": "PASS",
+  "validated_at_utc": "2026-08-13T18:15:59.832108+00:00",
+  "checks": {
+    "six_configurations": true,
+    "thirty_independent_runs": true,
+    "six_hundred_nested_rollouts": true,
+    "all_rollouts_1000_steps": true,
+    "exact_paired_reset_seed_panel": true,
+    "all_endpoint_fields_finite": true,
+    "all_checkpoint_hashes_unchanged": true,
+    "all_policy_hashes_unchanged": true,
+    "all_task_trace_hashes_valid": true,
+    "all_trace_arrays_parse_and_match_declared_shapes": true,
+    "no_duplicate_episode_identity": true,
+    "no_temporary_artifacts": true,
+    "ten_archived_r0_rroll_identity_gates_passed": true,
+    "source_hashes_match_frozen_config": true,
+    "paired_initial_states_identical_across_six_configurations": true,
+    "deterministic_actions_repeat_exactly": true,
+    "run_level_inference_preserved": true
+  },
+  "failed_checks": [],
+  "study_manifest": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\05_ExperimentalDataAndCode\\formal_six_config_endpoint_eval_20260813\\evaluation_final\\STUDY_MANIFEST.json",
+  "study_manifest_sha256": "ed63934eb00bfd0a94d8c759f97d444b3489576551e64eba18db3ddeece8ad38"
+}

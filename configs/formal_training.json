@@ -1,0 +1,100 @@
+{
+  "schema": "thesis_formal_training/v1",
+  "training_seeds": [9201, 9202, 9203, 9204, 9205],
+  "formal_batches": 1500,
+  "save_every": 100,
+  "common": {
+    "robot": "crawler",
+    "terrain": "flat",
+    "terrain_contact_mode": "legacy_flat",
+    "num_particles": 10,
+    "algorithm": "ppo",
+    "policy_depth": 2,
+    "policy_cells": 256,
+    "normal_scale_lb": 0.0001,
+    "episode_steps": 1000,
+    "frames_per_batch": 10000,
+    "memory_size": 1000000,
+    "minibatch_size": 128,
+    "optim_steps": 10,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "max_grad_norm": 1.0,
+    "gamma": 0.99,
+    "clip_epsilon": 0.2,
+    "lambda_gae": 0.9,
+    "entropy_epsilon": 0.0001,
+    "init_pos_randomness": 0.01,
+    "init_angle_range_degrees": 0.0,
+    "init_height_jitter": 0.0,
+    "k_action_scale": 100.0,
+    "max_active_torque": 9.0,
+    "passive_kappa": 4.0
+  },
+  "arms": {
+    "HPR-DTH-PS": {
+      "archive_tag": "DTH",
+      "channel": "dth",
+      "observation_func": "dth_neighbours",
+      "control_mode": "direct",
+      "reward_func": "horizontal_speed",
+      "share_policy": true,
+      "per_joint_k1_k2": false
+    },
+    "HPR-THDOT-PS": {
+      "archive_tag": "THDOT",
+      "channel": "thdot",
+      "observation_func": "dth_neighbours_plus_thdot",
+      "control_mode": "direct",
+      "reward_func": "horizontal_speed",
+      "share_policy": true,
+      "per_joint_k1_k2": false
+    },
+    "HPR-OBS-PS": {
+      "archive_tag": "OBS",
+      "channel": "obs",
+      "observation_func": "dth_tot",
+      "control_mode": "direct",
+      "reward_func": "horizontal_speed",
+      "share_policy": true,
+      "per_joint_k1_k2": false
+    },
+    "HPR-O2-PS": {
+      "archive_tag": "HPR__O2shared",
+      "channel": "action",
+      "observation_func": "dth_tot_plus_friction_thdot",
+      "control_mode": "formula",
+      "reward_func": "horizontal_speed",
+      "share_policy": true,
+      "per_joint_k1_k2": false
+    },
+    "HPR-O2-JS": {
+      "archive_tag": "R0",
+      "channel": "action",
+      "observation_func": "dth_tot_plus_friction_thdot",
+      "control_mode": "formula",
+      "reward_func": "horizontal_speed",
+      "share_policy": false,
+      "per_joint_k1_k2": true
+    },
+    "SGRR-O2-JS": {
+      "archive_tag": "Rroll",
+      "channel": "action",
+      "observation_func": "dth_tot_plus_friction_thdot",
+      "control_mode": "formula",
+      "reward_func": "obs2_roll_repro_v2_1",
+      "share_policy": false,
+      "per_joint_k1_k2": true
+    },
+    "HPR-O2-AVM-JS": {
+      "archive_tag": "HPR__O1sham",
+      "channel": "action",
+      "observation_func": "dth_tot_plus_friction_thdot",
+      "control_mode": "formula",
+      "reward_func": "horizontal_speed",
+      "share_policy": false,
+      "per_joint_k1_k2": true,
+      "actor_observation_mode": "spatial_only_sham"
+    }
+  }
+}

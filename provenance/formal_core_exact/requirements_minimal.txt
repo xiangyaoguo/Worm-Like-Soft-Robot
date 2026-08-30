@@ -1,0 +1,8 @@
+numpy
+numba
+pygame>=2.1.3
+matplotlib
+tqdm
+torch
+torchrl
+tensordict

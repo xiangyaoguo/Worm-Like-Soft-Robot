@@ -1,0 +1,60 @@
+{
+  "schema": "o1_o2_formal_analysis_column_contracts/v1",
+  "arms": ["O1_sham", "O2"],
+  "paper_runs": [0, 1, 2, 3, 4],
+  "internal_seed_map": {"0": 9201, "1": 9202, "2": 9203, "3": 9204, "4": 9205},
+  "checkpoints": [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500],
+  "episodes_per_checkpoint": 20,
+  "primary_criterion": {
+    "desired_net_rotation_deg_min": 360.0,
+    "desired_direction_fraction_min": 0.70,
+    "forward_body_lengths_min": 1.0,
+    "discovery_successes_min": 10
+  },
+  "files": {
+    "run_manifest.csv": {
+      "required": [
+        "arm", "paper_run", "internal_seed", "status", "reward", "observation_mode",
+        "actor_input_dim", "actor_total_numel", "critic_observation_mode",
+        "training_steps", "checkpoint_1500", "actor_init_sha256", "critic_init_sha256",
+        "optimizer_init_sha256", "torch_cpu_rng_sha256", "torch_cuda_rng_sha256",
+        "numpy_rng_sha256", "python_rng_sha256"
+      ]
+    },
+    "training_metrics.csv": {
+      "required": [
+        "arm", "paper_run", "internal_seed", "batch", "reward_mean", "speed_mean",
+        "ppo_approx_kl", "ppo_updates_completed", "elapsed_sec"
+      ]
+    },
+    "checkpoint_episode_metrics.csv": {
+      "required": [
+        "arm", "paper_run", "internal_seed", "checkpoint", "episode", "reset_seed",
+        "desired_net_rotation_deg", "desired_direction_fraction", "forward_body_lengths",
+        "success_common", "mean_reward", "mean_speed_x", "mean_abs_k1", "mean_abs_k2",
+        "torque_saturation_fraction"
+      ]
+    },
+    "trajectory_joint.csv": {
+      "required": [
+        "arm", "paper_run", "internal_seed", "checkpoint", "episode", "reset_seed",
+        "step", "time_s", "joint", "spatial_difference", "angular_velocity", "k1",
+        "k2", "k1_component", "k2_component", "torque", "torque_saturated", "com_x",
+        "com_y", "body_rotation_deg", "forward_body_lengths", "direction_fraction"
+      ]
+    },
+    "trajectory_node.csv": {
+      "required": [
+        "arm", "paper_run", "internal_seed", "checkpoint", "episode", "reset_seed",
+        "step", "time_s", "node", "x", "y", "ground_height"
+      ]
+    },
+    "actor_probe.csv": {
+      "required": [
+        "arm", "paper_run", "internal_seed", "checkpoint", "joint",
+        "spatial_difference", "angular_velocity", "k1", "k2"
+      ]
+    }
+  }
+}
+

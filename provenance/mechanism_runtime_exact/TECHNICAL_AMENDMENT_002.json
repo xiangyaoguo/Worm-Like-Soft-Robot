@@ -1,0 +1,27 @@
+{
+  "schema": "obs2_v2_1_k_technical_amendment/v1",
+  "study_id": "obs2_v2_1_k_mechanism_20260804",
+  "amendment_id": "TECHNICAL_AMENDMENT_002",
+  "stage": "pre_result_smoke_test",
+  "previous_contract": "FROZEN_CONTRACT_R1.json",
+  "previous_contract_sha256": "a9c1a146f35c671ea52ae12ab1e8cc6b233566b2ccbd7c68c5e49b0eacf1eb0a",
+  "failure": "Environment particle count is not 10 because the audit queried the nonexistent alias n_particles instead of the frozen environment attribute num_particles.",
+  "evidence_state": {
+    "smoke_pass_marker_existed": false,
+    "identity_directory_existed": false,
+    "main_results_directory_existed": false,
+    "scientific_outcomes_observed": false
+  },
+  "authorized_technical_change": "Read the constructed frozen environment's num_particles attribute; continue to require the value to equal 10 exactly.",
+  "scientific_contract_changes": {
+    "conditions": false,
+    "seeds": false,
+    "episode_count": false,
+    "steps": false,
+    "metrics": false,
+    "success_thresholds": false,
+    "observations": false,
+    "actions": false,
+    "physics": false
+  }
+}

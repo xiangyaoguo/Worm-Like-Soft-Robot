@@ -1,0 +1,17 @@
+{
+  "schema": "thesis_repro_paths/v1",
+  "python": "auto",
+  "training_output_root": "outputs/training",
+  "formal_checkpoint_root": "checkpoints/formal_six/runs",
+  "avm_checkpoint_root": "checkpoints/avm/runs",
+  "formal_evaluation_output": "outputs/formal_endpoint",
+  "avm_evaluation_output": "outputs/avm_endpoint",
+  "gait_output": "outputs/gait_classification",
+  "hpr_output": "outputs/hpr_freeze",
+  "sgrr_output": "outputs/sgrr_causal_completion",
+  "sgrr_legacy_root": "data_external/sgrr_legacy_evidence",
+  "figure_output": "analysis/response_surfaces/generated",
+  "cuda_visible_devices": "0",
+  "maximum_workers": 2,
+  "threads_per_worker": 1
+}

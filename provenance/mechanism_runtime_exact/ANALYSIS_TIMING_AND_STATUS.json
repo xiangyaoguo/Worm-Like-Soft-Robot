@@ -1,0 +1,43 @@
+{
+  "schema": "obs2_v2_1_k_analysis_timing/v1",
+  "study_id": "obs2_v2_1_k_mechanism_20260804",
+  "pre_result_frozen_elements": [
+    "59-condition matrix and exact intervention semantics",
+    "A/B/C/D condition counts 4/32/13/10",
+    "five frozen training seeds 9201-9205",
+    "20 disjoint main evaluation seeds beginning 20264201",
+    "1000 steps per episode and 5900 total main episodes",
+    "official five-part rolling success definition",
+    "observation/action/physics/checkpoint immutability",
+    "A/B primary, C secondary, D exploratory module hierarchy",
+    "training seed as the independent unit for new-policy generalization"
+  ],
+  "post_result_implemented_elements": [
+    "exact named contrasts",
+    "bootstrap implementation",
+    "exact sign-flip implementation",
+    "Holm multiple-comparison family implementation",
+    "result validator implementation",
+    "plots and English narrative report"
+  ],
+  "timing_evidence": {
+    "active_contract": "FROZEN_CONTRACT_R2.json",
+    "active_contract_created_local": "2026-08-04T16:17:41",
+    "first_main_result_created_local": "2026-08-04T16:27:19",
+    "analysis_script_created_local": "2026-08-04T16:28:50",
+    "validator_script_created_local": "2026-08-04T16:29:26"
+  },
+  "required_reporting_language": "The design, conditions, sample sizes, initial-state split, and behavioral endpoint were frozen before main outcomes. The concrete statistical analyzer and validator were transparently implemented after result generation began and are not preregistered code.",
+  "conservative_posthoc_multiplicity": {
+    "A": "all factorial simple effects plus interaction in one family",
+    "B": "all 32 K1/K2 joint sufficiency/necessity contrasts in one family",
+    "C": "all 13 subset/sign/spatial contrasts in one family",
+    "D": "all 10 K2 dose/region/temporal contrasts in one family"
+  },
+  "forbidden_claims": [
+    "Do not call analyze_results.py a preregistered analyzer.",
+    "Do not call validate_results.py a preregistered validator.",
+    "Do not use post-result implementation choices to drop conditions or change sample sizes.",
+    "Do not treat 100 evaluation episodes as 100 independent trained policies."
+  ]
+}

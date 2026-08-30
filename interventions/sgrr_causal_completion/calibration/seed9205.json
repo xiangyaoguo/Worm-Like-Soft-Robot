@@ -1,0 +1,39 @@
+{
+  "schema": "obs2_v2_1_k_causal_completion/calibration/v1",
+  "study_id": "obs2_v2_1_k_causal_completion_20260804",
+  "training_seed": 9205,
+  "source_condition": "C11",
+  "base_seed": 20264101,
+  "episodes": 20,
+  "steps": 1000,
+  "raw_action_stack_shape": [
+    20,
+    1000,
+    8,
+    2
+  ],
+  "time_template_shape": [
+    1000,
+    8,
+    2
+  ],
+  "static_mean_shape": [
+    8,
+    2
+  ],
+  "main_outcome_states_used": false,
+  "calibration_npz_sha256": "0020d856ab66f8c447a334b50e99e899b0880196ce8bc2c391f5ebe2e4f877f0",
+  "immutability": {
+    "checkpoints_before_after_equal": true,
+    "checkpoint_sha256": {
+      "R0": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383",
+      "Rroll": "1a770ff49a9681e322be2d1c7a68d8593a6b690a8390b04b22e3d92ec9b34f74"
+    },
+    "policies_before_after_equal": true,
+    "policy_state_sha256": {
+      "R0": "5e6bc71d2d1049a71a9d752b8a798f31e6883d658a97df13dd81ad14af7db351",
+      "Rroll": "5c0cd70fab5e9ef2670a81296c4e978bb083466883b9ae57bd865c8dcf5de336"
+    }
+  },
+  "status": "complete"
+}

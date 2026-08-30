@@ -1,0 +1,116 @@
+{
+  "schema": "roll_learning_initialization_audit/v1",
+  "status": "complete",
+  "captured_at_utc": "2026-08-04T08:59:28.390262+00:00",
+  "capture_point": "after build_components and before collector iteration / optimizer update",
+  "case_id": "formal__seed9205__R0",
+  "seed": 9205,
+  "reward": "horizontal_speed",
+  "batch_index": 0,
+  "from_scratch": true,
+  "runtime_args": {
+    "contract_valid": true,
+    "from_scratch": true,
+    "forbidden_sources": {
+      "pretrained_model_path": null,
+      "pretrained_policy_only": false,
+      "resume_training_state": null,
+      "bc_teacher_checkpoint": null,
+      "wave_bc_teacher_json": null,
+      "bc_steps": 0,
+      "bc_epochs": 0,
+      "policy_anchor_coeff": 0.0,
+      "policy_anchor_anneal_batches": 0
+    },
+    "reward_func": "horizontal_speed",
+    "seed": 9205,
+    "episodes": 1500,
+    "expected_num_envs": 10,
+    "observation_func": "dth_tot_plus_friction_thdot",
+    "control_mode": "formula",
+    "share_policy": false,
+    "per_joint_k1_k2": true,
+    "share_critic": true,
+    "centralised_critic": true,
+    "rolling_observation": false,
+    "tail_roll_observation": false,
+    "fast_forward_observation": false,
+    "reward_protocol": {
+      "fast_forward_launch_lift": 0.2,
+      "fast_forward_launch_forward": 0.1,
+      "fast_forward_launch_curl": 0.12,
+      "fast_forward_launch_head_contact": 0.5,
+      "fast_forward_launch_hold_steps": 8,
+      "fast_forward_event_degrees": 60.0,
+      "fast_forward_event_forward_fraction": 0.08,
+      "fast_forward_event_contact_nodes": 1.5,
+      "fast_forward_direction_fraction": 0.65
+    }
+  },
+  "environment": {
+    "observation_shape": [
+      10,
+      8,
+      2
+    ],
+    "action_shape": [
+      10,
+      8,
+      2
+    ],
+    "formula_action_names": [
+      "k1",
+      "k2"
+    ],
+    "rolling_observation_size": 0,
+    "tail_roll_observation_size": 0,
+    "fast_forward_observation_size": 0,
+    "scratch_wr_v2_observation_size": 0,
+    "control_mode": "formula",
+    "k_action_scale": 100.0,
+    "max_torque": 9.0,
+    "expected_num_envs": 10
+  },
+  "actor": {
+    "class": "torchrl.modules.tensordict_module.actors.ProbabilisticActor",
+    "state_sha256": "1fe8e2e48b9b6f14674dad44203f6e4dfaef80fd6766c3244e2d3a080c5f67e1",
+    "total_numel": 540704,
+    "nonfinite_element_count": 0,
+    "all_tensors_finite": true
+  },
+  "critic": {
+    "class": "tensordict.nn.common.TensorDictModule",
+    "state_sha256": "bac3f84f6836fc3f9b39df9140d1356d13f7d9266f560a3e0f1420d82f94e334",
+    "total_numel": 70401,
+    "nonfinite_element_count": 0,
+    "all_tensors_finite": true
+  },
+  "optimizer_sha256": "bb6c77fe16ce985acda75cc5f7ba2bc34aa00c3d4b158e0a0ce6a33055808b05",
+  "rng": {
+    "torch_cpu_sha256": "d4e462227f54f0c8243501d91317f13102afbb9f541d8254941cfb5fc7ba637e",
+    "torch_cuda_sha256": [
+      "2822140d7b46075f947dd46a611859c4e69d788aa0f17f13b925b54afe57eda3"
+    ],
+    "numpy_sha256": "4c194ec51409ac4f1da04e4930b9991fa2c427c244b1132507a3e8c68bda5e03",
+    "python_sha256": "8e763562bff3fa6ef4f611bc71c4a48bcde11f75aae0c628f3d29bc824a8200d"
+  },
+  "trainer": {
+    "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\_control\\code_snapshot\\training\\train_metamaterial.py",
+    "sha256": "4b4c5366b3b27bef7d2dde74a6ea011b7b9def3af7cf10f1164e3be8d17d5a24"
+  },
+  "pair_hash_bundle": {
+    "actor_sha256": "1fe8e2e48b9b6f14674dad44203f6e4dfaef80fd6766c3244e2d3a080c5f67e1",
+    "critic_sha256": "bac3f84f6836fc3f9b39df9140d1356d13f7d9266f560a3e0f1420d82f94e334",
+    "optimizer_sha256": "bb6c77fe16ce985acda75cc5f7ba2bc34aa00c3d4b158e0a0ce6a33055808b05",
+    "torch_cpu_rng_sha256": "d4e462227f54f0c8243501d91317f13102afbb9f541d8254941cfb5fc7ba637e",
+    "torch_cuda_rng_sha256": [
+      "2822140d7b46075f947dd46a611859c4e69d788aa0f17f13b925b54afe57eda3"
+    ],
+    "numpy_rng_sha256": "4c194ec51409ac4f1da04e4930b9991fa2c427c244b1132507a3e8c68bda5e03",
+    "python_rng_sha256": "8e763562bff3fa6ef4f611bc71c4a48bcde11f75aae0c628f3d29bc824a8200d"
+  },
+  "pair_hash_bundle_sha256": "78c298c84cf7ec32f685154a0da07a26a50f0c312bb9bcf7cb8edb07935c53df",
+  "finished_at_utc": "2026-08-04T12:10:06.480964+00:00",
+  "trainer_exit_code": 0,
+  "trainer_error": null
+}

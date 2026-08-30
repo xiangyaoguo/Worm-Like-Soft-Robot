@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.bak*
+*.before_fix
+results/
+_unused_archive_*/
+.idea/
+.ipynb_checkpoints/

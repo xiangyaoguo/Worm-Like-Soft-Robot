@@ -1,0 +1,254 @@
+{
+  "schema": "formal_six_config_checkpoint1500_evaluator_config/v1",
+  "study_id": "formal_six_config_checkpoint1500_endpoint_20260813",
+  "status": "frozen_before_unified_endpoint_evaluation",
+  "runtime": {
+    "python": "C:\\Users\\PUBLIC_USER\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "python_sha256": "5f7b89a612c9b8af1d6456cdfcd1dbe5ca630849e79aebced9bee9a6694952ec",
+    "site_packages": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\RLMetamaterialLocomotion-main\\RLMetamaterialLocomotion-main\\.venv\\Lib\\site-packages",
+    "torch_num_threads_per_worker": 1,
+    "maximum_workers": 2
+  },
+  "formal_runs_root": "E:\\FormalTrainingResults\\runs",
+  "source_snapshot_root": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\_control\\code_snapshot",
+  "official_parent_formal_root": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2",
+  "immutable_runtime": {
+    "analysis_helper": {
+      "relative": "training/analyze_training_results.py",
+      "sha256": "39a66999fe3d45b8102eac7e41413fdcb376ee7ec2575c5743e312fdec1a35da"
+    },
+    "action_helper": {
+      "relative": "training/demo_metamaterial.py",
+      "sha256": "2f53f366a7353ecb37ee8324179336a90c96a84edf7f79565aa360b5654a6ac8"
+    },
+    "metric_helper": {
+      "relative": "training/evaluate_fast_forward_roll.py",
+      "sha256": "e330d6d5a323089edf60f26d316b34a24e4a0799cff9edb7fbaa312adf9232f9"
+    },
+    "rlmm_common": {
+      "relative": "training/rlmm_common.py",
+      "sha256": "35848f73c9b6e45b5ab4d5cdeac837979de2ef08c9e7d052fb9fc209a4ae6f59"
+    },
+    "environment_source": {
+      "relative": "metamaterial_envs/metamaterial_envs/env/metamaterial.py",
+      "sha256": "1f0335b65dab64569ddba7536df4a0ae2ab31c54904d0a041a68741988d32900"
+    }
+  },
+  "immutable_analysis_extension": {
+    "rotation_span_helper": {
+      "absolute": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\obs2_two_new_seed_three_arm_confirmation_20260810\\_control\\code_snapshot\\training\\evaluate_fast_forward_roll.py",
+      "sha256": "b74cedf730682fe8a2303046c189324b38810e7985cda61b377d727eb3d8ef41",
+      "permitted_symbols": ["_best_fit_rotation", "_rotation_excursion_metrics"]
+    }
+  },
+  "output_root": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\05_ExperimentalDataAndCode\\formal_six_config_endpoint_eval_20260813\\evaluation_final",
+  "arm_order": [
+    "HPR_DTH_PS",
+    "HPR_THDOT_PS",
+    "HPR_OBS_PS",
+    "HPR_O2_PS",
+    "HPR_O2_JS",
+    "SGRR_O2_JS"
+  ],
+  "arms": {
+    "HPR_DTH_PS": {
+      "paper_label": "HPR-DTH-PS",
+      "archive_tag": "DTH",
+      "channel": "dth",
+      "observation_func": "dth_neighbours",
+      "control_mode": "direct",
+      "reward_func": "horizontal_speed",
+      "share_policy": true,
+      "per_joint_k1_k2": false,
+      "observation_dim": 2,
+      "action_dim": 1,
+      "action_semantics": "bounded_direct_active_torque",
+      "official_endpoint_relative_template": null
+    },
+    "HPR_THDOT_PS": {
+      "paper_label": "HPR-THDOT-PS",
+      "archive_tag": "THDOT",
+      "channel": "thdot",
+      "observation_func": "dth_neighbours_plus_thdot",
+      "control_mode": "direct",
+      "reward_func": "horizontal_speed",
+      "share_policy": true,
+      "per_joint_k1_k2": false,
+      "observation_dim": 3,
+      "action_dim": 1,
+      "action_semantics": "bounded_direct_active_torque",
+      "official_endpoint_relative_template": null
+    },
+    "HPR_OBS_PS": {
+      "paper_label": "HPR-OBS-PS",
+      "archive_tag": "OBS",
+      "channel": "obs",
+      "observation_func": "dth_tot",
+      "control_mode": "direct",
+      "reward_func": "horizontal_speed",
+      "share_policy": true,
+      "per_joint_k1_k2": false,
+      "observation_dim": 1,
+      "action_dim": 1,
+      "action_semantics": "bounded_direct_active_torque",
+      "official_endpoint_relative_template": null
+    },
+    "HPR_O2_PS": {
+      "paper_label": "HPR-O2-PS",
+      "archive_tag": "HPR__O2shared",
+      "channel": "action",
+      "observation_func": "dth_tot_plus_friction_thdot",
+      "control_mode": "formula",
+      "reward_func": "horizontal_speed",
+      "share_policy": true,
+      "per_joint_k1_k2": false,
+      "observation_dim": 2,
+      "action_dim": 2,
+      "action_semantics": "unbounded_k1_k2_coordinates",
+      "official_endpoint_relative_template": null
+    },
+    "HPR_O2_JS": {
+      "paper_label": "HPR-O2-JS",
+      "archive_tag": "R0",
+      "channel": "action",
+      "observation_func": "dth_tot_plus_friction_thdot",
+      "control_mode": "formula",
+      "reward_func": "horizontal_speed",
+      "share_policy": false,
+      "per_joint_k1_k2": true,
+      "observation_dim": 2,
+      "action_dim": 2,
+      "action_semantics": "unbounded_k1_k2_coordinates",
+      "official_endpoint_relative_template": "formal/evaluations/formal__seed{seed}__R0__eval_attempt1.json"
+    },
+    "SGRR_O2_JS": {
+      "paper_label": "SGRR-O2-JS",
+      "archive_tag": "Rroll",
+      "channel": "action",
+      "observation_func": "dth_tot_plus_friction_thdot",
+      "control_mode": "formula",
+      "reward_func": "obs2_roll_repro_v2_1",
+      "share_policy": false,
+      "per_joint_k1_k2": true,
+      "observation_dim": 2,
+      "action_dim": 2,
+      "action_semantics": "unbounded_k1_k2_coordinates",
+      "official_endpoint_relative_template": "formal/evaluations/formal__seed{seed}__Rroll__eval_attempt1.json"
+    }
+  },
+  "training_seeds": [9201, 9202, 9203, 9204, 9205],
+  "seed_to_formal_run": {
+    "9201": 0,
+    "9202": 1,
+    "9203": 2,
+    "9204": 3,
+    "9205": 4
+  },
+  "checkpoint_batch": 1500,
+  "evaluation": {
+    "policy_mode": "deterministic_distribution_location",
+    "terrain": "flat",
+    "terrain_contact_mode": "legacy_flat",
+    "steps": 1000,
+    "reset_seeds": [
+      20264101,
+      20264102,
+      20264103,
+      20264104,
+      20264105,
+      20264106,
+      20264107,
+      20264108,
+      20264109,
+      20264110,
+      20264111,
+      20264112,
+      20264113,
+      20264114,
+      20264115,
+      20264116,
+      20264117,
+      20264118,
+      20264119,
+      20264120
+    ],
+    "desired_direction": "right",
+    "tail_side": "left",
+    "active_rotation_increment_degrees": 0.05,
+    "primary_lenient_rotation_span": {
+      "minimum_rotation_span_degrees": 360.0,
+      "direction_gate_used": false,
+      "displacement_gate_used": false,
+      "pulse_or_contact_gate_used": false
+    },
+    "secondary_strict_common_kinematic": {
+      "minimum_desired_net_rotation_degrees": 360.0,
+      "minimum_desired_active_rotation_fraction": 0.7,
+      "minimum_forward_body_lengths": 1.0,
+      "pulse_or_contact_gate_used": false
+    },
+    "run_discovery_threshold_successes": 10,
+    "scaled_signed_horizontal_progress_multiplier": 100.0,
+    "official_identity_absolute_tolerance": 0.000001,
+    "trace_export": "all_episodes_checkpoint1500"
+  },
+  "locked_common_controller": {
+    "scenario": "crawler",
+    "num_particles": 10,
+    "num_controlled_joints": 8,
+    "algorithm": "ppo",
+    "feedback_gain": 1.0,
+    "k_action_scale": 100.0,
+    "max_active_torque": 9.0,
+    "passive_kappa": 4.0,
+    "share_critic": true,
+    "centralised_critic": true,
+    "terrain_type": "flat",
+    "terrain_contact_mode": "legacy_flat",
+    "init_pos_randomness": 0.01,
+    "init_angle_range_degrees": 0.0,
+    "init_height_jitter": 0.0,
+    "formula_action_names": ["k1", "k2"],
+    "from_scratch": true,
+    "training_batches": 1500
+  },
+  "pre_registered_local_comparisons": [
+    {
+      "comparison_id": "DTH_vs_THDOT",
+      "a": "HPR_DTH_PS",
+      "b": "HPR_THDOT_PS"
+    },
+    {
+      "comparison_id": "DTH_vs_OBS",
+      "a": "HPR_DTH_PS",
+      "b": "HPR_OBS_PS"
+    },
+    {
+      "comparison_id": "OBS_vs_O2_PS",
+      "a": "HPR_OBS_PS",
+      "b": "HPR_O2_PS"
+    },
+    {
+      "comparison_id": "O2_PS_vs_O2_JS",
+      "a": "HPR_O2_PS",
+      "b": "HPR_O2_JS"
+    },
+    {
+      "comparison_id": "HPR_vs_SGRR_O2_JS",
+      "a": "HPR_O2_JS",
+      "b": "SGRR_O2_JS"
+    }
+  ],
+  "failure_policy": {
+    "fail_closed": true,
+    "resume_only_verified_identical_complete_tasks": true,
+    "refuse_incompatible_existing_output": true,
+    "refuse_missing_or_incomplete_training_run": true,
+    "refuse_nonfinite_checkpoint_or_rollout": true,
+    "verify_checkpoint_unchanged_before_after": true,
+    "verify_policy_unchanged_before_after": true,
+    "require_archived_identity_gate_for_hpr_o2_js_and_sgrr_o2_js": true,
+    "allow_checkpoint_selection": false,
+    "allow_raw_reward_cross_configuration_comparison": false
+  }
+}

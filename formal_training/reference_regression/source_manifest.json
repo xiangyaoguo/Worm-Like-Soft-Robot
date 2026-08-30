@@ -1,0 +1,522 @@
+{
+  "schema": "roll_learning_source_manifest/v1",
+  "created_at_utc": "2026-08-03T05:33:27.878901+00:00",
+  "files": {
+    "config": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\experiment_config.json",
+      "sha256": "bbacd8827913defbcbcab72448436451f7c6bf58c5a6b64adc4f5e11543f4a14"
+    },
+    "orchestrator": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\run_v2_1_regression.py",
+      "sha256": "f097ea7257ada1a7f2779f7ec4fdfb0e7487e5250825d2b63351d428125e4436"
+    },
+    "trainer": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\train_metamaterial.py",
+      "sha256": "4b4c5366b3b27bef7d2dde74a6ea011b7b9def3af7cf10f1164e3be8d17d5a24"
+    },
+    "environment": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\metamaterial.py",
+      "sha256": "1f0335b65dab64569ddba7536df4a0ae2ab31c54904d0a041a68741988d32900"
+    },
+    "audit_wrapper": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\audited_train_reward_only.py",
+      "sha256": "6e28312e0a6c107eaf51f8b03a103a55fef7a5886b8a8829f20653e0dbe71700"
+    },
+    "contract_test": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\test_obs2_roll_repro_v2_1.py",
+      "sha256": "fd0650ddfc4cc372ec56914e5edee8a0ab01bf2556bf4703d31c00acfe09688e"
+    },
+    "orchestrator_self_test": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\test_v2_1_regression_orchestrator.py",
+      "sha256": "a5f3a42e324499442740b4f024ede1c52509a2a1c5fec73c72d379ba655a54be"
+    },
+    "evaluation_wrapper": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\evaluate_fast_forward_roll.py",
+      "sha256": "fec95c3cc18a2c8d2debee16d022b54878752722fbd6d8df6b39ce3f51335c0f"
+    },
+    "frozen_evaluator": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\evaluate_fast_forward_roll.py",
+      "sha256": "fec95c3cc18a2c8d2debee16d022b54878752722fbd6d8df6b39ce3f51335c0f"
+    },
+    "protocol": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\V2_1_REGRESSION_PROTOCOL.md",
+      "sha256": "ea7fe8c88ac76a65bce92760c76c0f4a0e99835e6bb5e16fdc17107c43e1373a"
+    },
+    "launch_readiness": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\LAUNCH_READINESS.md",
+      "sha256": "2242be0fa18e0e8b871d49aa82c05334a487b5ab7fd7e85f5ce6b03254b3ee89"
+    },
+    "reference_config": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\reference_v2\\experiment_config.json",
+      "sha256": "62afe8011b00d732e0f26ca6ec770ff0ba97d9c039188ad04b5cad6819106610"
+    },
+    "reference_evaluation_summary": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\reference_v2\\repaired_evaluation_summary.json",
+      "sha256": "c6430215e85dfab5e6ff67ac322c19c080769c7ede0a946b8f5ad6f22c2c81ce"
+    },
+    "reference_v2::EVALUATION_REPAIR_RECEIPT.json": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\reference_v2\\EVALUATION_REPAIR_RECEIPT.json",
+      "sha256": "6016d84572839d5a796ce4bbefc5326e86becf276f6c971a923cbe6b5fca743a"
+    },
+    "reference_v2::experiment_config.json": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\reference_v2\\experiment_config.json",
+      "sha256": "62afe8011b00d732e0f26ca6ec770ff0ba97d9c039188ad04b5cad6819106610"
+    },
+    "reference_v2::initialization/pilot__seed9101__Rroll.json": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\reference_v2\\initialization\\pilot__seed9101__Rroll.json",
+      "sha256": "4caa2be64be3beac8ad76b54f42985ae8d85a5dc77b08d520cdcc37659af05a3"
+    },
+    "reference_v2::initialization/pilot__seed9102__Rroll.json": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\reference_v2\\initialization\\pilot__seed9102__Rroll.json",
+      "sha256": "d26b5f4a685215e9a23ebd9349aa949bade43f4f399caea9d3fe4a3ae3c6cc88"
+    },
+    "reference_v2::initialization/pilot__seed9103__Rroll.json": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\reference_v2\\initialization\\pilot__seed9103__Rroll.json",
+      "sha256": "357287435082dde34fa14f451b42881064ed478c51b6db3eec7db98696ee2948"
+    },
+    "reference_v2::repaired_evaluation_summary.json": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\reference_v2\\repaired_evaluation_summary.json",
+      "sha256": "c6430215e85dfab5e6ff67ac322c19c080769c7ede0a946b8f5ad6f22c2c81ce"
+    },
+    "reference_v2::source_manifest.json": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\reference_v2\\source_manifest.json",
+      "sha256": "123738ae274bd50364d6a51f1d62913141ddc63c9ddf8b18a794a17a62c9cfa4"
+    },
+    "code_snapshot::--checkpoint": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\--checkpoint",
+      "sha256": "f07b2a86fe34d97e0e2c087857c3d791961ddb43d77f8fb96b5b048b82533f72"
+    },
+    "code_snapshot::.gitignore": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\.gitignore",
+      "sha256": "35243fd61b9e5e45a8c64b6f09b6eb84018d1cf21135c00ed31dcccee47cf51b"
+    },
+    "code_snapshot::added_channels.patch": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\added_channels.patch",
+      "sha256": "f6350a08b8c32721fa42a9d088c8872a29f871af8fd94f9dd1ac396d4a233222"
+    },
+    "code_snapshot::metamaterial_envs/__init__.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "code_snapshot::metamaterial_envs/crawler_v0.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\crawler_v0.py",
+      "sha256": "b12c4a81fdfbaea70b920cced9780bb768f1fcbdd0951116f561911ed5284cda"
+    },
+    "code_snapshot::metamaterial_envs/env/__init__.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\env\\__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "code_snapshot::metamaterial_envs/env/crawler.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\env\\crawler.py",
+      "sha256": "f80d0941c60bc54ee60af50397d07d4fe772ffe6c136495bc2dd1908e687f446"
+    },
+    "code_snapshot::metamaterial_envs/env/crawler_simulation.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\env\\crawler_simulation.py",
+      "sha256": "b23a36eb54b37e63f847ff52da2f23876c5b35bfedd918e0f68ee0e3a800f0e5"
+    },
+    "code_snapshot::metamaterial_envs/env/crawler_torch.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\env\\crawler_torch.py",
+      "sha256": "52fbcd92577bf067e11800d055b4b0d3a6124eb66db25a597660363bbba3474d"
+    },
+    "code_snapshot::metamaterial_envs/env/crawler_torch_complex.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\env\\crawler_torch_complex.py",
+      "sha256": "1bd3f11cecbfe8965027c713413a120bb82eb27bd46e4a6a9df775f4098c3dd2"
+    },
+    "code_snapshot::metamaterial_envs/env/crawler_torch_numpy.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\env\\crawler_torch_numpy.py",
+      "sha256": "8596884e91c0b4396e99cdc2614aac5a478e42a8a5451637badb7906f20df81b"
+    },
+    "code_snapshot::metamaterial_envs/env/metamaterial.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\env\\metamaterial.py",
+      "sha256": "c2d7b6bbb7fef83fa80f252369b63f789facd38cd19bb7eb3d3efd61dfdc8e41"
+    },
+    "code_snapshot::metamaterial_envs/env/metamaterial.py.before_fix": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\env\\metamaterial.py.before_fix",
+      "sha256": "2c8fe3006940958e1aa68272f0c0fe713b3bff34e70e8f18dcee187d2c40cf7a"
+    },
+    "code_snapshot::metamaterial_envs/env/ring_2d.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\env\\ring_2d.py",
+      "sha256": "a7283dd1c57a54c208da28290f0022b288f60e7919de7a8d73109b45b9fb125b"
+    },
+    "code_snapshot::metamaterial_envs/env/ring_mesh.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\env\\ring_mesh.py",
+      "sha256": "bcd7e34063c569e83eda00b8085471303ff21a3f9cfe81088def7c7e0f4f3d1b"
+    },
+    "code_snapshot::metamaterial_envs/env/ring_torch.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\env\\ring_torch.py",
+      "sha256": "f234becf457e29d1d54981f531febc6569610d79e94e03aa3f986608fdb4fa17"
+    },
+    "code_snapshot::metamaterial_envs/env/ring_torch_numpy.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\env\\ring_torch_numpy.py",
+      "sha256": "5af5073b1547dcf23a64d212fef6d1e8620bc5e7c8176dc8589e9ec6dbb18737"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial.py",
+      "sha256": "9ecab646cd7f60d2f85be011d9e66f5b2bd8a66fa94424ccca2112c022c137b8"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/__init__.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/crawler_v0.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\crawler_v0.py",
+      "sha256": "b12c4a81fdfbaea70b920cced9780bb768f1fcbdd0951116f561911ed5284cda"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/__init__.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/crawler.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\crawler.py",
+      "sha256": "f80d0941c60bc54ee60af50397d07d4fe772ffe6c136495bc2dd1908e687f446"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/crawler_simulation.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\crawler_simulation.py",
+      "sha256": "b23a36eb54b37e63f847ff52da2f23876c5b35bfedd918e0f68ee0e3a800f0e5"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/crawler_torch.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\crawler_torch.py",
+      "sha256": "52fbcd92577bf067e11800d055b4b0d3a6124eb66db25a597660363bbba3474d"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/crawler_torch_complex.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\crawler_torch_complex.py",
+      "sha256": "1bd3f11cecbfe8965027c713413a120bb82eb27bd46e4a6a9df775f4098c3dd2"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/crawler_torch_numpy.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\crawler_torch_numpy.py",
+      "sha256": "8596884e91c0b4396e99cdc2614aac5a478e42a8a5451637badb7906f20df81b"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/metamaterial.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\metamaterial.py",
+      "sha256": "1f0335b65dab64569ddba7536df4a0ae2ab31c54904d0a041a68741988d32900"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/metamaterial.py.bak": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\metamaterial.py.bak",
+      "sha256": "be105058c5906fbb2dde976b67379711cff5cefcc1b889f878ebecdcbe2e8f6b"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/metamaterial.py.bak_abstract_methods": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\metamaterial.py.bak_abstract_methods",
+      "sha256": "1254a513064be94c8436cdf73c0928368a9dbb682e8d0932ff94178d75997d0a"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/metamaterial.py.bak_dtype": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\metamaterial.py.bak_dtype",
+      "sha256": "cc1a115752fdfe573e52033d9627f4a6c53623b5d937f53ef3c242b2c7e85798"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/metamaterial.py.bak_render_full": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\metamaterial.py.bak_render_full",
+      "sha256": "54fc173c7bab1fb109beb757a0d92db61a8b83438c76dcf64c846d92a871735b"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/metamaterial.py.bak_render_methods": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\metamaterial.py.bak_render_methods",
+      "sha256": "81509966df6d3316c8bbae3d05f796d499535e2e362bbdc4c16b0021b7c104dc"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/metamaterial.py.bak_wave_feedback": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\metamaterial.py.bak_wave_feedback",
+      "sha256": "db694cf76018452ee5d14d774ae2533350039254b919269eddec828bb371478a"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/metamaterial.py.before_fix": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\metamaterial.py.before_fix",
+      "sha256": "cc1a115752fdfe573e52033d9627f4a6c53623b5d937f53ef3c242b2c7e85798"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/ring_2d.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\ring_2d.py",
+      "sha256": "a7283dd1c57a54c208da28290f0022b288f60e7919de7a8d73109b45b9fb125b"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/ring_mesh.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\ring_mesh.py",
+      "sha256": "bcd7e34063c569e83eda00b8085471303ff21a3f9cfe81088def7c7e0f4f3d1b"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/ring_torch.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\ring_torch.py",
+      "sha256": "f234becf457e29d1d54981f531febc6569610d79e94e03aa3f986608fdb4fa17"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/env/ring_torch_numpy.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\ring_torch_numpy.py",
+      "sha256": "5af5073b1547dcf23a64d212fef6d1e8620bc5e7c8176dc8589e9ec6dbb18737"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/metamaterial.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\metamaterial.py",
+      "sha256": "9ecab646cd7f60d2f85be011d9e66f5b2bd8a66fa94424ccca2112c022c137b8"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/ring_2d_v0.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\ring_2d_v0.py",
+      "sha256": "cf9be6f50008f962a7f5be99142deafa51dc315a1d111fb1f52d38313559ddee"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/ring_mesh_v0.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\ring_mesh_v0.py",
+      "sha256": "3ed0407347675b3879096aae11fd4c98396363d4222e23902a26afa3109de600"
+    },
+    "code_snapshot::metamaterial_envs/metamaterial_envs/ring_v0.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\ring_v0.py",
+      "sha256": "ffa962679769586c2b7b3eb1ba132b611862b3ddb4e446e377915df022d02f08"
+    },
+    "code_snapshot::metamaterial_envs/pyproject.toml": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\pyproject.toml",
+      "sha256": "f9df64a098020fdbefd573c9e159cf521b52894c5ea456e03ac82090246c88f2"
+    },
+    "code_snapshot::metamaterial_envs/ring_2d_v0.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\ring_2d_v0.py",
+      "sha256": "cf9be6f50008f962a7f5be99142deafa51dc315a1d111fb1f52d38313559ddee"
+    },
+    "code_snapshot::metamaterial_envs/ring_mesh_v0.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\ring_mesh_v0.py",
+      "sha256": "3ed0407347675b3879096aae11fd4c98396363d4222e23902a26afa3109de600"
+    },
+    "code_snapshot::metamaterial_envs/ring_v0.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\metamaterial_envs\\ring_v0.py",
+      "sha256": "ffa962679769586c2b7b3eb1ba132b611862b3ddb4e446e377915df022d02f08"
+    },
+    "code_snapshot::MODIFICATION_REPORT.md": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\MODIFICATION_REPORT.md",
+      "sha256": "0d410bb2e2ef88563ee9b20cab29c74d4b3d422ab46b0f2c1510ad6f4796d1d9"
+    },
+    "code_snapshot::NEW_CHANNELS_GUIDE.md": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\NEW_CHANNELS_GUIDE.md",
+      "sha256": "ecfabbeac4eeb70cef619559811bfd4e1d13ca68f4577d59c089e8e8ab040a76"
+    },
+    "code_snapshot::policy_analysis_tools/analyze_policy.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\policy_analysis_tools\\analyze_policy.py",
+      "sha256": "9b3cec47a908d2f2c63c4856477c6e7372984cfba9f5b7a7ec08da709f1a8693"
+    },
+    "code_snapshot::policy_analysis_tools/README_ANALYSIS.md": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\policy_analysis_tools\\README_ANALYSIS.md",
+      "sha256": "6fdcaa285a2bc9a4eb3d1f44ba74508798080bdb3ec385e069db23df45d4e533"
+    },
+    "code_snapshot::policy_analysis_tools/README_ANALYSIS_TOOLS.md": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\policy_analysis_tools\\README_ANALYSIS_TOOLS.md",
+      "sha256": "42b8b4224e6bdd759cbabfcf2f4f0539aae805a79d8af453b8e21b9a009fd5b0"
+    },
+    "code_snapshot::policy_analysis_tools/training/analyze_policy_heatmaps.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\policy_analysis_tools\\training\\analyze_policy_heatmaps.py",
+      "sha256": "31645c16cefa58897a94749336b001c187b1483695d87f3b36e238894306c1a1"
+    },
+    "code_snapshot::policy_analysis_tools/training/train_then_analyze.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\policy_analysis_tools\\training\\train_then_analyze.py",
+      "sha256": "06c9bac668361ce3d8786869a61c59e95f881cf2c69863bd599e175289ef4a7f"
+    },
+    "code_snapshot::README.md": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\README.md",
+      "sha256": "efb186bd511420939cbc4a88b909b299b5cd38dc167aa7abe16de9b59a53d7e1"
+    },
+    "code_snapshot::requirements_minimal.txt": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\requirements_minimal.txt",
+      "sha256": "d43104ff78b0f611a5a35fa6e6c5540edc5c5de1c9856debb0aa4369db8ed42c"
+    },
+    "code_snapshot::run_crawler_flat_action_ddpg_k1_pm5_k2_sign_seed0.ps1": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\run_crawler_flat_action_ddpg_k1_pm5_k2_sign_seed0.ps1",
+      "sha256": "f847dec82e6c699c9d5b57796235e150c13354cd6246632f559e9cd9c1089e1d"
+    },
+    "code_snapshot::run_crawler_flat_obs_ddpg_seed0_seed1.ps1": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\run_crawler_flat_obs_ddpg_seed0_seed1.ps1",
+      "sha256": "77cfaf7834b26c86f70217a7dc9099f71b85d4e9f964cc85e619677f592fc2c9"
+    },
+    "code_snapshot::run_remaining_k1_k2_ddpg.ps1": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\run_remaining_k1_k2_ddpg.ps1",
+      "sha256": "7be77ef5a090aca407469dba6ab2e7729bcb38b272785a85870213ff1a032262"
+    },
+    "code_snapshot::run_rerun_crawler_flat_action_ddpg_seed2_with_check.ps1": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\run_rerun_crawler_flat_action_ddpg_seed2_with_check.ps1",
+      "sha256": "38510f87dbdb2520b032a5cdd314990526c3781750f100bd3766111cf37787cd"
+    },
+    "code_snapshot::run_seed0_stairs_new_channels_ppo.ps1": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\run_seed0_stairs_new_channels_ppo.ps1",
+      "sha256": "05ee3e9ad1accc109b805baadc4a97da5ee25a126433b24409710e5b3d66f27e"
+    },
+    "code_snapshot::run_seed0_stairs_paper_channels_ppo.ps1": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\run_seed0_stairs_paper_channels_ppo.ps1",
+      "sha256": "efd397e344cb6e8f9f7f2490999e374ae23f9d6a0aece2f4a702b85788907d23"
+    },
+    "code_snapshot::run_seed1_crawler_flat_thdot_action_ddpg.ps1": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\run_seed1_crawler_flat_thdot_action_ddpg.ps1",
+      "sha256": "18c21797a1041bc290ed289e824f4ef06b2bb0059ce944cf0ecdaca816550328"
+    },
+    "code_snapshot::run_seed1_crawler_stairs_four_channels_ppo.ps1": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\run_seed1_crawler_stairs_four_channels_ppo.ps1",
+      "sha256": "86554be4b9802e0fef31f67cab74d47f60fc4510362cbf13f06a3bc802ebda36"
+    },
+    "code_snapshot::run_seed1_stairs_k2_sign_ppo.ps1": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\run_seed1_stairs_k2_sign_ppo.ps1",
+      "sha256": "9efa3fab9eac9cb7a246d6054fd6f1f09f6f5e99aa84e2893525d3eea264d74a"
+    },
+    "code_snapshot::training/analyze_policy_heatmaps.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\analyze_policy_heatmaps.py",
+      "sha256": "6a106766aa354969e744ed36072028e9555ad23ed550439b1958804d6acd95a2"
+    },
+    "code_snapshot::training/analyze_training_results.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\analyze_training_results.py",
+      "sha256": "39a66999fe3d45b8102eac7e41413fdcb376ee7ec2575c5743e312fdec1a35da"
+    },
+    "code_snapshot::training/audited_train_reward_only.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\audited_train_reward_only.py",
+      "sha256": "6e28312e0a6c107eaf51f8b03a103a55fef7a5886b8a8829f20653e0dbe71700"
+    },
+    "code_snapshot::training/benchmark_plots.ipynb": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\benchmark_plots.ipynb",
+      "sha256": "c4527e68eae11ef4ebd465a5ab6d93e135c96dfe259684ef46fec941ad56793d"
+    },
+    "code_snapshot::training/benchmarks.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\benchmarks.py",
+      "sha256": "013da3bf2a378d289d62ca936757f3402bc17db375656da26d69563c616eccdb"
+    },
+    "code_snapshot::training/checkpoint_heatmap.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\checkpoint_heatmap.py",
+      "sha256": "3e39f69d2f5eeb16be7211504167f6df9fbadb615d3759aced7dacad4a7bf0b4"
+    },
+    "code_snapshot::training/comparison_plots.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\comparison_plots.py",
+      "sha256": "38c359cbcb1bd81f2c5cfd0c41c6b52b44903904ecb1914b4cd10fec28345aed"
+    },
+    "code_snapshot::training/demo_metamaterial.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\demo_metamaterial.py",
+      "sha256": "f958af1cb5ca4f76493e8ce6b1b31d17a5c0758536c0e0989f5ea8e521f7da71"
+    },
+    "code_snapshot::training/demo_metamaterial_batch.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\demo_metamaterial_batch.py",
+      "sha256": "d1a762cb64376fb6b6c9394d0b3e61082f6a1bf74e050ad8c5af69d4a6968eba"
+    },
+    "code_snapshot::training/evaluate_fast_forward_roll.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\evaluate_fast_forward_roll.py",
+      "sha256": "fec95c3cc18a2c8d2debee16d022b54878752722fbd6d8df6b39ce3f51335c0f"
+    },
+    "code_snapshot::training/experiment_sets.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\experiment_sets.py",
+      "sha256": "6f6152a3af8c67f16f66bc52fbdfc25b67554611b45b30a71832eacfe8234050"
+    },
+    "code_snapshot::training/grid_search.png": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\grid_search.png",
+      "sha256": "b4bf378cf01c1a03912d2849b12fbce0267e6d9ca88e846b72dd8dd0f53cde6b"
+    },
+    "code_snapshot::training/grid_search.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\grid_search.py",
+      "sha256": "d3961fa8fc6b489b76eafba52dc7f291da1fb6f3999e09f16c766ba8eb6a334e"
+    },
+    "code_snapshot::training/inspect_state.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\inspect_state.py",
+      "sha256": "ddb9874f8d19d1649c9ad3244d74560418e8a360e3b6386070b02eb7a753de1e"
+    },
+    "code_snapshot::training/mongo_atlas.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\mongo_atlas.py",
+      "sha256": "2cb481b54ab98af4ac9e06172feda3e527809fd1118a026c054fb5a6a0ca806e"
+    },
+    "code_snapshot::training/motion_frames.ipynb": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\motion_frames.ipynb",
+      "sha256": "9fcbb4b7ba01617bf80a6a1851ba6c463f94fe38f0bc8a8494c731a47eec6168"
+    },
+    "code_snapshot::training/numba_test.ipynb": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\numba_test.ipynb",
+      "sha256": "324643b03844fda8a12f7de05cdc7734a7e8d81cf4f76c1ca55ac0548214223e"
+    },
+    "code_snapshot::training/old/heatmap_anim.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\old\\heatmap_anim.py",
+      "sha256": "ebd637df4ee9719349b2fbc960944380999abff408d18d2dd5cf8a1c408dc493"
+    },
+    "code_snapshot::training/old/multi_replay.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\old\\multi_replay.py",
+      "sha256": "f7d48c54122bee36aa4252d9cde937d94eb2b93f1cf6be89399dbf48c8d253c7"
+    },
+    "code_snapshot::training/plots.ipynb": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\plots.ipynb",
+      "sha256": "ce05fe901cbf028f7ca93f591b0205551c8669dcb9f04c909dcb3f556e3aaccc"
+    },
+    "code_snapshot::training/policy_comp_movie.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\policy_comp_movie.py",
+      "sha256": "03fba5501bc9cb46cda157639cd95a649b84c2b86fe881355d81018a37e3cc4b"
+    },
+    "code_snapshot::training/replay_checkpoint.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\replay_checkpoint.py",
+      "sha256": "3691fa539d21959d2e35c8fc11b583e88c11f88080449b74dcc94ffe77515bf6"
+    },
+    "code_snapshot::training/rlmm_common.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\rlmm_common.py",
+      "sha256": "35848f73c9b6e45b5ab4d5cdeac837979de2ef08c9e7d052fb9fc209a4ae6f59"
+    },
+    "code_snapshot::training/search_tail_wave_teacher.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\search_tail_wave_teacher.py",
+      "sha256": "f6d500aaf94cc77c8aff8668286610617301c46294146339003d714a3b1e72c5"
+    },
+    "code_snapshot::training/sim.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\sim.py",
+      "sha256": "5ab9eb6d84bd56706f98c961993495bbf988dde3cbf0edd860e9b8856609869f"
+    },
+    "code_snapshot::training/simulation_command.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\simulation_command.py",
+      "sha256": "779b4c52f2e013ed30d974083efe3f424586a154c42d088416a33c7daac248b8"
+    },
+    "code_snapshot::training/tables.ipynb": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\tables.ipynb",
+      "sha256": "eab46073b3443a91242a59f0c1df6fe6d4d09b06622704c5d183e8fe060eb918"
+    },
+    "code_snapshot::training/temp/benchmarks_cache.json": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\temp\\benchmarks_cache.json",
+      "sha256": "43c86405ffbd5dd9e49d835de901177991db9433dfe6260477c2d1c04952654d"
+    },
+    "code_snapshot::training/temp/grid_search_result_13_10_(-20, 20)_(-50, 0).npy": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\temp\\grid_search_result_13_10_(-20, 20)_(-50, 0).npy",
+      "sha256": "3e88a8be99a3b1b1bd9123cca64079efc20a746a14f0db767a8962eaa31e1b65"
+    },
+    "code_snapshot::training/test.ipynb": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\test.ipynb",
+      "sha256": "9e7658d7dcb4add9f7d85dea0e7779d65f34291e6cd03e0547b5e93730522a02"
+    },
+    "code_snapshot::training/test_obs2_roll_repro_v1.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\test_obs2_roll_repro_v1.py",
+      "sha256": "f631c0600f7c4fee83f3d075cda0305b5ad3adf242c2413204d680679c643e90"
+    },
+    "code_snapshot::training/test_obs2_roll_repro_v2.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\test_obs2_roll_repro_v2.py",
+      "sha256": "4b236bc239f91c57fa11742fcf8080ba12136166f51fa062d0418e7f2048cdb2"
+    },
+    "code_snapshot::training/test_obs2_roll_repro_v2_1.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\test_obs2_roll_repro_v2_1.py",
+      "sha256": "fd0650ddfc4cc372ec56914e5edee8a0ab01bf2556bf4703d31c00acfe09688e"
+    },
+    "code_snapshot::training/test_v2_1_regression_orchestrator.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\test_v2_1_regression_orchestrator.py",
+      "sha256": "a5f3a42e324499442740b4f024ede1c52509a2a1c5fec73c72d379ba655a54be"
+    },
+    "code_snapshot::training/train.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\train.py",
+      "sha256": "d4cb22afda2f137de065341728947d3305db521f109743c10698b2004d8b47a3"
+    },
+    "code_snapshot::training/train_gpu.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\train_gpu.py",
+      "sha256": "bb2fa4fef2b3228cbd9b17b62c9f8bbeb4803f58d8e56437f84710e7bdeb765a"
+    },
+    "code_snapshot::training/train_metamaterial.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\train_metamaterial.py",
+      "sha256": "4b4c5366b3b27bef7d2dde74a6ea011b7b9def3af7cf10f1164e3be8d17d5a24"
+    },
+    "code_snapshot::training/train_then_analyze.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\train_then_analyze.py",
+      "sha256": "06c9bac668361ce3d8786869a61c59e95f881cf2c69863bd599e175289ef4a7f"
+    },
+    "code_snapshot::training/Untitled.ipynb": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\Untitled.ipynb",
+      "sha256": "cfcb708788cecb64e7b40dc17ece37ac8e3c360926d45e60e0863a74e4e3e654"
+    },
+    "code_snapshot::training/verify_environment_config.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\verify_environment_config.py",
+      "sha256": "9a964e2ba4692a436427f1c5032dfedc0175d040423580f80c278c686e85d612"
+    },
+    "code_snapshot::training/verify_scratch_wr.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\verify_scratch_wr.py",
+      "sha256": "5de9e03c84f3ea0c791a53f5f7b03fa767e708909a6c2a50968de252094eaffe"
+    },
+    "code_snapshot::training/verify_tail_roll_scheme4.py": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\training\\verify_tail_roll_scheme4.py",
+      "sha256": "9203dcf342393d6efd38541a98e6443ce07b6776f35433948c5c3bf216e9711f"
+    },
+    "code_snapshot::tunnel_support.diff": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\tunnel_support.diff",
+      "sha256": "a0fdf59bd6e1db676379c18e82606cb8a7be42443abc0c93b10277a7d40796b8"
+    },
+    "code_snapshot::tunnel_update.diff": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\tunnel_update.diff",
+      "sha256": "60caf1dec9db57bb22df6ba4e72ffc8c0297033a5bcd117262c44cfce4231975"
+    },
+    "code_snapshot::workspace.xml": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803\\_control\\code_snapshot\\workspace.xml",
+      "sha256": "4584e8e0dcab5a992d235f76e3d7b9c81a6aebf94cc196f0fa7b774481d80d72"
+    }
+  }
+}

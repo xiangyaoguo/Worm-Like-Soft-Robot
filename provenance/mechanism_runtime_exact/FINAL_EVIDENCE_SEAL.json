@@ -1,0 +1,29 @@
+{
+  "schema": "obs2_v2_1_k_final_evidence_seal/v1",
+  "study_id": "obs2_v2_1_k_mechanism_20260804",
+  "created_utc": "2026-08-04T16:55:55.4415820Z",
+  "scope": "Checkpoint-only K1/K2 mechanism intervention analysis; no training and no changes to observation, action, reward, PPO, or physics.",
+  "inventory": {
+    "training_seed_count": 5,
+    "condition_count": 59,
+    "policy_condition_case_count": 295,
+    "main_episode_count": 5900,
+    "independent_step_trace_case_count": 295,
+    "cross_environment_paired_episode_count": 400
+  },
+  "condition_matrix_sha256": "417f121b51326e4b25b60a42aa74af16ead017ef412e1f61c0c23b479d9b3c17",
+  "results_manifest_sha256": "e68b95e0897d40d89acf4aaf84f9d74f6c143dcb36a2f1a9fb70c2befbba4668",
+  "files": {
+    "FROZEN_CONTRACT_R2.json": "886005d7acc18a2e5844e5c2a48372d20e4c1b0d68893b6f9db9e0afdb75d45a",
+    "MAIN_EXECUTION_COMPLETE.json": "c537fbf320daa3c7e2484dfa06d5112d57cf5a1663f9d36cebe8f7c0975103d3",
+    "VALIDATION_PASS.json": "91d523eb2a6fc21f567ce59e15ec70e9aac1263436ad8a966813da927d97f85c",
+    "INDEPENDENT_TRACE_AUDIT_PASS.json": "6541717178aae8452f66a28c5bf6613bac2f0da7cc28a775dc798f8ae3d30d3c",
+    "CROSS_ENVIRONMENT_IDENTITY_AUDIT_PASS.json": "2cbe5c9544641da02031f6a06359f469b01231b004d8c4054503f38dbe96c440",
+    "analysis/analysis_manifest.json": "ab3c0f9d6c259c140bafcf44f87bd9bfc77936a04e1bdf0bf225d68f5e4383b5",
+    "analysis/EXTENDED_FIGURES_MANIFEST.json": "39fd78a1a89c12f64edb4d11a8cf8476353960e86273785df9755e84a0f501e7",
+    "FINAL_MECHANISM_SYNTHESIS.md": "82eb2b12b8e8133cf348bc697336db13479c42a4f1badb3a3ef49c6ca7984558",
+    "analysis/RECOMMENDED_K_ENVELOPE.csv": "d5845c1bde9c6a72c6d9823f1f6084c034c22788bcc6941ee6e029e47fbb52e4",
+    "VALIDATOR_SEMANTIC_AMENDMENT.md": "189e06bb4a9505c2988d5e770ffd19922bb80c1561e5f87a607d9290576435d7"
+  },
+  "claim_boundary": "The intervention matrix was frozen before main outcomes. The validator, statistical summaries, extended figures, and synthesis were transparently implemented post-result. Five training seeds are the independent policy units; evaluation seeds are repeated fixed-policy initial states."
+}

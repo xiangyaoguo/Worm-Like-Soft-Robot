@@ -1,0 +1,154 @@
+{
+  "schema": "roll_learning_reward_only_regression/v2.1",
+  "study_id": "obs2_reward_only_roll_reproduction_v2_1_regression_20260803",
+  "output_root": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_20260803",
+  "runtime": {
+    "python": "C:\\Users\\PUBLIC_USER\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "site_packages": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\RLMetamaterialLocomotion-main\\RLMetamaterialLocomotion-main\\.venv\\Lib\\site-packages",
+    "code_snapshot_relative": "_control\\code_snapshot",
+    "trainer_relative": "_control\\code_snapshot\\training\\train_metamaterial.py",
+    "audit_wrapper_relative": "_control\\code_snapshot\\training\\audited_train_reward_only.py",
+    "contract_test_relative": "_control\\code_snapshot\\training\\test_obs2_roll_repro_v2_1.py",
+    "orchestrator_self_test_relative": "_control\\code_snapshot\\training\\test_v2_1_regression_orchestrator.py",
+    "evaluation_wrapper_relative": "_control\\code_snapshot\\training\\evaluate_fast_forward_roll.py"
+  },
+  "reference_v2": {
+    "root_relative": "_control\\reference_v2",
+    "experiment_config_relative": "_control\\reference_v2\\experiment_config.json",
+    "initialization_relative": "_control\\reference_v2\\initialization",
+    "evaluation_summary_relative": "_control\\reference_v2\\repaired_evaluation_summary.json",
+    "expected_success_episodes": {
+      "9101": 0,
+      "9102": 10,
+      "9103": 8
+    }
+  },
+  "from_scratch_contract": {
+    "pretrained_model_path": null,
+    "pretrained_policy_only": false,
+    "resume_training_state": null,
+    "bc_teacher_checkpoint": null,
+    "wave_bc_teacher_json": null,
+    "bc_steps": 0,
+    "bc_epochs": 0,
+    "policy_anchor_coeff": 0.0,
+    "policy_anchor_anneal_batches": 0,
+    "compatible_input_expansion": false,
+    "pilot_or_historical_checkpoint_as_initialization": false
+  },
+  "controller_contract": {
+    "robot": "crawler",
+    "terrain": "flat",
+    "terrain_contact_mode": "legacy_flat",
+    "num_particles": 10,
+    "num_controlled_joints": 8,
+    "channel": "action",
+    "observation_func": "dth_tot_plus_friction_thdot",
+    "observation_channels": ["dth_tot", "theta_dot"],
+    "observation_dim_per_actor": 2,
+    "control_mode": "formula",
+    "action_names": ["k1", "k2"],
+    "action_dim_per_actor": 2,
+    "k_action_scale": 100.0,
+    "torque_formula": "clip(K1*dth_tot + K2*theta_dot, -9, 9)",
+    "rolling_observation": false,
+    "tail_roll_observation": false,
+    "fast_forward_observation": false,
+    "share_policy": false,
+    "per_joint_actor_count": 8,
+    "share_critic": true,
+    "centralised_critic": true
+  },
+  "rewards": {
+    "V2": "obs2_roll_repro_v2",
+    "V2_1": "obs2_roll_repro_v2_1"
+  },
+  "reward_revision": {
+    "base": "obs2_roll_repro_v2",
+    "candidate": "obs2_roll_repro_v2_1",
+    "only_semantic_change": "rolling-phase motion_quality coefficient 0.08 -> 0.16",
+    "preparation_motion_quality_coefficient": 0.08,
+    "rolling_motion_quality_coefficient_v2": 0.08,
+    "rolling_motion_quality_coefficient_v2_1": 0.16,
+    "rolling_reward_scale": 3.0,
+    "effective_delta_coefficient": 0.24
+  },
+  "reward_schedule": {
+    "schedule_type": "ability_gated_tail_synchrony",
+    "batch_schedule_used": false,
+    "launch_tail_lift_threshold": 0.2,
+    "launch_tail_forward_threshold": 0.1,
+    "launch_curl_prefix_threshold": 0.12,
+    "launch_head_contact_threshold": 0.5,
+    "launch_hold_steps": 8,
+    "pulse_rotation_degrees": 60.0,
+    "pulse_forward_body_fraction": 0.08,
+    "pulse_contact_nodes": 1.5,
+    "pulse_direction_fraction": 0.65
+  },
+  "training": {
+    "algorithm": "ppo",
+    "policy_depth": 2,
+    "policy_cells": 256,
+    "episode_steps": 1000,
+    "frames_per_batch": 10000,
+    "memory_size": 1000000,
+    "minibatch_size": 128,
+    "optim_steps": 10,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "max_grad_norm": 1.0,
+    "gamma": 0.99,
+    "clip_epsilon": 0.2,
+    "lambda_gae": 0.9,
+    "entropy_epsilon": 0.0001,
+    "save_every": 100,
+    "init_pos_randomness": 0.01,
+    "init_angle_range_degrees": 0.0,
+    "init_height_jitter": 0.0
+  },
+  "smoke": {
+    "seed": 9902,
+    "batches": 1,
+    "episode_steps": 20,
+    "frames_per_batch": 40,
+    "memory_size": 40,
+    "minibatch_size": 20,
+    "optim_steps": 1,
+    "force_cpu": true
+  },
+  "regression": {
+    "training_seeds": [9101, 9102, 9103],
+    "execution_order": [9101, 9102, 9103],
+    "batches": 600,
+    "evaluation_base_seed": 20264001,
+    "evaluation_episodes": 10,
+    "evaluation_steps": 1000,
+    "minimum_success_each_seed": 5,
+    "minimum_total_success_episodes": 24,
+    "seed_specific_minimum_success": {
+      "9101": 5,
+      "9102": 8,
+      "9103": 8
+    }
+  },
+  "episode_success": {
+    "minimum_roll_pulses": 4,
+    "minimum_desired_net_rotation_degrees": 360.0,
+    "minimum_direction_fraction": 0.7,
+    "minimum_forward_body_lengths": 1.0,
+    "maximum_mean_inter_pulse_interval_steps": 250.0
+  },
+  "failure_policy": {
+    "fail_closed": true,
+    "automatic_resume": false,
+    "automatic_retry": false,
+    "automatic_reward_change": false,
+    "seed_replacement": false,
+    "intermediate_checkpoint_selection": false,
+    "extend_beyond_600": false,
+    "formal_training_allowed": false,
+    "curve_only_early_stop": false,
+    "stop_future_queue_when_gate_mathematically_impossible_after_frozen_endpoint": true
+  }
+}

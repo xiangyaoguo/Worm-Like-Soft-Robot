@@ -1,0 +1,9 @@
+name: thesis-rl-metamaterial
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+# Optional Conda bootstrap only. After activating this environment, install
+# PyTorch, requirements.txt, and packages/metamaterial_envs exactly as described
+# in README.md section 2. This file intentionally does not guess a CPU/CUDA wheel.

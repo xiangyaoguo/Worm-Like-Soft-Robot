@@ -1,0 +1,26 @@
+{
+  "schema": "obs2_v2_1_k_technical_amendment/v1",
+  "study_id": "obs2_v2_1_k_mechanism_20260804",
+  "amendment_id": "TECHNICAL_AMENDMENT_001",
+  "stage": "pre_result_smoke_test",
+  "original_contract_sha256": "b10de8d29ba3a8fe34f719e3b5cc9d5d7db195c2ddedf415fcef16b9a2617124",
+  "failure": "Locked metadata drift: max_torque=None, expected=9.0",
+  "evidence_state": {
+    "smoke_pass_marker_existed": false,
+    "identity_directory_existed": false,
+    "main_results_directory_existed": false,
+    "scientific_outcomes_observed": false
+  },
+  "authorized_technical_change": "Do not require an absent checkpoint metadata key for max_torque; continue to require the constructed frozen environment to report max_torque=9.0 exactly.",
+  "scientific_contract_changes": {
+    "conditions": false,
+    "seeds": false,
+    "episode_count": false,
+    "steps": false,
+    "metrics": false,
+    "success_thresholds": false,
+    "observations": false,
+    "actions": false,
+    "physics": false
+  }
+}

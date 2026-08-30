@@ -1,0 +1,10 @@
+{
+  "status": "complete_automated_pending_human_blind_review",
+  "episode_rows": 600,
+  "run_rows": 30,
+  "configuration_rows": 6,
+  "formal_rolling_count": 146,
+  "crawling_candidate_count": 242,
+  "technical_exclusion_count": 0,
+  "output_root": "E:\\finalproject\\formal_gait_classification_20260824"
+}

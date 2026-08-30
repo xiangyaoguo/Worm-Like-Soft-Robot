@@ -1,0 +1,74 @@
+{
+  "schema": "formal_hpr_freeze_validation/representative_trajectories/v1",
+  "training_seed": 9201,
+  "reset_seed": 20264101,
+  "capture_conditions": [
+    "BASELINE",
+    "GLOBAL_K1_OFF",
+    "GLOBAL_K2_OFF",
+    "GLOBAL_BOTH_OFF"
+  ],
+  "common_initial_state_sha256": "f36587387972eeb1e5ca1fb2075915e6dea7f7f3c1898a32959dcd01c689c578",
+  "records": [
+    {
+      "training_seed": 9201,
+      "condition_id": "BASELINE",
+      "reset_seed": 20264101,
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\data\\trajectories\\seed9201__BASELINE__reset20264101.npz",
+      "trajectory_sha256": "9f60bdc227905700de01781428958e8995b54e5d6831b70c3ef1c36dd6eedaa0",
+      "initial_state_sha256": "f36587387972eeb1e5ca1fb2075915e6dea7f7f3c1898a32959dcd01c689c578",
+      "success_kinematic": true,
+      "desired_net_rotation_degrees": 905.4093132305571,
+      "desired_active_rotation_fraction": 0.895010395010395,
+      "forward_body_lengths": 3.521568653040522
+    },
+    {
+      "training_seed": 9201,
+      "condition_id": "GLOBAL_K1_OFF",
+      "reset_seed": 20264101,
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\data\\trajectories\\seed9201__GLOBAL_K1_OFF__reset20264101.npz",
+      "trajectory_sha256": "0ed739879dabeef3b84fdaeff5bc19772000b676d5b91491340c9986bdcd5466",
+      "initial_state_sha256": "f36587387972eeb1e5ca1fb2075915e6dea7f7f3c1898a32959dcd01c689c578",
+      "success_kinematic": false,
+      "desired_net_rotation_degrees": 0.07001945901607964,
+      "desired_active_rotation_fraction": 0.4810126582278481,
+      "forward_body_lengths": 0.6090278273185341
+    },
+    {
+      "training_seed": 9201,
+      "condition_id": "GLOBAL_K2_OFF",
+      "reset_seed": 20264101,
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\data\\trajectories\\seed9201__GLOBAL_K2_OFF__reset20264101.npz",
+      "trajectory_sha256": "43f8918e85cf1f9b33327ff5a867e6f4ceb0d8a0883d73a01c21cee3a3085e82",
+      "initial_state_sha256": "f36587387972eeb1e5ca1fb2075915e6dea7f7f3c1898a32959dcd01c689c578",
+      "success_kinematic": false,
+      "desired_net_rotation_degrees": 376.4548683730234,
+      "desired_active_rotation_fraction": 0.648936170212766,
+      "forward_body_lengths": 2.012117322314786
+    },
+    {
+      "training_seed": 9201,
+      "condition_id": "GLOBAL_BOTH_OFF",
+      "reset_seed": 20264101,
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\formal_hpr_freeze_validation_20260810\\data\\trajectories\\seed9201__GLOBAL_BOTH_OFF__reset20264101.npz",
+      "trajectory_sha256": "93e9e1fa339c06afbee4cab5721eaa418b23e9dfe8225831274c141393a0e474",
+      "initial_state_sha256": "f36587387972eeb1e5ca1fb2075915e6dea7f7f3c1898a32959dcd01c689c578",
+      "success_kinematic": false,
+      "desired_net_rotation_degrees": 0.021272965083730985,
+      "desired_active_rotation_fraction": 1.0,
+      "forward_body_lengths": -1.4157950326479055e-05
+    }
+  ],
+  "post_capture_integrity": {
+    "checkpoints_before_after_equal": true,
+    "checkpoint_sha256": {
+      "R0": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6",
+      "Rroll": "b2ae292c1e55a317ea29911cfcf67cf28db1cc82d5f5e36611c5bf4ca031bf34"
+    },
+    "policies_before_after_equal": true,
+    "policy_state_sha256": {
+      "R0": "eda904cad6333791d3f2912d46b72960d4ab73ec1b9b34f1d18584fe046b10ec",
+      "Rroll": "1840c9d351c15d5f3e539aac249a078285815959a5388a6d9ff353e59d7fea64"
+    }
+  }
+}

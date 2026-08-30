@@ -1,0 +1,151 @@
+{
+  "schema": "formal_hpr_freeze_validation/study_manifest/v1",
+  "matrix": "full",
+  "pilot": true,
+  "training_seeds": [
+    9201,
+    9205
+  ],
+  "condition_count": 1,
+  "episode_count_per_condition": 20,
+  "total_rollouts": 40,
+  "steps_per_rollout": 1000,
+  "common_kinematic_criterion": {
+    "minimum_desired_net_rotation_degrees": 360.0,
+    "minimum_desired_active_rotation_fraction": 0.7,
+    "minimum_forward_body_lengths": 1.0,
+    "pulse_or_contact_gate_used": false
+  },
+  "seed_manifests": [
+    {
+      "schema": "formal_hpr_freeze_validation/seed_manifest/v1",
+      "training_seed": 9201,
+      "matrix": "full",
+      "pilot": true,
+      "formal_checkpoint": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9201__R0\\checkpoint_1500.pt",
+      "checkpoint_sha256": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6",
+      "base_reset_seed": 20264101,
+      "episode_count_per_condition": 20,
+      "steps_per_episode": 1000,
+      "condition_count": 1,
+      "total_rollouts": 20,
+      "baseline_identity_audit": {
+        "official_evaluation": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\evaluations\\formal__seed9201__R0__eval_attempt1.json",
+        "episode_count": 20,
+        "all_common_criterion_success": true,
+        "absolute_tolerance": 1e-06,
+        "maximum_absolute_error": {
+          "initial_body_length": 0.0,
+          "forward_displacement": 0.0,
+          "forward_body_lengths": 0.0,
+          "net_best_fit_rotation_degrees": 0.0,
+          "desired_net_rotation_degrees": 0.0,
+          "desired_active_rotation_fraction": 0.0
+        },
+        "checkpoint_sha256": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6"
+      },
+      "post_run_integrity": {
+        "checkpoints_before_after_equal": true,
+        "checkpoint_sha256": {
+          "R0": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6",
+          "Rroll": "b2ae292c1e55a317ea29911cfcf67cf28db1cc82d5f5e36611c5bf4ca031bf34"
+        },
+        "policies_before_after_equal": true,
+        "policy_state_sha256": {
+          "R0": "eda904cad6333791d3f2912d46b72960d4ab73ec1b9b34f1d18584fe046b10ec",
+          "Rroll": "1840c9d351c15d5f3e539aac249a078285815959a5388a6d9ff353e59d7fea64"
+        }
+      },
+      "wall_seconds": 26.3780442999996,
+      "condition_summaries": [
+        {
+          "id": "BASELINE",
+          "family": "global",
+          "description": "Unmodified learned HPR outputs",
+          "op": "baseline",
+          "joint_zero_based": null,
+          "joint_one_based": null,
+          "episode_count": 20,
+          "kinematic_success_count": 20,
+          "kinematic_success_rate": 1.0,
+          "rotation_only_success_count": 20,
+          "desired_revolutions_mean": 2.26650603690148,
+          "desired_revolutions_sample_sd": 0.42822079355620085,
+          "direction_fraction_mean": 0.8507314915684349,
+          "direction_fraction_sample_sd": 0.04523811716106392,
+          "forward_body_lengths_mean": 3.1285480230589835,
+          "forward_body_lengths_sample_sd": 0.34712656288342564,
+          "mean_abs_k1": 182.9697638185509,
+          "mean_abs_k2": 77.46567150280346,
+          "mean_torque_boundary_saturation_fraction": 0.8935375000000001,
+          "wall_seconds": 26.366992099996423
+        }
+      ]
+    },
+    {
+      "schema": "formal_hpr_freeze_validation/seed_manifest/v1",
+      "training_seed": 9205,
+      "matrix": "full",
+      "pilot": true,
+      "formal_checkpoint": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\runs\\formal__seed9205__R0\\checkpoint_1500.pt",
+      "checkpoint_sha256": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383",
+      "base_reset_seed": 20264101,
+      "episode_count_per_condition": 20,
+      "steps_per_episode": 1000,
+      "condition_count": 1,
+      "total_rollouts": 20,
+      "baseline_identity_audit": {
+        "official_evaluation": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\formal\\evaluations\\formal__seed9205__R0__eval_attempt1.json",
+        "episode_count": 20,
+        "all_common_criterion_success": true,
+        "absolute_tolerance": 1e-06,
+        "maximum_absolute_error": {
+          "initial_body_length": 0.0,
+          "forward_displacement": 0.0,
+          "forward_body_lengths": 0.0,
+          "net_best_fit_rotation_degrees": 0.0,
+          "desired_net_rotation_degrees": 0.0,
+          "desired_active_rotation_fraction": 0.0
+        },
+        "checkpoint_sha256": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383"
+      },
+      "post_run_integrity": {
+        "checkpoints_before_after_equal": true,
+        "checkpoint_sha256": {
+          "R0": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383",
+          "Rroll": "1a770ff49a9681e322be2d1c7a68d8593a6b690a8390b04b22e3d92ec9b34f74"
+        },
+        "policies_before_after_equal": true,
+        "policy_state_sha256": {
+          "R0": "5e6bc71d2d1049a71a9d752b8a798f31e6883d658a97df13dd81ad14af7db351",
+          "Rroll": "5c0cd70fab5e9ef2670a81296c4e978bb083466883b9ae57bd865c8dcf5de336"
+        }
+      },
+      "wall_seconds": 26.454393799998797,
+      "condition_summaries": [
+        {
+          "id": "BASELINE",
+          "family": "global",
+          "description": "Unmodified learned HPR outputs",
+          "op": "baseline",
+          "joint_zero_based": null,
+          "joint_one_based": null,
+          "episode_count": 20,
+          "kinematic_success_count": 20,
+          "kinematic_success_rate": 1.0,
+          "rotation_only_success_count": 20,
+          "desired_revolutions_mean": 1.604744605656076,
+          "desired_revolutions_sample_sd": 0.2164912407719724,
+          "direction_fraction_mean": 0.8623090622348869,
+          "direction_fraction_sample_sd": 0.051814476484853295,
+          "forward_body_lengths_mean": 2.7073029136883395,
+          "forward_body_lengths_sample_sd": 0.4788409202430632,
+          "mean_abs_k1": 201.10344794772567,
+          "mean_abs_k2": 57.18894364877836,
+          "mean_torque_boundary_saturation_fraction": 0.85116875,
+          "wall_seconds": 26.43690840000636
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "formal_six_config_checkpoint1500_evaluator/v1",
+  "status": "tasks_complete",
+  "updated_at_utc": "2026-08-13T18:15:59.849183+00:00",
+  "config_sha256": "8a8daaa8bb72cf8d57ba8ef9ee286d59c570279dfcf38192b2b580c588242336",
+  "completed_tasks": 30,
+  "total_tasks": 30,
+  "remaining_tasks": 0,
+  "last_result": {
+    "schema": "formal_six_config_checkpoint1500_evaluator/v1",
+    "status": "complete",
+    "completed_at_utc": "2026-08-13T18:15:59.841626+00:00",
+    "wall_seconds": 791.8110585000013,
+    "study_manifest": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\05_ExperimentalDataAndCode\\formal_six_config_endpoint_eval_20260813\\evaluation_final\\STUDY_MANIFEST.json",
+    "study_manifest_sha256": "ed63934eb00bfd0a94d8c759f97d444b3489576551e64eba18db3ddeece8ad38",
+    "final_validation": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\05_ExperimentalDataAndCode\\formal_six_config_endpoint_eval_20260813\\evaluation_final\\FINAL_VALIDATION.json",
+    "final_validation_sha256": "7bf2175cb21df6314d12810bf6349fbd24f400a1753f5809fc6d02e87bf51c73",
+    "complete_locked_matrix": true,
+    "task_count": 30,
+    "nested_rollout_count": 600
+  },
+  "wall_seconds": 791.8189639000011
+}

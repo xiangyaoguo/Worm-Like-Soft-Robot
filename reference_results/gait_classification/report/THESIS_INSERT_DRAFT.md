@@ -1,0 +1,9 @@
+# Thesis insertion draft (English)
+
+## Methods: secondary gait classification
+
+To distinguish crawling candidates from other non-rolling locomotion, the 600 trajectories from the locked checkpoint-1500 endpoint evaluation were subjected to a secondary gait classification. The formal rolling definition was retained unchanged. A non-rolling trajectory entered the crawling screen only when it advanced by at least one initial body length and its whole-body rotation span remained below 180 degrees. After excluding the first 100 settling steps, steps 100--1000 were divided into four equal windows. A crawling candidate had to advance by at least 0.75 body length after settling, show positive progress above 0.05 body length in at least three windows, show circular joint-shape RMS amplitude of at least 20 degrees in at least three windows, and show a geometric material-coordinate support-index span of at least 1.5 indices in at least three observable windows. Periodicity was retained as a descriptive subtype rather than a hard gate. Rollouts were nested observations; configuration-level summaries used the five independently trained policies as the replication units.
+
+## Results: automated stage
+
+The automated stage identified 242 of 600 trajectories as crawling candidates and retained 146 trajectories under the unchanged formal rolling criterion. Before the deformation and support gates were applied, 242 trajectories met the simpler condition of at least one body length of forward progress without formal rolling and with rotation below the crawling exclusion threshold. The run-level distribution is reported in the accompanying gait-composition figure. These candidate labels must not be described as human-confirmed crawling until the anonymous visual-review form has been completed by independent raters.

@@ -1,0 +1,1326 @@
+{
+  "schema": "formal_six_config_checkpoint1500_evaluator/v1",
+  "mode": "contract_scan",
+  "status": "passed",
+  "checked_at_utc": "2026-08-13T18:02:48.024333+00:00",
+  "config": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\05_ExperimentalDataAndCode\\formal_six_config_endpoint_eval_20260813\\evaluator_config.json",
+  "config_sha256": "8a8daaa8bb72cf8d57ba8ef9ee286d59c570279dfcf38192b2b580c588242336",
+  "source_identity": {
+    "analysis_helper": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\_control\\code_snapshot\\training\\analyze_training_results.py",
+      "sha256": "39a66999fe3d45b8102eac7e41413fdcb376ee7ec2575c5743e312fdec1a35da"
+    },
+    "action_helper": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\_control\\code_snapshot\\training\\demo_metamaterial.py",
+      "sha256": "f958af1cb5ca4f76493e8ce6b1b31d17a5c0758536c0e0989f5ea8e521f7da71"
+    },
+    "metric_helper": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\_control\\code_snapshot\\training\\evaluate_fast_forward_roll.py",
+      "sha256": "fec95c3cc18a2c8d2debee16d022b54878752722fbd6d8df6b39ce3f51335c0f"
+    },
+    "rlmm_common": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\_control\\code_snapshot\\training\\rlmm_common.py",
+      "sha256": "35848f73c9b6e45b5ab4d5cdeac837979de2ef08c9e7d052fb9fc209a4ae6f59"
+    },
+    "environment_source": {
+      "path": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803_r2\\_control\\code_snapshot\\metamaterial_envs\\metamaterial_envs\\env\\metamaterial.py",
+      "sha256": "1f0335b65dab64569ddba7536df4a0ae2ab31c54904d0a041a68741988d32900"
+    },
+    "rotation_span_helper": {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\obs2_two_new_seed_three_arm_confirmation_20260810\\_control\\code_snapshot\\training\\evaluate_fast_forward_roll.py",
+      "sha256": "8be17990e19a4266314ba9f0adebf7b5a9d23b72a219b1e8d11e0fbe6055d6be",
+      "permitted_symbols": [
+        "_best_fit_rotation",
+        "_rotation_excursion_metrics"
+      ]
+    },
+    "python": {
+      "path": "C:\\Users\\PUBLIC_USER\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "sha256": "5f7b89a612c9b8af1d6456cdfcd1dbe5ca630849e79aebced9bee9a6694952ec"
+    },
+    "evaluator_script": {
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\GraduateThesisProject\\05_ExperimentalDataAndCode\\formal_six_config_endpoint_eval_20260813\\six_config_endpoint_evaluator.py",
+      "sha256": "3a6607051b5d03e6f89e25daf1876cd41bec5d49cdfad5578cc73c425239de38"
+    }
+  },
+  "rotation_span_self_tests": {
+    "status": "passed",
+    "cases": {
+      "positive_370": true,
+      "negative_370": true,
+      "return_to_start": true,
+      "rocking_below_360_span": false,
+      "boundary_359_9": false,
+      "boundary_360": true
+    }
+  },
+  "paired_reset_and_deterministic_action_gate": {
+    "status": "passed",
+    "reset_seed_count": 20,
+    "configuration_count": 6,
+    "maximum_initial_position_absolute_error": 0.0,
+    "deterministic_action_checks": {
+      "HPR_DTH_PS": {
+        "shape": [
+          1,
+          8,
+          1
+        ],
+        "exact_repeat": true,
+        "finite": true
+      },
+      "HPR_THDOT_PS": {
+        "shape": [
+          1,
+          8,
+          1
+        ],
+        "exact_repeat": true,
+        "finite": true
+      },
+      "HPR_OBS_PS": {
+        "shape": [
+          1,
+          8,
+          1
+        ],
+        "exact_repeat": true,
+        "finite": true
+      },
+      "HPR_O2_PS": {
+        "shape": [
+          1,
+          8,
+          2
+        ],
+        "exact_repeat": true,
+        "finite": true
+      },
+      "HPR_O2_JS": {
+        "shape": [
+          1,
+          8,
+          2
+        ],
+        "exact_repeat": true,
+        "finite": true
+      },
+      "SGRR_O2_JS": {
+        "shape": [
+          1,
+          8,
+          2
+        ],
+        "exact_repeat": true,
+        "finite": true
+      }
+    }
+  },
+  "task_count": 30,
+  "unique_checkpoint_paths": 30,
+  "unique_checkpoint_hashes": 30,
+  "training_log_rows_total": 45000,
+  "records": [
+    {
+      "task": {
+        "arm_id": "HPR_DTH_PS",
+        "seed": 9201,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_DTH_PS__run0__checkpoint1500",
+        "formal_run": 0,
+        "paper_label": "HPR-DTH-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9201__DTH",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9201__DTH\\checkpoint_1500.pt",
+        "checkpoint_sha256": "0c68a13b520616952abcbdb39357f890eb109962bf12b5d897c58d0a67aa9b47",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9201__DTH\\metadata.json",
+        "metadata_sha256": "497e97916052f64011798731ecda8797d14eb96e58ab8e17839a48947f654d19",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9201__DTH\\training_summary.json",
+        "training_summary_sha256": "fce6666ddd1843565b3a60c1d3ef8a3382a662dfb520dd7a1934ed58db3b071d",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9201__DTH\\training_log.csv",
+        "training_log_sha256": "2ca41814f6ae207fb65b49f25ce85da609dfb082f9f36ed0f19ae4b270d6b161",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9201__DTH",
+          "paper_label": "HPR-DTH-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 2,
+          "action_dim": 1
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9201__DTH",
+          "paper_label": "HPR-DTH-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 2,
+          "action_dim": 1
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_DTH_PS",
+        "seed": 9202,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_DTH_PS__run1__checkpoint1500",
+        "formal_run": 1,
+        "paper_label": "HPR-DTH-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9202__DTH",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9202__DTH\\checkpoint_1500.pt",
+        "checkpoint_sha256": "1c0167442ee274d889a6b9231655360a9f821cf965512ee9de072170499d1cc2",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9202__DTH\\metadata.json",
+        "metadata_sha256": "bc323c0a4069d6704e126547fffbb0abc9f9ac7f5305c419a099e708e4f9fb68",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9202__DTH\\training_summary.json",
+        "training_summary_sha256": "e31ca4f39fec3bb986601fbcdf75a79170efeeeccc42c3258c86e191e7c9c369",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9202__DTH\\training_log.csv",
+        "training_log_sha256": "5b3121431cbcac40496a7bc92dd5d82d9b94c395d7ab3e9b6b606801d3f2d8e6",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9202__DTH",
+          "paper_label": "HPR-DTH-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 2,
+          "action_dim": 1
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9202__DTH",
+          "paper_label": "HPR-DTH-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 2,
+          "action_dim": 1
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_DTH_PS",
+        "seed": 9203,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_DTH_PS__run2__checkpoint1500",
+        "formal_run": 2,
+        "paper_label": "HPR-DTH-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9203__DTH",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9203__DTH\\checkpoint_1500.pt",
+        "checkpoint_sha256": "6b7307c84db790549206b50e764bd8563fd7fa3399db5e883e4e98da61c49e12",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9203__DTH\\metadata.json",
+        "metadata_sha256": "74c9e7ec9c2876c2e8053aa3d1e0748500545f028fdee8ee9596ca4835d1fdff",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9203__DTH\\training_summary.json",
+        "training_summary_sha256": "08bddb3a11d513d03c41528287717e9bbf9b34a2ea39d027a40e14f8a4222e0d",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9203__DTH\\training_log.csv",
+        "training_log_sha256": "cf607fca7b595a342c85e4ab26e388ab60f7de912269b1bab8fbbeecc7711de9",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9203__DTH",
+          "paper_label": "HPR-DTH-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 2,
+          "action_dim": 1
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9203__DTH",
+          "paper_label": "HPR-DTH-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 2,
+          "action_dim": 1
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_DTH_PS",
+        "seed": 9204,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_DTH_PS__run3__checkpoint1500",
+        "formal_run": 3,
+        "paper_label": "HPR-DTH-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9204__DTH",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9204__DTH\\checkpoint_1500.pt",
+        "checkpoint_sha256": "d9e61cd2fb7d4fb2463508b68b7a7fcd8a4d403dd9b263cb090cb67cf381b5ed",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9204__DTH\\metadata.json",
+        "metadata_sha256": "d278750d7d23901933b0793915a2672f9d134d677047e9e3c7a41c725542c10c",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9204__DTH\\training_summary.json",
+        "training_summary_sha256": "3572b9aafdbd92858fc2d09adc276c85fe67686f7b4930f6af5cd39a23ef950c",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9204__DTH\\training_log.csv",
+        "training_log_sha256": "b08b3bf82a08c25e1a7c072635e42af74f78c61ea2e85d195db22e6c165a2a32",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9204__DTH",
+          "paper_label": "HPR-DTH-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 2,
+          "action_dim": 1
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9204__DTH",
+          "paper_label": "HPR-DTH-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 2,
+          "action_dim": 1
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_DTH_PS",
+        "seed": 9205,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_DTH_PS__run4__checkpoint1500",
+        "formal_run": 4,
+        "paper_label": "HPR-DTH-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9205__DTH",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9205__DTH\\checkpoint_1500.pt",
+        "checkpoint_sha256": "b53ec0322cb9061ebca9048867f6779ff379e7325bd7f97cb245b07441e537af",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9205__DTH\\metadata.json",
+        "metadata_sha256": "24a1611631185c448bc7fe882535f5daef3ec8ae67b26c4d991a864cef3e3b71",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9205__DTH\\training_summary.json",
+        "training_summary_sha256": "52ff583fec971d8b8a4ee36db40519f9a92101ffb25b1a1e311a6f0e2b7c8390",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9205__DTH\\training_log.csv",
+        "training_log_sha256": "a48ee44a4273bcff96244fc31c9bc897d913a88ccba557cf385ca4a1e4b813d3",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9205__DTH",
+          "paper_label": "HPR-DTH-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 2,
+          "action_dim": 1
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9205__DTH",
+          "paper_label": "HPR-DTH-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 2,
+          "action_dim": 1
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_THDOT_PS",
+        "seed": 9201,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_THDOT_PS__run0__checkpoint1500",
+        "formal_run": 0,
+        "paper_label": "HPR-THDOT-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9201__THDOT",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9201__THDOT\\checkpoint_1500.pt",
+        "checkpoint_sha256": "1c8aa2ccea13b07eb51510e8503a60ba59c41bc44bb1e6f0147d60913b6f2ee0",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9201__THDOT\\metadata.json",
+        "metadata_sha256": "e6b9c92ebf1df30c074a97c76c0db4c0ab43d0104ce632a583129aa106673cee",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9201__THDOT\\training_summary.json",
+        "training_summary_sha256": "f0d793e6dce5ded7fb326b30c7537ab9eed3d082f173eec74fd633d47e213d3b",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9201__THDOT\\training_log.csv",
+        "training_log_sha256": "08999e9d5e6656110cadfcad10713e28db7d841771e00bd64b3883c7a1545dc7",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9201__THDOT",
+          "paper_label": "HPR-THDOT-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 3,
+          "action_dim": 1
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9201__THDOT",
+          "paper_label": "HPR-THDOT-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 3,
+          "action_dim": 1
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_THDOT_PS",
+        "seed": 9202,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_THDOT_PS__run1__checkpoint1500",
+        "formal_run": 1,
+        "paper_label": "HPR-THDOT-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9202__THDOT",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9202__THDOT\\checkpoint_1500.pt",
+        "checkpoint_sha256": "1459f3faf731b01a763b4d6705db4e0af21ef6c148032308a41fe47c94965f1e",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9202__THDOT\\metadata.json",
+        "metadata_sha256": "a232f2a8a30160ae107cfef63e33e76a0b6f2b9448087be4da609eae5c382fc7",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9202__THDOT\\training_summary.json",
+        "training_summary_sha256": "3ba28da2e9d5bcb163a38c202191a53a8668f9a9ebcdfbc1a04a51204ec29b3d",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9202__THDOT\\training_log.csv",
+        "training_log_sha256": "34abb04bb1cbfe9c8544e8796cac1cf79e335d6bc813a1cd49bcc4417796d0df",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9202__THDOT",
+          "paper_label": "HPR-THDOT-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 3,
+          "action_dim": 1
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9202__THDOT",
+          "paper_label": "HPR-THDOT-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 3,
+          "action_dim": 1
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_THDOT_PS",
+        "seed": 9203,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_THDOT_PS__run2__checkpoint1500",
+        "formal_run": 2,
+        "paper_label": "HPR-THDOT-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9203__THDOT",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9203__THDOT\\checkpoint_1500.pt",
+        "checkpoint_sha256": "04496ed0468da4390399b81507d9c66613f4b8a2c4adc70ae50a05c0b8e655de",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9203__THDOT\\metadata.json",
+        "metadata_sha256": "7a180cae82f5ef2b2226f5ba642fbeff23eba9466c1cc4c4ba2ccd0c7cc4155d",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9203__THDOT\\training_summary.json",
+        "training_summary_sha256": "db126c53f20a3c9b7d425f3af891ef651e5dbb247ea8094cecd8e57a6ff0e872",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9203__THDOT\\training_log.csv",
+        "training_log_sha256": "0bf032c442f9736e4c0db103207bd854802682a6af73603883ec48da394d766b",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9203__THDOT",
+          "paper_label": "HPR-THDOT-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 3,
+          "action_dim": 1
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9203__THDOT",
+          "paper_label": "HPR-THDOT-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 3,
+          "action_dim": 1
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_THDOT_PS",
+        "seed": 9204,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_THDOT_PS__run3__checkpoint1500",
+        "formal_run": 3,
+        "paper_label": "HPR-THDOT-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9204__THDOT",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9204__THDOT\\checkpoint_1500.pt",
+        "checkpoint_sha256": "d9f8d8a75e3c26088b8d69becac96eb3c85cbbaba71a5afa98a2d7d75efe48ed",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9204__THDOT\\metadata.json",
+        "metadata_sha256": "d74130ae757ee7b89c2a13cae395baaee888294e0cd185464621550cc29dad6d",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9204__THDOT\\training_summary.json",
+        "training_summary_sha256": "ab277ca59e555fa7eb2544a13e4c4dad98e584108b1b517d657b00e7c52521a7",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9204__THDOT\\training_log.csv",
+        "training_log_sha256": "736995868a36a802ac80a89f65e2552fe453acb0ef9878583746fead5eb2dd62",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9204__THDOT",
+          "paper_label": "HPR-THDOT-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 3,
+          "action_dim": 1
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9204__THDOT",
+          "paper_label": "HPR-THDOT-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 3,
+          "action_dim": 1
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_THDOT_PS",
+        "seed": 9205,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_THDOT_PS__run4__checkpoint1500",
+        "formal_run": 4,
+        "paper_label": "HPR-THDOT-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9205__THDOT",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9205__THDOT\\checkpoint_1500.pt",
+        "checkpoint_sha256": "e32cb0bd943f98147620e66f2b77a404bf2a1d8ac3761f1126dd7b450b79a186",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9205__THDOT\\metadata.json",
+        "metadata_sha256": "92f515c4747d7ae7fbb9dcc880d90583178d9d39ca9620309e3d98b2e587065f",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9205__THDOT\\training_summary.json",
+        "training_summary_sha256": "227f27bb815d343c82678a2884d4b86f3524918538bbf5445697c9aee650e56c",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9205__THDOT\\training_log.csv",
+        "training_log_sha256": "97e29c6be61866c6f74f1ffc7864c21a784cd776301024fb04045afdb059069c",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9205__THDOT",
+          "paper_label": "HPR-THDOT-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 3,
+          "action_dim": 1
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9205__THDOT",
+          "paper_label": "HPR-THDOT-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 3,
+          "action_dim": 1
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_OBS_PS",
+        "seed": 9201,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_OBS_PS__run0__checkpoint1500",
+        "formal_run": 0,
+        "paper_label": "HPR-OBS-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9201__OBS",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9201__OBS\\checkpoint_1500.pt",
+        "checkpoint_sha256": "165c6158688ab961e5c19f62b3025415801af1eb3abe3f58476d751b1ca65199",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9201__OBS\\metadata.json",
+        "metadata_sha256": "5a6755f90ec5b34381fb410f65ddd73beae60297cb7972d19d4f1c8b265288b1",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9201__OBS\\training_summary.json",
+        "training_summary_sha256": "ac3bf8e5e29ca0c0829bab7b28f9480b919505f1df799c3ae1beae23c1830b68",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9201__OBS\\training_log.csv",
+        "training_log_sha256": "438118b44b3d7bbc80a3525fd9e7f291c2fafa401a862a131788346f4e89d254",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9201__OBS",
+          "paper_label": "HPR-OBS-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 1,
+          "action_dim": 1
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9201__OBS",
+          "paper_label": "HPR-OBS-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 1,
+          "action_dim": 1
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_OBS_PS",
+        "seed": 9202,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_OBS_PS__run1__checkpoint1500",
+        "formal_run": 1,
+        "paper_label": "HPR-OBS-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9202__OBS",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9202__OBS\\checkpoint_1500.pt",
+        "checkpoint_sha256": "24b12f863937f9c69f5adb1271e98ac6cbd22b36aefbaa8ae46178637f0ff091",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9202__OBS\\metadata.json",
+        "metadata_sha256": "44c763383d16afd09daf910e0faee0c37d424740d64bc8e724e8e168d1f97b95",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9202__OBS\\training_summary.json",
+        "training_summary_sha256": "7698bb6e40f055f4666ecee26e5cfa2d59a83824023137a466ba12ffb04158bb",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9202__OBS\\training_log.csv",
+        "training_log_sha256": "87ff762aeb6a87b4ead5df9cc4135a717d51679527ba8140175153986ba1fd2e",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9202__OBS",
+          "paper_label": "HPR-OBS-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 1,
+          "action_dim": 1
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9202__OBS",
+          "paper_label": "HPR-OBS-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 1,
+          "action_dim": 1
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_OBS_PS",
+        "seed": 9203,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_OBS_PS__run2__checkpoint1500",
+        "formal_run": 2,
+        "paper_label": "HPR-OBS-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9203__OBS",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9203__OBS\\checkpoint_1500.pt",
+        "checkpoint_sha256": "6dcd7af149b5b13ba1eaf7d181193c910a7caa136b64b73ecb522ce6f8df2add",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9203__OBS\\metadata.json",
+        "metadata_sha256": "59d7ee4a8ed9aaf786d427d8416657265f9260de97fede923b97598b4ae0783a",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9203__OBS\\training_summary.json",
+        "training_summary_sha256": "6c8805955e0db37bae378c57a1be98ff86a9d645ff6da606d3440ff0f047122a",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9203__OBS\\training_log.csv",
+        "training_log_sha256": "e7916c25638cde4688e49442a109fabf24659928cefb811e570c76f3b6f37e19",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9203__OBS",
+          "paper_label": "HPR-OBS-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 1,
+          "action_dim": 1
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9203__OBS",
+          "paper_label": "HPR-OBS-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 1,
+          "action_dim": 1
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_OBS_PS",
+        "seed": 9204,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_OBS_PS__run3__checkpoint1500",
+        "formal_run": 3,
+        "paper_label": "HPR-OBS-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9204__OBS",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9204__OBS\\checkpoint_1500.pt",
+        "checkpoint_sha256": "8fda7817e99d0a5366779de14f39348554d661c0b715dfdf8816ad5b612bbc6d",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9204__OBS\\metadata.json",
+        "metadata_sha256": "e684afe0d34a7c969c8785ccbfcb14c3fb0d4ead586762e8d428ccf7081280b8",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9204__OBS\\training_summary.json",
+        "training_summary_sha256": "0b23a0ae5ee1e9e31151522ffa9f57ea9cbdde5a853a4c228f8d4fd7ee8cdfc6",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9204__OBS\\training_log.csv",
+        "training_log_sha256": "1cd7849149fba43ff57d23ca803d0a8c207bc530b950a96f4f6074be7ecab42e",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9204__OBS",
+          "paper_label": "HPR-OBS-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 1,
+          "action_dim": 1
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9204__OBS",
+          "paper_label": "HPR-OBS-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 1,
+          "action_dim": 1
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_OBS_PS",
+        "seed": 9205,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_OBS_PS__run4__checkpoint1500",
+        "formal_run": 4,
+        "paper_label": "HPR-OBS-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9205__OBS",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9205__OBS\\checkpoint_1500.pt",
+        "checkpoint_sha256": "ed3278b306d8b513943c1c6156cf7f409073d54f3d6a3802db86c036ea86124c",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9205__OBS\\metadata.json",
+        "metadata_sha256": "748baaf302a408c81bdcc945c3355e7c1cc4b8db74c20f6df42b7b3a210f6252",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9205__OBS\\training_summary.json",
+        "training_summary_sha256": "6147b18a79b1312740561e4c1fef4829c2718096bef1f302d77b7fbf4260c8d3",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9205__OBS\\training_log.csv",
+        "training_log_sha256": "d4808c2deefec6e876135d6e8e18c006310ffb7af5bf3313b873f7a3872c70df",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9205__OBS",
+          "paper_label": "HPR-OBS-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 1,
+          "action_dim": 1
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9205__OBS",
+          "paper_label": "HPR-OBS-PS",
+          "action_semantics": "bounded_direct_active_torque",
+          "observation_dim": 1,
+          "action_dim": 1
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_O2_PS",
+        "seed": 9201,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_O2_PS__run0__checkpoint1500",
+        "formal_run": 0,
+        "paper_label": "HPR-O2-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9201__HPR__O2shared",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9201__HPR__O2shared\\checkpoint_1500.pt",
+        "checkpoint_sha256": "632389558802adb0b5a178a9c2c1706bdc5ab2bde889a34ee04e4b17c30476d0",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9201__HPR__O2shared\\metadata.json",
+        "metadata_sha256": "a4cef0d4467bf677caa38b7f5b2f2cd910d4653c632696bf1b3bb855ff69cf8b",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9201__HPR__O2shared\\training_summary.json",
+        "training_summary_sha256": "8d694ef70207ebd1a1e9861003e180f7a8d5f5c8392bcaec5467790933a74cae",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9201__HPR__O2shared\\training_log.csv",
+        "training_log_sha256": "e54f326aafc254d3255a0b42a5f2726f5729da05deac476c287b30f1982bcdc3",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9201__HPR__O2shared",
+          "paper_label": "HPR-O2-PS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9201__HPR__O2shared",
+          "paper_label": "HPR-O2-PS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_O2_PS",
+        "seed": 9202,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_O2_PS__run1__checkpoint1500",
+        "formal_run": 1,
+        "paper_label": "HPR-O2-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9202__HPR__O2shared",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9202__HPR__O2shared\\checkpoint_1500.pt",
+        "checkpoint_sha256": "7be3e18700f178ca8037aa33a4c9a75808383b1784714b4c8edb660b9d2734a9",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9202__HPR__O2shared\\metadata.json",
+        "metadata_sha256": "702212f44cc0940b284af93db70257e2073bd04e6762eeba33777a969bc2fbb5",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9202__HPR__O2shared\\training_summary.json",
+        "training_summary_sha256": "0ad07381f69a49d5c9946eec5f605839143423fb23767702230123c9fda49a5e",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9202__HPR__O2shared\\training_log.csv",
+        "training_log_sha256": "dc29fc4e6d57c5285abbee2ba9be32f7619899cb7bbb53c8c3487ccdccb6d443",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9202__HPR__O2shared",
+          "paper_label": "HPR-O2-PS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9202__HPR__O2shared",
+          "paper_label": "HPR-O2-PS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_O2_PS",
+        "seed": 9203,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_O2_PS__run2__checkpoint1500",
+        "formal_run": 2,
+        "paper_label": "HPR-O2-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9203__HPR__O2shared",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9203__HPR__O2shared\\checkpoint_1500.pt",
+        "checkpoint_sha256": "b121450845f8143b7136a7bc91f79e59484a6cdbfc24cd9f72998cb43834e32f",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9203__HPR__O2shared\\metadata.json",
+        "metadata_sha256": "b6d692d5c77b79444deb075b91dec1996fcfe82b9b37bb6f3e10d00ba8598be7",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9203__HPR__O2shared\\training_summary.json",
+        "training_summary_sha256": "d8fdb4edea548b8783ed7779c02391dbe4ead3cdd4c033102f0c2c92eb81ed23",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9203__HPR__O2shared\\training_log.csv",
+        "training_log_sha256": "2c1fe8aa6d7e651c0d4ab6e36bc2ce62659bc5ef7cdd8045ecec8cdf9b4e1145",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9203__HPR__O2shared",
+          "paper_label": "HPR-O2-PS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9203__HPR__O2shared",
+          "paper_label": "HPR-O2-PS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_O2_PS",
+        "seed": 9204,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_O2_PS__run3__checkpoint1500",
+        "formal_run": 3,
+        "paper_label": "HPR-O2-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9204__HPR__O2shared",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9204__HPR__O2shared\\checkpoint_1500.pt",
+        "checkpoint_sha256": "d646088e649ce63b3c1ab82e91a64d04c265c790a92eb5ae129db30e45a5ef6f",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9204__HPR__O2shared\\metadata.json",
+        "metadata_sha256": "12cb551507993476caeb97759d9ffefb65372366e911b5019f1724acb6f6fa44",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9204__HPR__O2shared\\training_summary.json",
+        "training_summary_sha256": "bcbc3009ff7ad7b360e05ed612ea644fb94a889107e00bd72e34115c329474c6",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9204__HPR__O2shared\\training_log.csv",
+        "training_log_sha256": "2fcdbbea6e7d793bc1762815b35049fe289eb7c6b5584a6cddf7718a009886bf",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9204__HPR__O2shared",
+          "paper_label": "HPR-O2-PS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9204__HPR__O2shared",
+          "paper_label": "HPR-O2-PS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_O2_PS",
+        "seed": 9205,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_O2_PS__run4__checkpoint1500",
+        "formal_run": 4,
+        "paper_label": "HPR-O2-PS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9205__HPR__O2shared",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9205__HPR__O2shared\\checkpoint_1500.pt",
+        "checkpoint_sha256": "fa7149fa1d2ef815c9fe914ba5f8e1f7b5ea58fd12b04eb6a9218343295448a7",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9205__HPR__O2shared\\metadata.json",
+        "metadata_sha256": "04dc373f5cba087288a97e44274c73f2446a658436bb99ee829db562ad79787b",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9205__HPR__O2shared\\training_summary.json",
+        "training_summary_sha256": "9f2e4748a5a5146a073a222498101ae93b4a722b4059a705e4189b0763b9284c",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9205__HPR__O2shared\\training_log.csv",
+        "training_log_sha256": "d9ac59c33864770e92b0e74941f7e96e2282dfc6540a32683a1b754a2d084e85",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9205__HPR__O2shared",
+          "paper_label": "HPR-O2-PS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9205__HPR__O2shared",
+          "paper_label": "HPR-O2-PS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_O2_JS",
+        "seed": 9201,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_O2_JS__run0__checkpoint1500",
+        "formal_run": 0,
+        "paper_label": "HPR-O2-JS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9201__R0",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9201__R0\\checkpoint_1500.pt",
+        "checkpoint_sha256": "b697425ffa994ccc4ce32db29573e6f87576c3c16ce39ea35a50a38a183e7ea6",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9201__R0\\metadata.json",
+        "metadata_sha256": "e62561851c93a6506eb9560d73ed90c45564c0f6cab32312bd74ca20173798a3",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9201__R0\\training_summary.json",
+        "training_summary_sha256": "eb8e34d2fd7b730aeac5eb6e586bbd81a34968a22a608ac811e6ad4619121522",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9201__R0\\training_log.csv",
+        "training_log_sha256": "b85b16102d6552530ca09aab7ad819a80d17a63dfe06c4eec9c94288ef157861",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9201__R0",
+          "paper_label": "HPR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9201__R0",
+          "paper_label": "HPR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_O2_JS",
+        "seed": 9202,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_O2_JS__run1__checkpoint1500",
+        "formal_run": 1,
+        "paper_label": "HPR-O2-JS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9202__R0",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9202__R0\\checkpoint_1500.pt",
+        "checkpoint_sha256": "e3715c6deb1410a85a12261883a2eb80d5a8ff9f95c32f7b17624c5b5823cfdc",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9202__R0\\metadata.json",
+        "metadata_sha256": "39bdbc476d9ba137e0cd77c50acb098aea8399441a3d6bc9fbe16b6459e0614a",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9202__R0\\training_summary.json",
+        "training_summary_sha256": "5f70d91f32ed1de6a78ca81b2fb591652a93e2f8e711536a714ad798a66662d2",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9202__R0\\training_log.csv",
+        "training_log_sha256": "9dbbd4c0184c26a823264bf5be1e4edfb611f9fc23aae4547f2e500974148607",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9202__R0",
+          "paper_label": "HPR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9202__R0",
+          "paper_label": "HPR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_O2_JS",
+        "seed": 9203,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_O2_JS__run2__checkpoint1500",
+        "formal_run": 2,
+        "paper_label": "HPR-O2-JS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9203__R0",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9203__R0\\checkpoint_1500.pt",
+        "checkpoint_sha256": "0428d9a86b6622d924738c68fe09df4c6ab922e2a3225a5c24ba41e96eb1c4b8",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9203__R0\\metadata.json",
+        "metadata_sha256": "00405433d666ea62421d48086f3c5ea3f9f70dd46857098749d64144e6588017",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9203__R0\\training_summary.json",
+        "training_summary_sha256": "5e4bdaac4a891bf479f7c26f2e34b0e468a972ae956ef7c4b22b827b0b02e21b",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9203__R0\\training_log.csv",
+        "training_log_sha256": "423f46bb26103a055d5ed9220b7aa1539fbf6ac6090fe26b0e34ee5f275bb06d",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9203__R0",
+          "paper_label": "HPR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9203__R0",
+          "paper_label": "HPR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_O2_JS",
+        "seed": 9204,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_O2_JS__run3__checkpoint1500",
+        "formal_run": 3,
+        "paper_label": "HPR-O2-JS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9204__R0",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9204__R0\\checkpoint_1500.pt",
+        "checkpoint_sha256": "76b6cecf570069a7c7f2e65754114f541a0e475ab395378649c74a9abd061a1a",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9204__R0\\metadata.json",
+        "metadata_sha256": "f2a66896e9f74da9ad641d1c4e357b8d0156463e3d68ec312bb45f3a797d799f",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9204__R0\\training_summary.json",
+        "training_summary_sha256": "7185ea6590ce76711a4b87c3fa9eaf58aca3ce4bcaa26674303f8ee4f37078ce",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9204__R0\\training_log.csv",
+        "training_log_sha256": "de4de76fc84415c551ffc1c95d523132f42502bf3ed11964cafa674ee32ee2ca",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9204__R0",
+          "paper_label": "HPR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9204__R0",
+          "paper_label": "HPR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "HPR_O2_JS",
+        "seed": 9205,
+        "checkpoint_batch": 1500,
+        "task_id": "HPR_O2_JS__run4__checkpoint1500",
+        "formal_run": 4,
+        "paper_label": "HPR-O2-JS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9205__R0",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9205__R0\\checkpoint_1500.pt",
+        "checkpoint_sha256": "0edb440aa10351b24f8208880b208fc66ebf03cb548e803a7e45f85062eb9383",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9205__R0\\metadata.json",
+        "metadata_sha256": "4fd5e3f5569cffe1e6bb2e358df47a67ae22a23f3e3df75f5f3c4d196b18a382",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9205__R0\\training_summary.json",
+        "training_summary_sha256": "5e5f2490256939e6351d809e722bf4f60f48923ec45a40d61b06f7dbda6f1944",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9205__R0\\training_log.csv",
+        "training_log_sha256": "f73f42fe449efd19c628eb030c3df88161b0fc50e733278beb353c6d1e3a0c78",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9205__R0",
+          "paper_label": "HPR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9205__R0",
+          "paper_label": "HPR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "SGRR_O2_JS",
+        "seed": 9201,
+        "checkpoint_batch": 1500,
+        "task_id": "SGRR_O2_JS__run0__checkpoint1500",
+        "formal_run": 0,
+        "paper_label": "SGRR-O2-JS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9201__Rroll",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9201__Rroll\\checkpoint_1500.pt",
+        "checkpoint_sha256": "b2ae292c1e55a317ea29911cfcf67cf28db1cc82d5f5e36611c5bf4ca031bf34",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9201__Rroll\\metadata.json",
+        "metadata_sha256": "be487afced2adabafcab5906a94775d9c40df6bd6f37f92a131e7dd4817464de",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9201__Rroll\\training_summary.json",
+        "training_summary_sha256": "eb036c548e276f3d9e2e8a4e8a097feb171846654c7af4161aab69ae66111cdf",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9201__Rroll\\training_log.csv",
+        "training_log_sha256": "4677324aab05259fe8f7b6958a8e196302f01f9db8203c3e224e8d985b588f3f",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9201__Rroll",
+          "paper_label": "SGRR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9201__Rroll",
+          "paper_label": "SGRR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "SGRR_O2_JS",
+        "seed": 9202,
+        "checkpoint_batch": 1500,
+        "task_id": "SGRR_O2_JS__run1__checkpoint1500",
+        "formal_run": 1,
+        "paper_label": "SGRR-O2-JS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9202__Rroll",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9202__Rroll\\checkpoint_1500.pt",
+        "checkpoint_sha256": "37eda942c5cb171e61fba84bf279a1affdf3b612ac005d43d66ebb1cf441c713",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9202__Rroll\\metadata.json",
+        "metadata_sha256": "f29cc638691e755dea39c2996a2e818dfd7ebfcfc4b78dcb6ce818f8236d6fd6",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9202__Rroll\\training_summary.json",
+        "training_summary_sha256": "7fad35f92c5dfee95067820ded3ebbf663c555346cfca7f1cbc13ee9bacda2e7",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9202__Rroll\\training_log.csv",
+        "training_log_sha256": "73b4d3fb89cf03939195201d8f33ebd4bf43c99b8167eef7aa3fb43b7a3ed9f5",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9202__Rroll",
+          "paper_label": "SGRR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9202__Rroll",
+          "paper_label": "SGRR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "SGRR_O2_JS",
+        "seed": 9203,
+        "checkpoint_batch": 1500,
+        "task_id": "SGRR_O2_JS__run2__checkpoint1500",
+        "formal_run": 2,
+        "paper_label": "SGRR-O2-JS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9203__Rroll",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9203__Rroll\\checkpoint_1500.pt",
+        "checkpoint_sha256": "dd721641654bef7ac978f3aba509adcdbcb62e5aeea68bb7b81584728ebcb53a",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9203__Rroll\\metadata.json",
+        "metadata_sha256": "8893a2e886e69bafb859639f2e399fc29e8083bd18534adefd80a6bb71f35fc3",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9203__Rroll\\training_summary.json",
+        "training_summary_sha256": "5e4b5b404569499628855a057464c47a29f1747476982593c21e2027b2f4fa20",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9203__Rroll\\training_log.csv",
+        "training_log_sha256": "664475ebe9946ee33f1a89600bf405918238fb9085cf21a9c70e3b8475d35917",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9203__Rroll",
+          "paper_label": "SGRR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9203__Rroll",
+          "paper_label": "SGRR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "SGRR_O2_JS",
+        "seed": 9204,
+        "checkpoint_batch": 1500,
+        "task_id": "SGRR_O2_JS__run3__checkpoint1500",
+        "formal_run": 3,
+        "paper_label": "SGRR-O2-JS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9204__Rroll",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9204__Rroll\\checkpoint_1500.pt",
+        "checkpoint_sha256": "7fd72590cf4491cc7d445785fad07f62d38d6f9635daef321031cf426eecdd60",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9204__Rroll\\metadata.json",
+        "metadata_sha256": "894a794cd1a2eea285826d23b9910cfc91368d5acf86e8be92386030fd6b5b44",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9204__Rroll\\training_summary.json",
+        "training_summary_sha256": "27d30fd03728b0fdcdf094925f4b6fa8e33f9241d5d5cb0e0cd50fa66f0d965b",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9204__Rroll\\training_log.csv",
+        "training_log_sha256": "f12a9faa0d75451105ee1101b2c550e5c7f20765ed52507783e11d86ce95cfa3",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9204__Rroll",
+          "paper_label": "SGRR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9204__Rroll",
+          "paper_label": "SGRR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        }
+      }
+    },
+    {
+      "task": {
+        "arm_id": "SGRR_O2_JS",
+        "seed": 9205,
+        "checkpoint_batch": 1500,
+        "task_id": "SGRR_O2_JS__run4__checkpoint1500",
+        "formal_run": 4,
+        "paper_label": "SGRR-O2-JS"
+      },
+      "training_artifacts": {
+        "status": "passed",
+        "run_dir": "E:\\FormalTrainingResults\\runs\\formal__seed9205__Rroll",
+        "checkpoint": "E:\\FormalTrainingResults\\runs\\formal__seed9205__Rroll\\checkpoint_1500.pt",
+        "checkpoint_sha256": "1a770ff49a9681e322be2d1c7a68d8593a6b690a8390b04b22e3d92ec9b34f74",
+        "metadata": "E:\\FormalTrainingResults\\runs\\formal__seed9205__Rroll\\metadata.json",
+        "metadata_sha256": "b4ebee5b0701970e7f7bdcb44f28a4fadb2ee7faa8fedccef56144cee8e251cd",
+        "training_summary": "E:\\FormalTrainingResults\\runs\\formal__seed9205__Rroll\\training_summary.json",
+        "training_summary_sha256": "68fe426a9c313dd2569fae9ff77e9dad7cb23ce52f97a104e896a213ffa7f6ba",
+        "training_log": "E:\\FormalTrainingResults\\runs\\formal__seed9205__Rroll\\training_log.csv",
+        "training_log_sha256": "6e8c50e7fdaf337366e5bec20473dfbad3c5a0d24be922f33c6145cac0c39ee2",
+        "training_log_rows": 1500,
+        "checkpoint_finite_tensor_count": 12,
+        "file_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9205__Rroll",
+          "paper_label": "SGRR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        },
+        "checkpoint_contract": {
+          "metadata_contract_valid": true,
+          "expected_run_name": "formal__seed9205__Rroll",
+          "paper_label": "SGRR-O2-JS",
+          "action_semantics": "unbounded_k1_k2_coordinates",
+          "observation_dim": 2,
+          "action_dim": 2
+        }
+      }
+    }
+  ],
+  "ready_for_complete_evaluation": true
+}

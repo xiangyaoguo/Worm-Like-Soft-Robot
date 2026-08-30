@@ -1,0 +1,26 @@
+﻿contrast,left_configuration,right_configuration,formal_run,training_seed,left_crawling_candidate_rate,right_crawling_candidate_rate,difference_crawling_candidate_right_minus_left,left_formal_rolling_rate,right_formal_rolling_rate,difference_formal_rolling_right_minus_left,left_productive_locomotion_rate,right_productive_locomotion_rate,difference_productive_locomotion_right_minus_left
+DTH to THDOT,HPR_DTH_PS,HPR_THDOT_PS,0,9201,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+DTH to THDOT,HPR_DTH_PS,HPR_THDOT_PS,1,9202,0.0,1.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0
+DTH to THDOT,HPR_DTH_PS,HPR_THDOT_PS,2,9203,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+DTH to THDOT,HPR_DTH_PS,HPR_THDOT_PS,3,9204,1.0,0.0,-1.0,0.0,0.0,0.0,1.0,0.0,-1.0
+DTH to THDOT,HPR_DTH_PS,HPR_THDOT_PS,4,9205,0.0,1.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0
+DTH to OBS,HPR_DTH_PS,HPR_OBS_PS,0,9201,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+DTH to OBS,HPR_DTH_PS,HPR_OBS_PS,1,9202,0.0,1.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0
+DTH to OBS,HPR_DTH_PS,HPR_OBS_PS,2,9203,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+DTH to OBS,HPR_DTH_PS,HPR_OBS_PS,3,9204,1.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0
+DTH to OBS,HPR_DTH_PS,HPR_OBS_PS,4,9205,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+OBS to O2-PS,HPR_OBS_PS,HPR_O2_PS,0,9201,0.0,1.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0
+OBS to O2-PS,HPR_OBS_PS,HPR_O2_PS,1,9202,1.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0
+OBS to O2-PS,HPR_OBS_PS,HPR_O2_PS,2,9203,0.0,1.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0
+OBS to O2-PS,HPR_OBS_PS,HPR_O2_PS,3,9204,1.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0
+OBS to O2-PS,HPR_OBS_PS,HPR_O2_PS,4,9205,0.0,1.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0
+O2-PS to O2-JS,HPR_O2_PS,HPR_O2_JS,0,9201,1.0,0.0,-1.0,0.0,1.0,1.0,1.0,1.0,0.0
+O2-PS to O2-JS,HPR_O2_PS,HPR_O2_JS,1,9202,1.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0
+O2-PS to O2-JS,HPR_O2_PS,HPR_O2_JS,2,9203,1.0,0.1,-0.9,0.0,0.35,0.35,1.0,0.45,-0.55
+O2-PS to O2-JS,HPR_O2_PS,HPR_O2_JS,3,9204,1.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0
+O2-PS to O2-JS,HPR_O2_PS,HPR_O2_JS,4,9205,1.0,0.0,-1.0,0.0,1.0,1.0,1.0,1.0,0.0
+O2-JS HPR to SGRR,HPR_O2_JS,SGRR_O2_JS,0,9201,0.0,0.0,0.0,1.0,0.95,-0.050000000000000044,1.0,0.95,-0.050000000000000044
+O2-JS HPR to SGRR,HPR_O2_JS,SGRR_O2_JS,1,9202,1.0,0.0,-1.0,0.0,1.0,1.0,1.0,1.0,0.0
+O2-JS HPR to SGRR,HPR_O2_JS,SGRR_O2_JS,2,9203,0.1,0.0,-0.1,0.35,1.0,0.65,0.45,1.0,0.55
+O2-JS HPR to SGRR,HPR_O2_JS,SGRR_O2_JS,3,9204,1.0,0.0,-1.0,0.0,1.0,1.0,1.0,1.0,0.0
+O2-JS HPR to SGRR,HPR_O2_JS,SGRR_O2_JS,4,9205,0.0,0.0,0.0,1.0,1.0,0.0,1.0,1.0,0.0

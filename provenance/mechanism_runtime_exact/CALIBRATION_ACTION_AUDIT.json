@@ -1,0 +1,39 @@
+{
+  "schema": "obs2_v2_1_k_calibration_action_audit/v1",
+  "passed_technical_execution": true,
+  "calibration_only": true,
+  "main_evaluation_states_used": false,
+  "condition_count": 59,
+  "exact_duplicate_condition_groups": [],
+  "weak_postclip_separation_conditions": [],
+  "drop_or_modify_conditions_based_on_audit": false,
+  "interpretation": "Weak or duplicate post-clip interventions remain in the frozen matrix and are flagged as limited-identifiability results, never silently removed.",
+  "seed_files": [
+    {
+      "training_seed": 9201,
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\calibration_audit\\seed9201.json",
+      "sha256": "45f65987762c94bbaf9e80a68d208a55670622de4815fb3bb2985f6f8fb1e48c"
+    },
+    {
+      "training_seed": 9202,
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\calibration_audit\\seed9202.json",
+      "sha256": "6406c01c71d92289bbf7df14c866dacc6a39f8e99f562246e73a8bfce1b30c19"
+    },
+    {
+      "training_seed": 9203,
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\calibration_audit\\seed9203.json",
+      "sha256": "09672b6265737e96e48389f302244893b2e1d7e25ebb45ff00a6fd0f6ccfd7df"
+    },
+    {
+      "training_seed": 9204,
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\calibration_audit\\seed9204.json",
+      "sha256": "e3d09d358779f1b8178db5899f104acd295e2dab64d225c9b4c7eabdcef9999e"
+    },
+    {
+      "training_seed": 9205,
+      "path": "C:\\Users\\PUBLIC_USER\\Documents\\Graduate_Thesis_Project\\obs2_v2_1_k_mechanism_20260804\\calibration_audit\\seed9205.json",
+      "sha256": "73de582d2f8fc781bfd61465e13ec876f71da86ce051b8717c8898fce87787ad"
+    }
+  ],
+  "audit_source_sha256": "0efec8239ed929e333b2140a62b0ffde8b6854c7075f203deb390a6d3eb7880b"
+}

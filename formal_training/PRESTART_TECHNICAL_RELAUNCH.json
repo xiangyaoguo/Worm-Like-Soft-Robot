@@ -1,0 +1,23 @@
+{
+  "schema": "roll_learning_formal_prestart_technical_relaunch/v1",
+  "new_study_id": "obs2_reward_only_roll_reproduction_v2_1_formal_20260803_r2",
+  "previous_study_id": "obs2_reward_only_roll_reproduction_v2_1_formal_20260803",
+  "previous_root": "C:\\Users\\PUBLIC_USER\\CloudStorage\\Desktop\\finalproject\\job\\roll_learning\\obs2_roll_repro_v2_1_formal_20260803",
+  "previous_orchestrator_pid": 48588,
+  "failure_time_utc": "2026-08-03T12:56:08.005381+00:00",
+  "failure": "PermissionError: WinError 5 while atomically replacing orchestrator_state.json",
+  "prechecks_passed": {
+    "cuda_training_preflight": true,
+    "frozen_evaluator_self_test": true,
+    "reward_contract_test": true
+  },
+  "previous_training_processes_started": 0,
+  "previous_training_logs": 0,
+  "previous_checkpoints": 0,
+  "previous_run_directories": 0,
+  "previous_root_preserved": true,
+  "recovery": "new sibling root; all formal runs start from batch 0; no checkpoint or state is resumed",
+  "scientific_contract_changed": false,
+  "technical_change_only": "retry PermissionError during atomic os.replace on Windows/CloudStorage",
+  "authorized_by": "user request to automatically repair formal technical problems and report"
+}
